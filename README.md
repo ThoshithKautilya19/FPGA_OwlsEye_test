@@ -45,5 +45,6 @@ To understand how the quantized model is being used in the final runfile, You ca
 
 ## References:
 
-[1] 
-[2]
+[1] Gaurav Shah, A. Goud, Z. Momin, and J. Mekie, "OwlsEye: Real-Time Low-Light Video Instance Segmentation on Edge and Exploration of Fixed-Posit Quantization," presented at the 2025 38th International Conference on VLSI Design and 2025 24th International Conference on Embedded Systems (VLSID), Bengaluru, India, Jan. 4–8, 2025. [Online]. Available: https://drive.google.com/file/d/1RhpU7zS5hsCJNjFDx7BJfd-3m71EHuEA/view?usp=sharing.
+
+
