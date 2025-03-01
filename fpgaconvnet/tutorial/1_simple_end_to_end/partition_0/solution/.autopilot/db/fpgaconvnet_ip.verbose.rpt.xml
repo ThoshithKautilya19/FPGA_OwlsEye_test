@@ -1,0 +1,261 @@
+<profile>
+
+<section name = "Vivado HLS Report for 'fpgaconvnet_ip'" level="0">
+<item name = "Date">Sat Feb 15 08:09:13 2025
+</item>
+<item name = "Version">2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)</item>
+<item name = "Project">partition_0</item>
+<item name = "Solution">solution</item>
+<item name = "Product family">zynq</item>
+<item name = "Target device">xc7z020-clg484-1</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">5.00 ns, 6.562 ns, 0.62 ns</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="8">, min, max, min, max, min, max, Type</keys>
+<column name="">?, ?, ?, ?, ?, ?, dataflow</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="9">Instance, Module, min, max, min, max, min, max, Type</keys>
+<column name="Block_proc_U0">Block_proc, ?, ?, ?, ?, ?, ?, none</column>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Utilization Estimates" level="0">
+<item name = "Summary"><table name="" hasTotal="1">
+<keys size="6">Name, BRAM_18K, DSP48E, FF, LUT, URAM</keys>
+<column name="DSP">-, -, -, -, -</column>
+<column name="Expression">-, -, -, -, -</column>
+<column name="FIFO">-, -, -, -, -</column>
+<column name="Instance">42666, 60960, 29962826, 11416175, 0</column>
+<column name="Memory">-, -, -, -, -</column>
+<column name="Multiplexer">-, -, -, -, -</column>
+<column name="Register">-, -, -, -, -</column>
+<specialColumn name="Available">280, 220, 106400, 53200, 0</specialColumn>
+<specialColumn name="Utilization (%)">15237, 27709, 28160, 21458, 0</specialColumn>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="1">
+<keys size="7">Instance, Module, BRAM_18K, DSP48E, FF, LUT, URAM</keys>
+<column name="Block_proc_U0">Block_proc, 42654, 60960, 29960902, 11413517, 0</column>
+<column name="fpgaconvnet_ip_ctrl_s_axi_U">fpgaconvnet_ip_ctrl_s_axi, 0, 0, 226, 360, 0</column>
+<column name="fpgaconvnet_ip_fpgaconvnet_port_in_m_axi_U">fpgaconvnet_ip_fpgaconvnet_port_in_m_axi, 4, 0, 566, 766, 0</column>
+<column name="fpgaconvnet_ip_fpgaconvnet_port_out_m_axi_U">fpgaconvnet_ip_fpgaconvnet_port_out_m_axi, 4, 0, 566, 766, 0</column>
+<column name="fpgaconvnet_ip_fpgaconvnet_port_wr_m_axi_U">fpgaconvnet_ip_fpgaconvnet_port_wr_m_axi, 4, 0, 566, 766, 0</column>
+</table>
+</item>
+<item name = "DSP48E"><table name="" hasTotal="0">
+<keys size="3">Instance, Module, Expression</keys>
+</table>
+</item>
+<item name = "Memory"><table name="" hasTotal="1">
+<keys size="10">Memory, Module, BRAM_18K, FF, LUT, URAM, Words, Bits, Banks, W*Bits*Banks</keys>
+</table>
+</item>
+<item name = "FIFO"><table name="" hasTotal="1">
+<keys size="8">Name, BRAM_18K, FF, LUT, URAM, Depth, Bits, Size:D*B</keys>
+</table>
+</item>
+<item name = "Expression"><table name="" hasTotal="1">
+<keys size="7">Variable Name, Operation, DSP48E, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
+</table>
+</item>
+<item name = "Multiplexer"><table name="" hasTotal="1">
+<keys size="5">Name, LUT, Input Size, Bits, Total Bits</keys>
+</table>
+</item>
+<item name = "Register"><table name="" hasTotal="1">
+<keys size="5">Name, FF, LUT, Bits, Const Bits</keys>
+</table>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Interface" level="0">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="6">RTL Ports, Dir, Bits, Protocol, Source Object, C Type</keys>
+<column name="s_axi_ctrl_AWVALID">in, 1, s_axi, ctrl, scalar</column>
+<column name="s_axi_ctrl_AWREADY">out, 1, s_axi, ctrl, scalar</column>
+<column name="s_axi_ctrl_AWADDR">in, 6, s_axi, ctrl, scalar</column>
+<column name="s_axi_ctrl_WVALID">in, 1, s_axi, ctrl, scalar</column>
+<column name="s_axi_ctrl_WREADY">out, 1, s_axi, ctrl, scalar</column>
+<column name="s_axi_ctrl_WDATA">in, 32, s_axi, ctrl, scalar</column>
+<column name="s_axi_ctrl_WSTRB">in, 4, s_axi, ctrl, scalar</column>
+<column name="s_axi_ctrl_ARVALID">in, 1, s_axi, ctrl, scalar</column>
+<column name="s_axi_ctrl_ARREADY">out, 1, s_axi, ctrl, scalar</column>
+<column name="s_axi_ctrl_ARADDR">in, 6, s_axi, ctrl, scalar</column>
+<column name="s_axi_ctrl_RVALID">out, 1, s_axi, ctrl, scalar</column>
+<column name="s_axi_ctrl_RREADY">in, 1, s_axi, ctrl, scalar</column>
+<column name="s_axi_ctrl_RDATA">out, 32, s_axi, ctrl, scalar</column>
+<column name="s_axi_ctrl_RRESP">out, 2, s_axi, ctrl, scalar</column>
+<column name="s_axi_ctrl_BVALID">out, 1, s_axi, ctrl, scalar</column>
+<column name="s_axi_ctrl_BREADY">in, 1, s_axi, ctrl, scalar</column>
+<column name="s_axi_ctrl_BRESP">out, 2, s_axi, ctrl, scalar</column>
+<column name="ap_clk">in, 1, ap_ctrl_hs, fpgaconvnet_ip, return value</column>
+<column name="ap_rst_n">in, 1, ap_ctrl_hs, fpgaconvnet_ip, return value</column>
+<column name="interrupt">out, 1, ap_ctrl_hs, fpgaconvnet_ip, return value</column>
+<column name="m_axi_fpgaconvnet_port_wr_AWVALID">out, 1, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_AWREADY">in, 1, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_AWADDR">out, 32, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_AWID">out, 1, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_AWLEN">out, 8, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_AWSIZE">out, 3, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_AWBURST">out, 2, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_AWLOCK">out, 2, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_AWCACHE">out, 4, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_AWPROT">out, 3, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_AWQOS">out, 4, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_AWREGION">out, 4, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_AWUSER">out, 1, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_WVALID">out, 1, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_WREADY">in, 1, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_WDATA">out, 64, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_WSTRB">out, 8, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_WLAST">out, 1, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_WID">out, 1, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_WUSER">out, 1, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_ARVALID">out, 1, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_ARREADY">in, 1, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_ARADDR">out, 32, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_ARID">out, 1, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_ARLEN">out, 8, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_ARSIZE">out, 3, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_ARBURST">out, 2, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_ARLOCK">out, 2, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_ARCACHE">out, 4, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_ARPROT">out, 3, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_ARQOS">out, 4, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_ARREGION">out, 4, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_ARUSER">out, 1, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_RVALID">in, 1, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_RREADY">out, 1, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_RDATA">in, 64, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_RLAST">in, 1, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_RID">in, 1, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_RUSER">in, 1, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_RRESP">in, 2, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_BVALID">in, 1, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_BREADY">out, 1, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_BRESP">in, 2, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_BID">in, 1, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_wr_BUSER">in, 1, m_axi, fpgaconvnet_port_wr, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_AWVALID">out, 1, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_AWREADY">in, 1, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_AWADDR">out, 32, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_AWID">out, 1, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_AWLEN">out, 8, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_AWSIZE">out, 3, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_AWBURST">out, 2, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_AWLOCK">out, 2, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_AWCACHE">out, 4, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_AWPROT">out, 3, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_AWQOS">out, 4, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_AWREGION">out, 4, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_AWUSER">out, 1, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_WVALID">out, 1, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_WREADY">in, 1, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_WDATA">out, 64, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_WSTRB">out, 8, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_WLAST">out, 1, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_WID">out, 1, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_WUSER">out, 1, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_ARVALID">out, 1, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_ARREADY">in, 1, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_ARADDR">out, 32, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_ARID">out, 1, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_ARLEN">out, 8, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_ARSIZE">out, 3, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_ARBURST">out, 2, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_ARLOCK">out, 2, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_ARCACHE">out, 4, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_ARPROT">out, 3, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_ARQOS">out, 4, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_ARREGION">out, 4, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_ARUSER">out, 1, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_RVALID">in, 1, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_RREADY">out, 1, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_RDATA">in, 64, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_RLAST">in, 1, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_RID">in, 1, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_RUSER">in, 1, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_RRESP">in, 2, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_BVALID">in, 1, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_BREADY">out, 1, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_BRESP">in, 2, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_BID">in, 1, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_in_BUSER">in, 1, m_axi, fpgaconvnet_port_in, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_AWVALID">out, 1, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_AWREADY">in, 1, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_AWADDR">out, 32, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_AWID">out, 1, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_AWLEN">out, 8, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_AWSIZE">out, 3, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_AWBURST">out, 2, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_AWLOCK">out, 2, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_AWCACHE">out, 4, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_AWPROT">out, 3, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_AWQOS">out, 4, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_AWREGION">out, 4, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_AWUSER">out, 1, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_WVALID">out, 1, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_WREADY">in, 1, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_WDATA">out, 64, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_WSTRB">out, 8, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_WLAST">out, 1, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_WID">out, 1, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_WUSER">out, 1, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_ARVALID">out, 1, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_ARREADY">in, 1, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_ARADDR">out, 32, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_ARID">out, 1, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_ARLEN">out, 8, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_ARSIZE">out, 3, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_ARBURST">out, 2, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_ARLOCK">out, 2, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_ARCACHE">out, 4, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_ARPROT">out, 3, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_ARQOS">out, 4, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_ARREGION">out, 4, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_ARUSER">out, 1, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_RVALID">in, 1, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_RREADY">out, 1, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_RDATA">in, 64, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_RLAST">in, 1, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_RID">in, 1, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_RUSER">in, 1, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_RRESP">in, 2, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_BVALID">in, 1, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_BREADY">out, 1, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_BRESP">in, 2, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_BID">in, 1, m_axi, fpgaconvnet_port_out, pointer</column>
+<column name="m_axi_fpgaconvnet_port_out_BUSER">in, 1, m_axi, fpgaconvnet_port_out, pointer</column>
+</table>
+</item>
+</section>
+</profile>

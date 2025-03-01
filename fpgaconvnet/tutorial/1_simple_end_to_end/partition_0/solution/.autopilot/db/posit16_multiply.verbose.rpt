@@ -1,0 +1,846 @@
+
+
+================================================================
+== Vivado HLS Report for 'posit16_multiply'
+================================================================
+* Date:           Sat Feb 15 07:47:02 2025
+
+* Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
+* Project:        partition_0
+* Solution:       solution
+* Product family: zynq
+* Target device:  xc7z020-clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 5.00 ns | 6.562 ns |   0.62 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |        ?|        ?|         ?|         ?|    ?|    ?|   none  |
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        +------------------------------+-------------------+---------+---------+----------+----------+-----+-----+---------+
+        |                              |                   |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+        |           Instance           |       Module      |   min   |   max   |    min   |    max   | min | max |   Type  |
+        +------------------------------+-------------------+---------+---------+----------+----------+-----+-----+---------+
+        |grp_posit16_to_double_fu_56   |posit16_to_double  |        1|      438| 6.562 ns | 2.874 us |    1|  438|   none  |
+        |grp_posit16_to_double_fu_86   |posit16_to_double  |        1|      438| 6.562 ns | 2.874 us |    1|  438|   none  |
+        |grp_double_to_posit16_fu_116  |double_to_posit16  |        ?|        ?|         ?|         ?|    ?|    ?|   none  |
+        +------------------------------+-------------------+---------+---------+----------+----------+-----+-----+---------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+-----+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  | URAM|
++-----------------+---------+-------+--------+-------+-----+
+|DSP              |        -|      -|       -|      -|    -|
+|Expression       |        -|      -|       0|      2|    -|
+|FIFO             |        -|      -|       -|      -|    -|
+|Instance         |      296|    413|  201313|  70144|    -|
+|Memory           |        -|      -|       -|      -|    -|
+|Multiplexer      |        -|      -|       -|     71|    -|
+|Register         |        -|      -|     225|      -|    -|
++-----------------+---------+-------+--------+-------+-----+
+|Total            |      296|    413|  201538|  70217|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Available        |      280|    220|  106400|  53200|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Utilization (%)  |      105|    187|     189|    131|    0|
++-----------------+---------+-------+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    +------------------------------+----------------------+---------+-------+-------+-------+-----+
+    |           Instance           |        Module        | BRAM_18K| DSP48E|   FF  |  LUT  | URAM|
+    +------------------------------+----------------------+---------+-------+-------+-------+-----+
+    |grp_double_to_posit16_fu_116  |double_to_posit16     |        0|     14|   4561|   6851|    0|
+    |fpgaconvnet_ip_dmeOg_U858     |fpgaconvnet_ip_dmeOg  |        0|     11|    456|    603|    0|
+    |grp_posit16_to_double_fu_56   |posit16_to_double     |      148|    194|  98148|  31345|    0|
+    |grp_posit16_to_double_fu_86   |posit16_to_double     |      148|    194|  98148|  31345|    0|
+    +------------------------------+----------------------+---------+-------+-------+-------+-----+
+    |Total                         |                      |      296|    413| 201313|  70144|    0|
+    +------------------------------+----------------------+---------+-------+-------+-------+-----+
+
+    * DSP48E: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +---------------------------------+----------+-------+---+----+------------+------------+
+    |          Variable Name          | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +---------------------------------+----------+-------+---+----+------------+------------+
+    |ap_block_state2_on_subcall_done  |    or    |      0|  0|   2|           1|           1|
+    +---------------------------------+----------+-------+---+----+------------+------------+
+    |Total                            |          |      0|  0|   2|           1|           1|
+    +---------------------------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-----------+----+-----------+-----+-----------+
+    |    Name   | LUT| Input Size| Bits| Total Bits|
+    +-----------+----+-----------+-----+-----------+
+    |ap_NS_fsm  |  62|         15|    1|         15|
+    |ap_return  |   9|          2|   16|         32|
+    +-----------+----+-----------+-----+-----------+
+    |Total      |  71|         17|   17|         47|
+    +-----------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------------------------------------+----+----+-----+-----------+
+    |                    Name                   | FF | LUT| Bits| Const Bits|
+    +-------------------------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                                  |  14|   0|   14|          0|
+    |ap_return_preg                             |  16|   0|   16|          0|
+    |da_reg_135                                 |  64|   0|   64|          0|
+    |db_reg_140                                 |  64|   0|   64|          0|
+    |grp_double_to_posit16_fu_116_ap_start_reg  |   1|   0|    1|          0|
+    |grp_posit16_to_double_fu_56_ap_start_reg   |   1|   0|    1|          0|
+    |grp_posit16_to_double_fu_86_ap_start_reg   |   1|   0|    1|          0|
+    |prod_reg_145                               |  64|   0|   64|          0|
+    +-------------------------------------------+----+----+-----+-----------+
+    |Total                                      | 225|   0|  225|          0|
+    +-------------------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-----------+-----+-----+------------+------------------+--------------+
+| RTL Ports | Dir | Bits|  Protocol  |   Source Object  |    C Type    |
++-----------+-----+-----+------------+------------------+--------------+
+|ap_clk     |  in |    1| ap_ctrl_hs | posit16_multiply | return value |
+|ap_rst     |  in |    1| ap_ctrl_hs | posit16_multiply | return value |
+|ap_start   |  in |    1| ap_ctrl_hs | posit16_multiply | return value |
+|ap_done    | out |    1| ap_ctrl_hs | posit16_multiply | return value |
+|ap_idle    | out |    1| ap_ctrl_hs | posit16_multiply | return value |
+|ap_ready   | out |    1| ap_ctrl_hs | posit16_multiply | return value |
+|ap_return  | out |   16| ap_ctrl_hs | posit16_multiply | return value |
+|a_ui       |  in |   16|   ap_none  |       a_ui       |    scalar    |
+|b_ui       |  in |   16|   ap_none  |       b_ui       |    scalar    |
++-----------+-----+-----+------------+------------------+--------------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 2
+IsDatapathOnly: 2
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 14
+* Pipeline : 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 3 
+3 --> 4 
+4 --> 5 
+5 --> 6 
+6 --> 7 
+7 --> 8 
+8 --> 9 
+9 --> 10 
+10 --> 11 
+11 --> 12 
+12 --> 13 
+13 --> 14 
+14 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 4.28>
+ST_1 : Operation 15 [1/1] (0.00ns)   --->   "%b_ui_read = call i16 @_ssdm_op_Read.ap_auto.i16(i16 %b_ui)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:44->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:234->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 15 'read' 'b_ui_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 16 [1/1] (0.00ns)   --->   "%a_ui_read = call i16 @_ssdm_op_Read.ap_auto.i16(i16 %a_ui)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:44->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:234->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 16 'read' 'a_ui_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 17 [2/2] (4.28ns)   --->   "%da = call fastcc double @posit16_to_double(i16 zeroext %a_ui_read)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:44->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:234->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 17 'call' 'da' <Predicate = true> <Delay = 4.28> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_1 : Operation 18 [2/2] (4.28ns)   --->   "%db = call fastcc double @posit16_to_double(i16 zeroext %b_ui_read)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:44->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:235->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 18 'call' 'db' <Predicate = true> <Delay = 4.28> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 2 <SV = 1> <Delay = 2.85>
+ST_2 : Operation 19 [1/2] (2.85ns)   --->   "%da = call fastcc double @posit16_to_double(i16 zeroext %a_ui_read)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:44->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:234->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 19 'call' 'da' <Predicate = true> <Delay = 2.85> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_2 : Operation 20 [1/2] (2.85ns)   --->   "%db = call fastcc double @posit16_to_double(i16 zeroext %b_ui_read)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:44->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:235->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 20 'call' 'db' <Predicate = true> <Delay = 2.85> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 3 <SV = 2> <Delay = 4.31>
+ST_3 : Operation 21 [10/10] (4.31ns)   --->   "%prod = fmul double %da, %db" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:236->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 21 'dmul' 'prod' <Predicate = true> <Delay = 4.31> <Core = "DMul">   --->   Core 116 'DMul' <Latency = 9> <II = 1> <Delay = 4.31> <FuncUnit> <Opcode : 'dmul'> <InPorts = 2> <OutPorts = 1>
+
+State 4 <SV = 3> <Delay = 4.31>
+ST_4 : Operation 22 [9/10] (4.31ns)   --->   "%prod = fmul double %da, %db" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:236->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 22 'dmul' 'prod' <Predicate = true> <Delay = 4.31> <Core = "DMul">   --->   Core 116 'DMul' <Latency = 9> <II = 1> <Delay = 4.31> <FuncUnit> <Opcode : 'dmul'> <InPorts = 2> <OutPorts = 1>
+
+State 5 <SV = 4> <Delay = 4.31>
+ST_5 : Operation 23 [8/10] (4.31ns)   --->   "%prod = fmul double %da, %db" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:236->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 23 'dmul' 'prod' <Predicate = true> <Delay = 4.31> <Core = "DMul">   --->   Core 116 'DMul' <Latency = 9> <II = 1> <Delay = 4.31> <FuncUnit> <Opcode : 'dmul'> <InPorts = 2> <OutPorts = 1>
+
+State 6 <SV = 5> <Delay = 4.31>
+ST_6 : Operation 24 [7/10] (4.31ns)   --->   "%prod = fmul double %da, %db" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:236->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 24 'dmul' 'prod' <Predicate = true> <Delay = 4.31> <Core = "DMul">   --->   Core 116 'DMul' <Latency = 9> <II = 1> <Delay = 4.31> <FuncUnit> <Opcode : 'dmul'> <InPorts = 2> <OutPorts = 1>
+
+State 7 <SV = 6> <Delay = 4.31>
+ST_7 : Operation 25 [6/10] (4.31ns)   --->   "%prod = fmul double %da, %db" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:236->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 25 'dmul' 'prod' <Predicate = true> <Delay = 4.31> <Core = "DMul">   --->   Core 116 'DMul' <Latency = 9> <II = 1> <Delay = 4.31> <FuncUnit> <Opcode : 'dmul'> <InPorts = 2> <OutPorts = 1>
+
+State 8 <SV = 7> <Delay = 4.31>
+ST_8 : Operation 26 [5/10] (4.31ns)   --->   "%prod = fmul double %da, %db" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:236->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 26 'dmul' 'prod' <Predicate = true> <Delay = 4.31> <Core = "DMul">   --->   Core 116 'DMul' <Latency = 9> <II = 1> <Delay = 4.31> <FuncUnit> <Opcode : 'dmul'> <InPorts = 2> <OutPorts = 1>
+
+State 9 <SV = 8> <Delay = 4.31>
+ST_9 : Operation 27 [4/10] (4.31ns)   --->   "%prod = fmul double %da, %db" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:236->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 27 'dmul' 'prod' <Predicate = true> <Delay = 4.31> <Core = "DMul">   --->   Core 116 'DMul' <Latency = 9> <II = 1> <Delay = 4.31> <FuncUnit> <Opcode : 'dmul'> <InPorts = 2> <OutPorts = 1>
+
+State 10 <SV = 9> <Delay = 4.31>
+ST_10 : Operation 28 [3/10] (4.31ns)   --->   "%prod = fmul double %da, %db" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:236->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 28 'dmul' 'prod' <Predicate = true> <Delay = 4.31> <Core = "DMul">   --->   Core 116 'DMul' <Latency = 9> <II = 1> <Delay = 4.31> <FuncUnit> <Opcode : 'dmul'> <InPorts = 2> <OutPorts = 1>
+
+State 11 <SV = 10> <Delay = 4.31>
+ST_11 : Operation 29 [2/10] (4.31ns)   --->   "%prod = fmul double %da, %db" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:236->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 29 'dmul' 'prod' <Predicate = true> <Delay = 4.31> <Core = "DMul">   --->   Core 116 'DMul' <Latency = 9> <II = 1> <Delay = 4.31> <FuncUnit> <Opcode : 'dmul'> <InPorts = 2> <OutPorts = 1>
+
+State 12 <SV = 11> <Delay = 4.31>
+ST_12 : Operation 30 [1/10] (4.31ns)   --->   "%prod = fmul double %da, %db" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:236->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 30 'dmul' 'prod' <Predicate = true> <Delay = 4.31> <Core = "DMul">   --->   Core 116 'DMul' <Latency = 9> <II = 1> <Delay = 4.31> <FuncUnit> <Opcode : 'dmul'> <InPorts = 2> <OutPorts = 1>
+
+State 13 <SV = 12> <Delay = 3.12>
+ST_13 : Operation 31 [2/2] (3.12ns)   --->   "%result_ui = call fastcc zeroext i16 @double_to_posit16(double %prod)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:237->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 31 'call' 'result_ui' <Predicate = true> <Delay = 3.12> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 14 <SV = 13> <Delay = 2.75>
+ST_14 : Operation 32 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecPipeline(i32 -1, i32 1, i32 1, i32 0, [1 x i8]* @p_str57) nounwind" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:245]   --->   Operation 32 'specpipeline' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 33 [1/2] (2.75ns)   --->   "%result_ui = call fastcc zeroext i16 @double_to_posit16(double %prod)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:237->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 33 'call' 'result_ui' <Predicate = true> <Delay = 2.75> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_14 : Operation 34 [1/1] (0.00ns)   --->   "ret i16 %result_ui" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:247]   --->   Operation 34 'ret' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+STG Binding: 
+---------------- STG Properties BEGIN ----------------
+- Is combinational: 0
+- Is one-state seq: 0
+- Is datapath-only: 0
+- Is pipelined: 0
+- Is top level: 0
+Port [ Return ] is wired: 1; IO mode=ap_ctrl_hs:ce=0
+Port [ a_ui]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=0; pingpong=0; private_global=0; IO mode=ap_none:ce=0
+Port [ b_ui]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=0; pingpong=0; private_global=0; IO mode=ap_none:ce=0
+Port [ pow_reduce_anonymo_20]:  wired=0; compound=1; hidden=1; nouse=1; global=1; static=1; extern=0; dir=0; type=1; pingpong=0; private_global=0; linkage=7; visibility=0; MemPort=[1]; IO mode=ap_memory:ce=0
+Port [ pow_reduce_anonymo_19]:  wired=0; compound=1; hidden=1; nouse=1; global=1; static=1; extern=0; dir=0; type=1; pingpong=0; private_global=0; linkage=7; visibility=0; MemPort=[1]; IO mode=ap_memory:ce=0
+Port [ pow_reduce_anonymo_16]:  wired=0; compound=1; hidden=1; nouse=1; global=1; static=1; extern=0; dir=0; type=1; pingpong=0; private_global=0; linkage=7; visibility=0; MemPort=[1]; IO mode=ap_memory:ce=0
+Port [ pow_reduce_anonymo_17]:  wired=0; compound=1; hidden=1; nouse=1; global=1; static=1; extern=0; dir=0; type=1; pingpong=0; private_global=0; linkage=7; visibility=0; MemPort=[1]; IO mode=ap_memory:ce=0
+Port [ pow_reduce_anonymo_9]:  wired=0; compound=1; hidden=1; nouse=1; global=1; static=1; extern=0; dir=0; type=1; pingpong=0; private_global=0; linkage=7; visibility=0; MemPort=[1]; IO mode=ap_memory:ce=0
+Port [ pow_reduce_anonymo_12]:  wired=0; compound=1; hidden=1; nouse=1; global=1; static=1; extern=0; dir=0; type=1; pingpong=0; private_global=0; linkage=7; visibility=0; MemPort=[1]; IO mode=ap_memory:ce=0
+Port [ pow_reduce_anonymo_13]:  wired=0; compound=1; hidden=1; nouse=1; global=1; static=1; extern=0; dir=0; type=1; pingpong=0; private_global=0; linkage=7; visibility=0; MemPort=[1]; IO mode=ap_memory:ce=0
+Port [ pow_reduce_anonymo_14]:  wired=0; compound=1; hidden=1; nouse=1; global=1; static=1; extern=0; dir=0; type=1; pingpong=0; private_global=0; linkage=7; visibility=0; MemPort=[1]; IO mode=ap_memory:ce=0
+Port [ pow_reduce_anonymo_15]:  wired=0; compound=1; hidden=1; nouse=1; global=1; static=1; extern=0; dir=0; type=1; pingpong=0; private_global=0; linkage=7; visibility=0; MemPort=[1]; IO mode=ap_memory:ce=0
+Port [ pow_reduce_anonymo_18]:  wired=0; compound=1; hidden=1; nouse=1; global=1; static=1; extern=0; dir=0; type=1; pingpong=0; private_global=0; linkage=7; visibility=0; MemPort=[1]; IO mode=ap_memory:ce=0
+Port [ pow_reduce_anonymo]:  wired=0; compound=1; hidden=1; nouse=1; global=1; static=1; extern=0; dir=0; type=1; pingpong=0; private_global=0; linkage=7; visibility=0; MemPort=[11]; IO mode=ap_memory:ce=0
+Port [ pow_reduce_anonymo_21]:  wired=0; compound=1; hidden=1; nouse=1; global=1; static=1; extern=0; dir=0; type=1; pingpong=0; private_global=0; linkage=7; visibility=0; MemPort=[1]; IO mode=ap_memory:ce=0
+---------------- STG Properties END ------------------
+
+---------------- Datapath Model BEGIN ----------------
+
+<LifeTime>
+<method=bitvector/>
+b_ui_read          (read        ) [ 001000000000000]
+a_ui_read          (read        ) [ 001000000000000]
+da                 (call        ) [ 000111111111100]
+db                 (call        ) [ 000111111111100]
+prod               (dmul        ) [ 000000000000011]
+specpipeline_ln245 (specpipeline) [ 000000000000000]
+result_ui          (call        ) [ 000000000000000]
+ret_ln247          (ret         ) [ 000000000000000]
+</LifeTime>
+
+<model>
+
+<comp_list>
+<comp id="0" class="1000" name="a_ui">
+<pin_list>
+<pin id="1" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="a_ui"/></StgValue>
+</bind>
+</comp>
+
+<comp id="2" class="1000" name="b_ui">
+<pin_list>
+<pin id="3" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="b_ui"/></StgValue>
+</bind>
+</comp>
+
+<comp id="4" class="1000" name="pow_reduce_anonymo_20">
+<pin_list>
+<pin id="5" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="pow_reduce_anonymo_20"/><MemPortTyVec>1 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="6" class="1000" name="pow_reduce_anonymo_19">
+<pin_list>
+<pin id="7" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="pow_reduce_anonymo_19"/><MemPortTyVec>1 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="8" class="1000" name="pow_reduce_anonymo_16">
+<pin_list>
+<pin id="9" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="pow_reduce_anonymo_16"/><MemPortTyVec>1 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="10" class="1000" name="pow_reduce_anonymo_17">
+<pin_list>
+<pin id="11" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="pow_reduce_anonymo_17"/><MemPortTyVec>1 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="12" class="1000" name="pow_reduce_anonymo_9">
+<pin_list>
+<pin id="13" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="pow_reduce_anonymo_9"/><MemPortTyVec>1 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="14" class="1000" name="pow_reduce_anonymo_12">
+<pin_list>
+<pin id="15" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="pow_reduce_anonymo_12"/><MemPortTyVec>1 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="16" class="1000" name="pow_reduce_anonymo_13">
+<pin_list>
+<pin id="17" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="pow_reduce_anonymo_13"/><MemPortTyVec>1 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="18" class="1000" name="pow_reduce_anonymo_14">
+<pin_list>
+<pin id="19" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="pow_reduce_anonymo_14"/><MemPortTyVec>1 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="20" class="1000" name="pow_reduce_anonymo_15">
+<pin_list>
+<pin id="21" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="pow_reduce_anonymo_15"/><MemPortTyVec>1 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="22" class="1000" name="pow_reduce_anonymo_18">
+<pin_list>
+<pin id="23" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="pow_reduce_anonymo_18"/><MemPortTyVec>1 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="24" class="1000" name="pow_reduce_anonymo">
+<pin_list>
+<pin id="25" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="pow_reduce_anonymo"/><MemPortTyVec>1 1 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="26" class="1000" name="pow_reduce_anonymo_21">
+<pin_list>
+<pin id="27" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="pow_reduce_anonymo_21"/><MemPortTyVec>1 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="28" class="1001" name="const_28">
+<pin_list>
+<pin id="29" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_ssdm_op_Read.ap_auto.i16"/></StgValue>
+</bind>
+</comp>
+
+<comp id="30" class="1001" name="const_30">
+<pin_list>
+<pin id="31" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="posit16_to_double"/></StgValue>
+</bind>
+</comp>
+
+<comp id="32" class="1001" name="const_32">
+<pin_list>
+<pin id="33" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="double_to_posit16"/></StgValue>
+</bind>
+</comp>
+
+<comp id="34" class="1001" name="const_34">
+<pin_list>
+<pin id="35" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_ssdm_op_SpecPipeline"/></StgValue>
+</bind>
+</comp>
+
+<comp id="36" class="1001" name="const_36">
+<pin_list>
+<pin id="37" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="38" class="1001" name="const_38">
+<pin_list>
+<pin id="39" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="40" class="1001" name="const_40">
+<pin_list>
+<pin id="41" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="42" class="1001" name="const_42">
+<pin_list>
+<pin id="43" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="p_str57"/></StgValue>
+</bind>
+</comp>
+
+<comp id="44" class="1004" name="b_ui_read_read_fu_44">
+<pin_list>
+<pin id="45" dir="0" index="0" bw="16" slack="0"/>
+<pin id="46" dir="0" index="1" bw="16" slack="0"/>
+<pin id="47" dir="1" index="2" bw="16" slack="0"/>
+</pin_list>
+<bind>
+<opcode="read(1150) " fcode="read"/>
+<opset="b_ui_read/1 "/>
+</bind>
+</comp>
+
+<comp id="50" class="1004" name="a_ui_read_read_fu_50">
+<pin_list>
+<pin id="51" dir="0" index="0" bw="16" slack="0"/>
+<pin id="52" dir="0" index="1" bw="16" slack="0"/>
+<pin id="53" dir="1" index="2" bw="16" slack="0"/>
+</pin_list>
+<bind>
+<opcode="read(1150) " fcode="read"/>
+<opset="a_ui_read/1 "/>
+</bind>
+</comp>
+
+<comp id="56" class="1004" name="grp_posit16_to_double_fu_56">
+<pin_list>
+<pin id="57" dir="0" index="0" bw="64" slack="0"/>
+<pin id="58" dir="0" index="1" bw="16" slack="0"/>
+<pin id="59" dir="0" index="2" bw="6" slack="0"/>
+<pin id="60" dir="0" index="3" bw="109" slack="0"/>
+<pin id="61" dir="0" index="4" bw="105" slack="0"/>
+<pin id="62" dir="0" index="5" bw="102" slack="0"/>
+<pin id="63" dir="0" index="6" bw="97" slack="0"/>
+<pin id="64" dir="0" index="7" bw="92" slack="0"/>
+<pin id="65" dir="0" index="8" bw="87" slack="0"/>
+<pin id="66" dir="0" index="9" bw="82" slack="0"/>
+<pin id="67" dir="0" index="10" bw="77" slack="0"/>
+<pin id="68" dir="0" index="11" bw="58" slack="0"/>
+<pin id="69" dir="0" index="12" bw="26" slack="0"/>
+<pin id="70" dir="0" index="13" bw="42" slack="0"/>
+<pin id="71" dir="1" index="14" bw="64" slack="1"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="da/1 "/>
+</bind>
+</comp>
+
+<comp id="86" class="1004" name="grp_posit16_to_double_fu_86">
+<pin_list>
+<pin id="87" dir="0" index="0" bw="64" slack="0"/>
+<pin id="88" dir="0" index="1" bw="16" slack="0"/>
+<pin id="89" dir="0" index="2" bw="6" slack="0"/>
+<pin id="90" dir="0" index="3" bw="109" slack="0"/>
+<pin id="91" dir="0" index="4" bw="105" slack="0"/>
+<pin id="92" dir="0" index="5" bw="102" slack="0"/>
+<pin id="93" dir="0" index="6" bw="97" slack="0"/>
+<pin id="94" dir="0" index="7" bw="92" slack="0"/>
+<pin id="95" dir="0" index="8" bw="87" slack="0"/>
+<pin id="96" dir="0" index="9" bw="82" slack="0"/>
+<pin id="97" dir="0" index="10" bw="77" slack="0"/>
+<pin id="98" dir="0" index="11" bw="58" slack="0"/>
+<pin id="99" dir="0" index="12" bw="26" slack="0"/>
+<pin id="100" dir="0" index="13" bw="42" slack="0"/>
+<pin id="101" dir="1" index="14" bw="64" slack="1"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="db/1 "/>
+</bind>
+</comp>
+
+<comp id="116" class="1004" name="grp_double_to_posit16_fu_116">
+<pin_list>
+<pin id="117" dir="0" index="0" bw="16" slack="0"/>
+<pin id="118" dir="0" index="1" bw="64" slack="1"/>
+<pin id="119" dir="1" index="2" bw="16" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="result_ui/13 "/>
+</bind>
+</comp>
+
+<comp id="121" class="1004" name="grp_fu_121">
+<pin_list>
+<pin id="122" dir="0" index="0" bw="64" slack="1"/>
+<pin id="123" dir="0" index="1" bw="64" slack="1"/>
+<pin id="124" dir="1" index="2" bw="64" slack="1"/>
+</pin_list>
+<bind>
+<opcode="dmul(510) " fcode="dmul"/>
+<opset="prod/3 "/>
+</bind>
+</comp>
+
+<comp id="125" class="1005" name="b_ui_read_reg_125">
+<pin_list>
+<pin id="126" dir="0" index="0" bw="16" slack="1"/>
+<pin id="127" dir="1" index="1" bw="16" slack="1"/>
+</pin_list>
+<bind>
+<opset="b_ui_read "/>
+</bind>
+</comp>
+
+<comp id="130" class="1005" name="a_ui_read_reg_130">
+<pin_list>
+<pin id="131" dir="0" index="0" bw="16" slack="1"/>
+<pin id="132" dir="1" index="1" bw="16" slack="1"/>
+</pin_list>
+<bind>
+<opset="a_ui_read "/>
+</bind>
+</comp>
+
+<comp id="135" class="1005" name="da_reg_135">
+<pin_list>
+<pin id="136" dir="0" index="0" bw="64" slack="1"/>
+<pin id="137" dir="1" index="1" bw="64" slack="1"/>
+</pin_list>
+<bind>
+<opset="da "/>
+</bind>
+</comp>
+
+<comp id="140" class="1005" name="db_reg_140">
+<pin_list>
+<pin id="141" dir="0" index="0" bw="64" slack="1"/>
+<pin id="142" dir="1" index="1" bw="64" slack="1"/>
+</pin_list>
+<bind>
+<opset="db "/>
+</bind>
+</comp>
+
+<comp id="145" class="1005" name="prod_reg_145">
+<pin_list>
+<pin id="146" dir="0" index="0" bw="64" slack="1"/>
+<pin id="147" dir="1" index="1" bw="64" slack="1"/>
+</pin_list>
+<bind>
+<opset="prod "/>
+</bind>
+</comp>
+
+</comp_list>
+
+<net_list>
+<net id="48"><net_src comp="28" pin="0"/><net_sink comp="44" pin=0"/></net>
+
+<net id="49"><net_src comp="2" pin="0"/><net_sink comp="44" pin=1"/></net>
+
+<net id="54"><net_src comp="28" pin="0"/><net_sink comp="50" pin=0"/></net>
+
+<net id="55"><net_src comp="0" pin="0"/><net_sink comp="50" pin=1"/></net>
+
+<net id="72"><net_src comp="30" pin="0"/><net_sink comp="56" pin=0"/></net>
+
+<net id="73"><net_src comp="50" pin="2"/><net_sink comp="56" pin=1"/></net>
+
+<net id="74"><net_src comp="4" pin="0"/><net_sink comp="56" pin=2"/></net>
+
+<net id="75"><net_src comp="6" pin="0"/><net_sink comp="56" pin=3"/></net>
+
+<net id="76"><net_src comp="8" pin="0"/><net_sink comp="56" pin=4"/></net>
+
+<net id="77"><net_src comp="10" pin="0"/><net_sink comp="56" pin=5"/></net>
+
+<net id="78"><net_src comp="12" pin="0"/><net_sink comp="56" pin=6"/></net>
+
+<net id="79"><net_src comp="14" pin="0"/><net_sink comp="56" pin=7"/></net>
+
+<net id="80"><net_src comp="16" pin="0"/><net_sink comp="56" pin=8"/></net>
+
+<net id="81"><net_src comp="18" pin="0"/><net_sink comp="56" pin=9"/></net>
+
+<net id="82"><net_src comp="20" pin="0"/><net_sink comp="56" pin=10"/></net>
+
+<net id="83"><net_src comp="22" pin="0"/><net_sink comp="56" pin=11"/></net>
+
+<net id="84"><net_src comp="24" pin="0"/><net_sink comp="56" pin=12"/></net>
+
+<net id="85"><net_src comp="26" pin="0"/><net_sink comp="56" pin=13"/></net>
+
+<net id="102"><net_src comp="30" pin="0"/><net_sink comp="86" pin=0"/></net>
+
+<net id="103"><net_src comp="44" pin="2"/><net_sink comp="86" pin=1"/></net>
+
+<net id="104"><net_src comp="4" pin="0"/><net_sink comp="86" pin=2"/></net>
+
+<net id="105"><net_src comp="6" pin="0"/><net_sink comp="86" pin=3"/></net>
+
+<net id="106"><net_src comp="8" pin="0"/><net_sink comp="86" pin=4"/></net>
+
+<net id="107"><net_src comp="10" pin="0"/><net_sink comp="86" pin=5"/></net>
+
+<net id="108"><net_src comp="12" pin="0"/><net_sink comp="86" pin=6"/></net>
+
+<net id="109"><net_src comp="14" pin="0"/><net_sink comp="86" pin=7"/></net>
+
+<net id="110"><net_src comp="16" pin="0"/><net_sink comp="86" pin=8"/></net>
+
+<net id="111"><net_src comp="18" pin="0"/><net_sink comp="86" pin=9"/></net>
+
+<net id="112"><net_src comp="20" pin="0"/><net_sink comp="86" pin=10"/></net>
+
+<net id="113"><net_src comp="22" pin="0"/><net_sink comp="86" pin=11"/></net>
+
+<net id="114"><net_src comp="24" pin="0"/><net_sink comp="86" pin=12"/></net>
+
+<net id="115"><net_src comp="26" pin="0"/><net_sink comp="86" pin=13"/></net>
+
+<net id="120"><net_src comp="32" pin="0"/><net_sink comp="116" pin=0"/></net>
+
+<net id="128"><net_src comp="44" pin="2"/><net_sink comp="125" pin=0"/></net>
+
+<net id="129"><net_src comp="125" pin="1"/><net_sink comp="86" pin=1"/></net>
+
+<net id="133"><net_src comp="50" pin="2"/><net_sink comp="130" pin=0"/></net>
+
+<net id="134"><net_src comp="130" pin="1"/><net_sink comp="56" pin=1"/></net>
+
+<net id="138"><net_src comp="56" pin="14"/><net_sink comp="135" pin=0"/></net>
+
+<net id="139"><net_src comp="135" pin="1"/><net_sink comp="121" pin=0"/></net>
+
+<net id="143"><net_src comp="86" pin="14"/><net_sink comp="140" pin=0"/></net>
+
+<net id="144"><net_src comp="140" pin="1"/><net_sink comp="121" pin=1"/></net>
+
+<net id="148"><net_src comp="121" pin="2"/><net_sink comp="145" pin=0"/></net>
+
+<net id="149"><net_src comp="145" pin="1"/><net_sink comp="116" pin=1"/></net>
+
+</net_list>
+
+</model> 
+---------------- Datapath Model END ------------------
+
+* FSMD analyzer results:
+  - Output states:
+	Port: pow_reduce_anonymo_20 | {}
+	Port: pow_reduce_anonymo_19 | {}
+	Port: pow_reduce_anonymo_16 | {}
+	Port: pow_reduce_anonymo_17 | {}
+	Port: pow_reduce_anonymo_9 | {}
+	Port: pow_reduce_anonymo_12 | {}
+	Port: pow_reduce_anonymo_13 | {}
+	Port: pow_reduce_anonymo_14 | {}
+	Port: pow_reduce_anonymo_15 | {}
+	Port: pow_reduce_anonymo_18 | {}
+	Port: pow_reduce_anonymo | {}
+	Port: pow_reduce_anonymo_21 | {}
+ - Input state : 
+	Port: posit16_multiply : a_ui | {1 }
+	Port: posit16_multiply : b_ui | {1 }
+	Port: posit16_multiply : pow_reduce_anonymo_20 | {1 2 }
+	Port: posit16_multiply : pow_reduce_anonymo_19 | {1 2 }
+	Port: posit16_multiply : pow_reduce_anonymo_16 | {1 2 }
+	Port: posit16_multiply : pow_reduce_anonymo_17 | {1 2 }
+	Port: posit16_multiply : pow_reduce_anonymo_9 | {1 2 }
+	Port: posit16_multiply : pow_reduce_anonymo_12 | {1 2 }
+	Port: posit16_multiply : pow_reduce_anonymo_13 | {1 2 }
+	Port: posit16_multiply : pow_reduce_anonymo_14 | {1 2 }
+	Port: posit16_multiply : pow_reduce_anonymo_15 | {1 2 }
+	Port: posit16_multiply : pow_reduce_anonymo_18 | {1 2 }
+	Port: posit16_multiply : pow_reduce_anonymo | {1 2 }
+	Port: posit16_multiply : pow_reduce_anonymo_21 | {1 2 }
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+	State 12
+	State 13
+	State 14
+		ret_ln247 : 1
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+
+* Functional unit list:
+|----------|------------------------------|---------|---------|---------|---------|
+| Operation|        Functional Unit       |  DSP48E |  Delay  |    FF   |   LUT   |
+|----------|------------------------------|---------|---------|---------|---------|
+|          |  grp_posit16_to_double_fu_56 |   194   | 301.533 |  84771  |  25712  |
+|   call   |  grp_posit16_to_double_fu_86 |   194   | 301.533 |  84771  |  25712  |
+|          | grp_double_to_posit16_fu_116 |    14   | 32.7469 |   5359  |   5769  |
+|----------|------------------------------|---------|---------|---------|---------|
+|   dmul   |          grp_fu_121          |    11   |    0    |   456   |   603   |
+|----------|------------------------------|---------|---------|---------|---------|
+|   read   |     b_ui_read_read_fu_44     |    0    |    0    |    0    |    0    |
+|          |     a_ui_read_read_fu_50     |    0    |    0    |    0    |    0    |
+|----------|------------------------------|---------|---------|---------|---------|
+|   Total  |                              |   413   | 635.814 |  175357 |  57796  |
+|----------|------------------------------|---------|---------|---------|---------|
+
+Memories:
+N/A
+
+* Register list:
++-----------------+--------+
+|                 |   FF   |
++-----------------+--------+
+|a_ui_read_reg_130|   16   |
+|b_ui_read_reg_125|   16   |
+|    da_reg_135   |   64   |
+|    db_reg_140   |   64   |
+|   prod_reg_145  |   64   |
++-----------------+--------+
+|      Total      |   224  |
++-----------------+--------+
+
+* Multiplexer (MUX) list: 
+|-----------------------------|------|------|------|--------||---------||---------|
+|             Comp            |  Pin | Size |  BW  | S x BW ||  Delay  ||   LUT   |
+|-----------------------------|------|------|------|--------||---------||---------|
+| grp_posit16_to_double_fu_56 |  p1  |   2  |  16  |   32   ||    9    |
+| grp_posit16_to_double_fu_86 |  p1  |   2  |  16  |   32   ||    9    |
+|-----------------------------|------|------|------|--------||---------||---------|
+|            Total            |      |      |      |   64   ||  3.538  ||    18   |
+|-----------------------------|------|------|------|--------||---------||---------|
+
+
+
+* Summary:
++-----------+--------+--------+--------+--------+
+|           | DSP48E |  Delay |   FF   |   LUT  |
++-----------+--------+--------+--------+--------+
+|  Function |   413  |   635  | 175357 |  57796 |
+|   Memory  |    -   |    -   |    -   |    -   |
+|Multiplexer|    -   |    3   |    -   |   18   |
+|  Register |    -   |    -   |   224  |    -   |
++-----------+--------+--------+--------+--------+
+|   Total   |   413  |   639  | 175581 |  57814 |
++-----------+--------+--------+--------+--------+

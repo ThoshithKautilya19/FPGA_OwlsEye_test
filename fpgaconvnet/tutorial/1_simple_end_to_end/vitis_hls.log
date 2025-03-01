@@ -1,0 +1,57 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2022.2 (64-bit)
+  **** SW Build 3670227 on Oct 13 2022
+  **** IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+source /tools/Xilinx/Vitis_HLS/2022.2/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] Running '/tools/Xilinx/Vitis_HLS/2022.2/bin/unwrapped/lnx64.o/vitis_hls'
+INFO: [HLS 200-10] For user 'root' on host '0c32be3d8233' (Linux_x86_64 version 6.8.0-49-generic) on Thu Jan 30 17:29:21 +0000 2025
+INFO: [HLS 200-10] In directory '/root/fpgaconvnet-tutorial/tutorial/1_simple_end_to_end'
+Sourcing Tcl script 'package_ip_2019.tcl'
+INFO: [HLS 200-1510] Running: open_project partition_0 
+INFO: [HLS 200-10] Opening project '/root/fpgaconvnet-tutorial/tutorial/1_simple_end_to_end/partition_0'.
+INFO: [HLS 200-1510] Running: open_solution solution 
+INFO: [HLS 200-10] Opening solution '/root/fpgaconvnet-tutorial/tutorial/1_simple_end_to_end/partition_0/solution'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.2;t=hls+guidance;d=200-1505.html
+INFO: [HLS 200-1464] Running solution command: config_interface -m_axi_latency=0
+INFO: [HLS 200-1464] Running solution command: config_dataflow -default_channel=fifo
+INFO: [XFORM 203-701] Set the default channel type in dataflow to FIFO.
+INFO: [HLS 200-1464] Running solution command: config_dataflow -fifo_depth=2
+INFO: [XFORM 203-701] Set default FIFO size in dataflow to 2.
+INFO: [XFORM 203-701] Set the default channel type in dataflow to FIFO.
+INFO: [HLS 200-1464] Running solution command: config_dataflow -strict_mode=warning
+INFO: [XFORM 203-701] Set default FIFO size in dataflow to 2.
+INFO: [XFORM 203-701] Set the default channel type in dataflow to FIFO.
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+INFO: [HLS 200-1510] Running: config_export -version 2019.2 
+INFO: [HLS 200-1510] Running: config_export -format ip_catalog 
+INFO: [HLS 200-1510] Running: config_export -rtl verilog 
+INFO: [HLS 200-1510] Running: export_design -rtl verilog -format ip_catalog 
+Running Dispatch Server on port: 35251
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+
+****** Vivado v2022.2 (64-bit)
+  **** SW Build 3671981 on Fri Oct 14 04:59:54 MDT 2022
+  **** IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+source run_ippack.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2022.2/data/ip'.
+WARNING: [IP_Flow 19-4832] The IP name 'fpgaconvnet_ip_dcmp_64ns_64ns_1_4_no_dsp_1_ip' you have specified is long. The Windows operating system has path length limitations. It is recommended you use shorter names to reduce the likelihood of issues.
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'fpgaconvnet_ip_dcmp_64ns_64ns_1_4_no_dsp_1_ip'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'fpgaconvnet_ip_dcmp_64ns_64ns_1_4_no_dsp_1_ip'...
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2022.2/data/ip'.
+INFO: [Common 17-206] Exiting Vivado at Thu Jan 30 17:30:54 2025...
+INFO: [HLS 200-802] Generated output file partition_0/solution/impl/export.zip
+INFO: [HLS 200-111] Finished Command export_design CPU user time: 79.67 seconds. CPU system time: 2.06 seconds. Elapsed time: 91.09 seconds; current allocated memory: 71.598 MB.
+INFO: [HLS 200-112] Total CPU user time: 81.47 seconds. Total CPU system time: 2.89 seconds. Total elapsed time: 103.6 seconds; peak allocated memory: 1.138 GB.
+INFO: [Common 17-206] Exiting vitis_hls at Thu Jan 30 17:31:04 2025...

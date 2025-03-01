@@ -1,0 +1,10 @@
+INFO: [COSIM-47] Using XSIM for RTL simulation.
+INFO: [COSIM-14] Instrumenting C test bench ...
+ERROR: [COSIM-24] TB preprocess failed : In file included from ../include/Conv_0.hpp:6:0,
+                 from ../include/single_layer_top.hpp:5,
+                 from /root/fpgaconvnet-tutorial/tutorial/1_simple_end_to_end/partition_0/tb/single_layer_tb.cpp:1:
+/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/conv.hpp:459:2: error: #endif without #if
+ #endif
+  ^~~~~
+ERROR: [COSIM-5] *** C/RTL co-simulation file generation failed. ***
+ERROR: [COSIM-4] *** C/RTL co-simulation finished: FAIL ***

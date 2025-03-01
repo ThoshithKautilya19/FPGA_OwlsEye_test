@@ -1,0 +1,22 @@
+{
+    "buffer_depth": 0,
+    "rows_in": 1,
+    "cols_in": 1,
+    "channels_in": 10,
+    "filters": 10,
+    "kernel_size": 1,
+    "stride": 1,
+    "groups": 1,
+    "pad": 0,
+    "coarse_in": 1,
+    "coarse_out": 1,
+    "coarse_group": 1,
+    "fine": 1,
+    "wr_factor": 1,
+    "batch_size": 1,
+    "input_width": 16,
+    "acc_width": 30,
+    "weight_width": 16,
+    "output_width": 16,
+    "description": "no spatial dim. No parallelism. Kernel Size =1"
+}

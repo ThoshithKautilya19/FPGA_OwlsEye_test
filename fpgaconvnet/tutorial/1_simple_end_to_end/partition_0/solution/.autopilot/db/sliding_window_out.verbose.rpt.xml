@@ -1,0 +1,352 @@
+<profile>
+
+<section name = "Vivado HLS Report for 'sliding_window_out'" level="0">
+<item name = "Date">Sat Feb 15 07:46:51 2025
+</item>
+<item name = "Version">2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)</item>
+<item name = "Project">partition_0</item>
+<item name = "Solution">solution</item>
+<item name = "Product family">zynq</item>
+<item name = "Target device">xc7z020-clg484-1</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">5.00 ns, 4.375 ns, 0.62 ns</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="8">, min, max, min, max, min, max, Type</keys>
+<column name="">784, 785, 3.920 us, 3.925 us, 784, 784, loop rewind(delay=0 initiation interval(s))</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="9">Instance, Module, min, max, min, max, min, max, Type</keys>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+<column name="- batch_row_col_channel_loop">784, 784, 2, 1, 1, 784, yes</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Utilization Estimates" level="0">
+<item name = "Summary"><table name="" hasTotal="1">
+<keys size="6">Name, BRAM_18K, DSP48E, FF, LUT, URAM</keys>
+<column name="DSP">-, -, -, -, -</column>
+<column name="Expression">-, -, 0, 150, -</column>
+<column name="FIFO">-, -, -, -, -</column>
+<column name="Instance">-, -, -, -, -</column>
+<column name="Memory">-, -, -, -, -</column>
+<column name="Multiplexer">-, -, -, 555, -</column>
+<column name="Register">-, -, 48, -, -</column>
+<specialColumn name="Available">280, 220, 106400, 53200, 0</specialColumn>
+<specialColumn name="Utilization (%)">0, 0, ~0, 1, 0</specialColumn>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="1">
+<keys size="7">Instance, Module, BRAM_18K, DSP48E, FF, LUT, URAM</keys>
+</table>
+</item>
+<item name = "DSP48E"><table name="" hasTotal="0">
+<keys size="3">Instance, Module, Expression</keys>
+</table>
+</item>
+<item name = "Memory"><table name="" hasTotal="1">
+<keys size="10">Memory, Module, BRAM_18K, FF, LUT, URAM, Words, Bits, Banks, W*Bits*Banks</keys>
+</table>
+</item>
+<item name = "FIFO"><table name="" hasTotal="1">
+<keys size="8">Name, BRAM_18K, FF, LUT, URAM, Depth, Bits, Size:D*B</keys>
+</table>
+</item>
+<item name = "Expression"><table name="" hasTotal="1">
+<keys size="7">Variable Name, Operation, DSP48E, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
+<column name="i_fu_581_p2">+, 0, 0, 14, 10, 1</column>
+<column name="loops_impl_next_i_s_fu_643_p2">+, 0, 0, 15, 5, 1</column>
+<column name="loops_impl_next_ne_fu_657_p2">+, 0, 0, 15, 5, 1</column>
+<column name="and_ln258_fu_609_p2">and, 0, 0, 2, 1, 1</column>
+<column name="ap_condition_569">and, 0, 0, 2, 1, 1</column>
+<column name="ap_predicate_op100_read_state3">and, 0, 0, 2, 1, 1</column>
+<column name="ap_predicate_op102_write_state3">and, 0, 0, 2, 1, 1</column>
+<column name="ap_predicate_op106_read_state3">and, 0, 0, 2, 1, 1</column>
+<column name="icmp_ln249_fu_679_p2">icmp, 0, 0, 13, 10, 9</column>
+<column name="icmp_ln258_1_fu_587_p2">icmp, 0, 0, 11, 5, 3</column>
+<column name="icmp_ln258_2_fu_603_p2">icmp, 0, 0, 9, 3, 1</column>
+<column name="icmp_ln258_fu_575_p2">icmp, 0, 0, 9, 3, 1</column>
+<column name="icmp_ln264_fu_625_p2">icmp, 0, 0, 9, 3, 1</column>
+<column name="icmp_ln891_2_fu_637_p2">icmp, 0, 0, 11, 5, 4</column>
+<column name="icmp_ln891_fu_631_p2">icmp, 0, 0, 11, 5, 4</column>
+<column name="ap_block_pp0_stage0_01001">or, 0, 0, 2, 1, 1</column>
+<column name="ap_block_state1">or, 0, 0, 2, 1, 1</column>
+<column name="ap_block_state3_pp0_stage0_iter1">or, 0, 0, 2, 1, 1</column>
+<column name="select_ln206_fu_649_p3">select, 0, 0, 5, 1, 1</column>
+<column name="select_ln891_8_fu_671_p3">select, 0, 0, 5, 1, 1</column>
+<column name="select_ln891_fu_663_p3">select, 0, 0, 5, 1, 5</column>
+<column name="ap_enable_pp0">xor, 0, 0, 2, 1, 2</column>
+</table>
+</item>
+<item name = "Multiplexer"><table name="" hasTotal="1">
+<keys size="5">Name, LUT, Input Size, Bits, Total Bits</keys>
+<column name="ap_NS_fsm">15, 3, 1, 3</column>
+<column name="ap_done">9, 2, 1, 2</column>
+<column name="ap_enable_reg_pp0_iter1">9, 2, 1, 2</column>
+<column name="ap_phi_mux_i_03_phi_fu_527_p6">15, 3, 10, 30</column>
+<column name="ap_phi_mux_loops_0_0_1_02_phi_fu_541_p6">15, 3, 5, 15</column>
+<column name="ap_phi_mux_loops_0_1_01_phi_fu_555_p6">15, 3, 5, 15</column>
+<column name="frame_buffer_0_0_V_V_blk_n">9, 2, 1, 2</column>
+<column name="frame_buffer_0_1_V_V_blk_n">9, 2, 1, 2</column>
+<column name="frame_buffer_0_2_V_V_blk_n">9, 2, 1, 2</column>
+<column name="frame_buffer_0_3_V_V_blk_n">9, 2, 1, 2</column>
+<column name="frame_buffer_0_4_V_V_blk_n">9, 2, 1, 2</column>
+<column name="frame_buffer_1_0_V_V_blk_n">9, 2, 1, 2</column>
+<column name="frame_buffer_1_1_V_V_blk_n">9, 2, 1, 2</column>
+<column name="frame_buffer_1_2_V_V_blk_n">9, 2, 1, 2</column>
+<column name="frame_buffer_1_3_V_V_blk_n">9, 2, 1, 2</column>
+<column name="frame_buffer_1_4_V_V_blk_n">9, 2, 1, 2</column>
+<column name="frame_buffer_2_0_V_V_blk_n">9, 2, 1, 2</column>
+<column name="frame_buffer_2_1_V_V_blk_n">9, 2, 1, 2</column>
+<column name="frame_buffer_2_2_V_V_blk_n">9, 2, 1, 2</column>
+<column name="frame_buffer_2_3_V_V_blk_n">9, 2, 1, 2</column>
+<column name="frame_buffer_2_4_V_V_blk_n">9, 2, 1, 2</column>
+<column name="frame_buffer_3_0_V_V_blk_n">9, 2, 1, 2</column>
+<column name="frame_buffer_3_1_V_V_blk_n">9, 2, 1, 2</column>
+<column name="frame_buffer_3_2_V_V_blk_n">9, 2, 1, 2</column>
+<column name="frame_buffer_3_3_V_V_blk_n">9, 2, 1, 2</column>
+<column name="frame_buffer_3_4_V_V_blk_n">9, 2, 1, 2</column>
+<column name="frame_buffer_4_0_V_V_blk_n">9, 2, 1, 2</column>
+<column name="frame_buffer_4_1_V_V_blk_n">9, 2, 1, 2</column>
+<column name="frame_buffer_4_2_V_V_blk_n">9, 2, 1, 2</column>
+<column name="frame_buffer_4_3_V_V_blk_n">9, 2, 1, 2</column>
+<column name="frame_buffer_4_4_V_V_blk_n">9, 2, 1, 2</column>
+<column name="i_03_reg_523">9, 2, 10, 20</column>
+<column name="loops_0_0_1_02_reg_537">9, 2, 5, 10</column>
+<column name="loops_0_1_01_reg_551">9, 2, 5, 10</column>
+<column name="out_V_V1_blk_n">9, 2, 1, 2</column>
+<column name="out_V_V255_blk_n">9, 2, 1, 2</column>
+<column name="out_V_V256_blk_n">9, 2, 1, 2</column>
+<column name="out_V_V257_blk_n">9, 2, 1, 2</column>
+<column name="out_V_V258_blk_n">9, 2, 1, 2</column>
+<column name="out_V_V25_blk_n">9, 2, 1, 2</column>
+<column name="out_V_V2610_blk_n">9, 2, 1, 2</column>
+<column name="out_V_V2611_blk_n">9, 2, 1, 2</column>
+<column name="out_V_V2612_blk_n">9, 2, 1, 2</column>
+<column name="out_V_V269_blk_n">9, 2, 1, 2</column>
+<column name="out_V_V26_blk_n">9, 2, 1, 2</column>
+<column name="out_V_V2713_blk_n">9, 2, 1, 2</column>
+<column name="out_V_V2714_blk_n">9, 2, 1, 2</column>
+<column name="out_V_V2715_blk_n">9, 2, 1, 2</column>
+<column name="out_V_V2716_blk_n">9, 2, 1, 2</column>
+<column name="out_V_V27_blk_n">9, 2, 1, 2</column>
+<column name="out_V_V2817_blk_n">9, 2, 1, 2</column>
+<column name="out_V_V2818_blk_n">9, 2, 1, 2</column>
+<column name="out_V_V2819_blk_n">9, 2, 1, 2</column>
+<column name="out_V_V2820_blk_n">9, 2, 1, 2</column>
+<column name="out_V_V28_blk_n">9, 2, 1, 2</column>
+<column name="out_V_V2_blk_n">9, 2, 1, 2</column>
+<column name="out_V_V3_blk_n">9, 2, 1, 2</column>
+<column name="out_V_V4_blk_n">9, 2, 1, 2</column>
+<column name="out_V_V_blk_n">9, 2, 1, 2</column>
+</table>
+</item>
+<item name = "Register"><table name="" hasTotal="1">
+<keys size="5">Name, FF, LUT, Bits, Const Bits</keys>
+<column name="and_ln258_reg_696">1, 0, 1, 0</column>
+<column name="ap_CS_fsm">2, 0, 2, 0</column>
+<column name="ap_done_reg">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter1">1, 0, 1, 0</column>
+<column name="i_03_reg_523">10, 0, 10, 0</column>
+<column name="i_reg_691">10, 0, 10, 0</column>
+<column name="icmp_ln249_reg_714">1, 0, 1, 0</column>
+<column name="icmp_ln258_reg_687">1, 0, 1, 0</column>
+<column name="icmp_ln264_reg_700">1, 0, 1, 0</column>
+<column name="loops_0_0_1_02_reg_537">5, 0, 5, 0</column>
+<column name="loops_0_1_01_reg_551">5, 0, 5, 0</column>
+<column name="select_ln891_8_reg_709">5, 0, 5, 0</column>
+<column name="select_ln891_reg_704">5, 0, 5, 0</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Interface" level="0">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="6">RTL Ports, Dir, Bits, Protocol, Source Object, C Type</keys>
+<column name="ap_clk">in, 1, ap_ctrl_hs, sliding_window_out, return value</column>
+<column name="ap_rst">in, 1, ap_ctrl_hs, sliding_window_out, return value</column>
+<column name="ap_start">in, 1, ap_ctrl_hs, sliding_window_out, return value</column>
+<column name="ap_done">out, 1, ap_ctrl_hs, sliding_window_out, return value</column>
+<column name="ap_continue">in, 1, ap_ctrl_hs, sliding_window_out, return value</column>
+<column name="ap_idle">out, 1, ap_ctrl_hs, sliding_window_out, return value</column>
+<column name="ap_ready">out, 1, ap_ctrl_hs, sliding_window_out, return value</column>
+<column name="frame_buffer_0_0_V_V_dout">in, 16, ap_fifo, frame_buffer_0_0_V_V, pointer</column>
+<column name="frame_buffer_0_0_V_V_empty_n">in, 1, ap_fifo, frame_buffer_0_0_V_V, pointer</column>
+<column name="frame_buffer_0_0_V_V_read">out, 1, ap_fifo, frame_buffer_0_0_V_V, pointer</column>
+<column name="frame_buffer_0_1_V_V_dout">in, 16, ap_fifo, frame_buffer_0_1_V_V, pointer</column>
+<column name="frame_buffer_0_1_V_V_empty_n">in, 1, ap_fifo, frame_buffer_0_1_V_V, pointer</column>
+<column name="frame_buffer_0_1_V_V_read">out, 1, ap_fifo, frame_buffer_0_1_V_V, pointer</column>
+<column name="out_V_V_din">out, 16, ap_fifo, out_V_V, pointer</column>
+<column name="out_V_V_full_n">in, 1, ap_fifo, out_V_V, pointer</column>
+<column name="out_V_V_write">out, 1, ap_fifo, out_V_V, pointer</column>
+<column name="out_V_V1_din">out, 16, ap_fifo, out_V_V1, pointer</column>
+<column name="out_V_V1_full_n">in, 1, ap_fifo, out_V_V1, pointer</column>
+<column name="out_V_V1_write">out, 1, ap_fifo, out_V_V1, pointer</column>
+<column name="frame_buffer_0_2_V_V_dout">in, 16, ap_fifo, frame_buffer_0_2_V_V, pointer</column>
+<column name="frame_buffer_0_2_V_V_empty_n">in, 1, ap_fifo, frame_buffer_0_2_V_V, pointer</column>
+<column name="frame_buffer_0_2_V_V_read">out, 1, ap_fifo, frame_buffer_0_2_V_V, pointer</column>
+<column name="frame_buffer_0_3_V_V_dout">in, 16, ap_fifo, frame_buffer_0_3_V_V, pointer</column>
+<column name="frame_buffer_0_3_V_V_empty_n">in, 1, ap_fifo, frame_buffer_0_3_V_V, pointer</column>
+<column name="frame_buffer_0_3_V_V_read">out, 1, ap_fifo, frame_buffer_0_3_V_V, pointer</column>
+<column name="out_V_V2_din">out, 16, ap_fifo, out_V_V2, pointer</column>
+<column name="out_V_V2_full_n">in, 1, ap_fifo, out_V_V2, pointer</column>
+<column name="out_V_V2_write">out, 1, ap_fifo, out_V_V2, pointer</column>
+<column name="out_V_V3_din">out, 16, ap_fifo, out_V_V3, pointer</column>
+<column name="out_V_V3_full_n">in, 1, ap_fifo, out_V_V3, pointer</column>
+<column name="out_V_V3_write">out, 1, ap_fifo, out_V_V3, pointer</column>
+<column name="frame_buffer_0_4_V_V_dout">in, 16, ap_fifo, frame_buffer_0_4_V_V, pointer</column>
+<column name="frame_buffer_0_4_V_V_empty_n">in, 1, ap_fifo, frame_buffer_0_4_V_V, pointer</column>
+<column name="frame_buffer_0_4_V_V_read">out, 1, ap_fifo, frame_buffer_0_4_V_V, pointer</column>
+<column name="frame_buffer_1_0_V_V_dout">in, 16, ap_fifo, frame_buffer_1_0_V_V, pointer</column>
+<column name="frame_buffer_1_0_V_V_empty_n">in, 1, ap_fifo, frame_buffer_1_0_V_V, pointer</column>
+<column name="frame_buffer_1_0_V_V_read">out, 1, ap_fifo, frame_buffer_1_0_V_V, pointer</column>
+<column name="frame_buffer_1_1_V_V_dout">in, 16, ap_fifo, frame_buffer_1_1_V_V, pointer</column>
+<column name="frame_buffer_1_1_V_V_empty_n">in, 1, ap_fifo, frame_buffer_1_1_V_V, pointer</column>
+<column name="frame_buffer_1_1_V_V_read">out, 1, ap_fifo, frame_buffer_1_1_V_V, pointer</column>
+<column name="out_V_V4_din">out, 16, ap_fifo, out_V_V4, pointer</column>
+<column name="out_V_V4_full_n">in, 1, ap_fifo, out_V_V4, pointer</column>
+<column name="out_V_V4_write">out, 1, ap_fifo, out_V_V4, pointer</column>
+<column name="out_V_V25_din">out, 16, ap_fifo, out_V_V25, pointer</column>
+<column name="out_V_V25_full_n">in, 1, ap_fifo, out_V_V25, pointer</column>
+<column name="out_V_V25_write">out, 1, ap_fifo, out_V_V25, pointer</column>
+<column name="out_V_V255_din">out, 16, ap_fifo, out_V_V255, pointer</column>
+<column name="out_V_V255_full_n">in, 1, ap_fifo, out_V_V255, pointer</column>
+<column name="out_V_V255_write">out, 1, ap_fifo, out_V_V255, pointer</column>
+<column name="frame_buffer_1_2_V_V_dout">in, 16, ap_fifo, frame_buffer_1_2_V_V, pointer</column>
+<column name="frame_buffer_1_2_V_V_empty_n">in, 1, ap_fifo, frame_buffer_1_2_V_V, pointer</column>
+<column name="frame_buffer_1_2_V_V_read">out, 1, ap_fifo, frame_buffer_1_2_V_V, pointer</column>
+<column name="frame_buffer_1_3_V_V_dout">in, 16, ap_fifo, frame_buffer_1_3_V_V, pointer</column>
+<column name="frame_buffer_1_3_V_V_empty_n">in, 1, ap_fifo, frame_buffer_1_3_V_V, pointer</column>
+<column name="frame_buffer_1_3_V_V_read">out, 1, ap_fifo, frame_buffer_1_3_V_V, pointer</column>
+<column name="out_V_V256_din">out, 16, ap_fifo, out_V_V256, pointer</column>
+<column name="out_V_V256_full_n">in, 1, ap_fifo, out_V_V256, pointer</column>
+<column name="out_V_V256_write">out, 1, ap_fifo, out_V_V256, pointer</column>
+<column name="out_V_V257_din">out, 16, ap_fifo, out_V_V257, pointer</column>
+<column name="out_V_V257_full_n">in, 1, ap_fifo, out_V_V257, pointer</column>
+<column name="out_V_V257_write">out, 1, ap_fifo, out_V_V257, pointer</column>
+<column name="frame_buffer_1_4_V_V_dout">in, 16, ap_fifo, frame_buffer_1_4_V_V, pointer</column>
+<column name="frame_buffer_1_4_V_V_empty_n">in, 1, ap_fifo, frame_buffer_1_4_V_V, pointer</column>
+<column name="frame_buffer_1_4_V_V_read">out, 1, ap_fifo, frame_buffer_1_4_V_V, pointer</column>
+<column name="frame_buffer_2_0_V_V_dout">in, 16, ap_fifo, frame_buffer_2_0_V_V, pointer</column>
+<column name="frame_buffer_2_0_V_V_empty_n">in, 1, ap_fifo, frame_buffer_2_0_V_V, pointer</column>
+<column name="frame_buffer_2_0_V_V_read">out, 1, ap_fifo, frame_buffer_2_0_V_V, pointer</column>
+<column name="frame_buffer_2_1_V_V_dout">in, 16, ap_fifo, frame_buffer_2_1_V_V, pointer</column>
+<column name="frame_buffer_2_1_V_V_empty_n">in, 1, ap_fifo, frame_buffer_2_1_V_V, pointer</column>
+<column name="frame_buffer_2_1_V_V_read">out, 1, ap_fifo, frame_buffer_2_1_V_V, pointer</column>
+<column name="out_V_V258_din">out, 16, ap_fifo, out_V_V258, pointer</column>
+<column name="out_V_V258_full_n">in, 1, ap_fifo, out_V_V258, pointer</column>
+<column name="out_V_V258_write">out, 1, ap_fifo, out_V_V258, pointer</column>
+<column name="out_V_V26_din">out, 16, ap_fifo, out_V_V26, pointer</column>
+<column name="out_V_V26_full_n">in, 1, ap_fifo, out_V_V26, pointer</column>
+<column name="out_V_V26_write">out, 1, ap_fifo, out_V_V26, pointer</column>
+<column name="out_V_V269_din">out, 16, ap_fifo, out_V_V269, pointer</column>
+<column name="out_V_V269_full_n">in, 1, ap_fifo, out_V_V269, pointer</column>
+<column name="out_V_V269_write">out, 1, ap_fifo, out_V_V269, pointer</column>
+<column name="frame_buffer_2_2_V_V_dout">in, 16, ap_fifo, frame_buffer_2_2_V_V, pointer</column>
+<column name="frame_buffer_2_2_V_V_empty_n">in, 1, ap_fifo, frame_buffer_2_2_V_V, pointer</column>
+<column name="frame_buffer_2_2_V_V_read">out, 1, ap_fifo, frame_buffer_2_2_V_V, pointer</column>
+<column name="frame_buffer_2_3_V_V_dout">in, 16, ap_fifo, frame_buffer_2_3_V_V, pointer</column>
+<column name="frame_buffer_2_3_V_V_empty_n">in, 1, ap_fifo, frame_buffer_2_3_V_V, pointer</column>
+<column name="frame_buffer_2_3_V_V_read">out, 1, ap_fifo, frame_buffer_2_3_V_V, pointer</column>
+<column name="out_V_V2610_din">out, 16, ap_fifo, out_V_V2610, pointer</column>
+<column name="out_V_V2610_full_n">in, 1, ap_fifo, out_V_V2610, pointer</column>
+<column name="out_V_V2610_write">out, 1, ap_fifo, out_V_V2610, pointer</column>
+<column name="out_V_V2611_din">out, 16, ap_fifo, out_V_V2611, pointer</column>
+<column name="out_V_V2611_full_n">in, 1, ap_fifo, out_V_V2611, pointer</column>
+<column name="out_V_V2611_write">out, 1, ap_fifo, out_V_V2611, pointer</column>
+<column name="frame_buffer_2_4_V_V_dout">in, 16, ap_fifo, frame_buffer_2_4_V_V, pointer</column>
+<column name="frame_buffer_2_4_V_V_empty_n">in, 1, ap_fifo, frame_buffer_2_4_V_V, pointer</column>
+<column name="frame_buffer_2_4_V_V_read">out, 1, ap_fifo, frame_buffer_2_4_V_V, pointer</column>
+<column name="frame_buffer_3_0_V_V_dout">in, 16, ap_fifo, frame_buffer_3_0_V_V, pointer</column>
+<column name="frame_buffer_3_0_V_V_empty_n">in, 1, ap_fifo, frame_buffer_3_0_V_V, pointer</column>
+<column name="frame_buffer_3_0_V_V_read">out, 1, ap_fifo, frame_buffer_3_0_V_V, pointer</column>
+<column name="frame_buffer_3_1_V_V_dout">in, 16, ap_fifo, frame_buffer_3_1_V_V, pointer</column>
+<column name="frame_buffer_3_1_V_V_empty_n">in, 1, ap_fifo, frame_buffer_3_1_V_V, pointer</column>
+<column name="frame_buffer_3_1_V_V_read">out, 1, ap_fifo, frame_buffer_3_1_V_V, pointer</column>
+<column name="out_V_V2612_din">out, 16, ap_fifo, out_V_V2612, pointer</column>
+<column name="out_V_V2612_full_n">in, 1, ap_fifo, out_V_V2612, pointer</column>
+<column name="out_V_V2612_write">out, 1, ap_fifo, out_V_V2612, pointer</column>
+<column name="out_V_V27_din">out, 16, ap_fifo, out_V_V27, pointer</column>
+<column name="out_V_V27_full_n">in, 1, ap_fifo, out_V_V27, pointer</column>
+<column name="out_V_V27_write">out, 1, ap_fifo, out_V_V27, pointer</column>
+<column name="out_V_V2713_din">out, 16, ap_fifo, out_V_V2713, pointer</column>
+<column name="out_V_V2713_full_n">in, 1, ap_fifo, out_V_V2713, pointer</column>
+<column name="out_V_V2713_write">out, 1, ap_fifo, out_V_V2713, pointer</column>
+<column name="frame_buffer_3_2_V_V_dout">in, 16, ap_fifo, frame_buffer_3_2_V_V, pointer</column>
+<column name="frame_buffer_3_2_V_V_empty_n">in, 1, ap_fifo, frame_buffer_3_2_V_V, pointer</column>
+<column name="frame_buffer_3_2_V_V_read">out, 1, ap_fifo, frame_buffer_3_2_V_V, pointer</column>
+<column name="frame_buffer_3_3_V_V_dout">in, 16, ap_fifo, frame_buffer_3_3_V_V, pointer</column>
+<column name="frame_buffer_3_3_V_V_empty_n">in, 1, ap_fifo, frame_buffer_3_3_V_V, pointer</column>
+<column name="frame_buffer_3_3_V_V_read">out, 1, ap_fifo, frame_buffer_3_3_V_V, pointer</column>
+<column name="out_V_V2714_din">out, 16, ap_fifo, out_V_V2714, pointer</column>
+<column name="out_V_V2714_full_n">in, 1, ap_fifo, out_V_V2714, pointer</column>
+<column name="out_V_V2714_write">out, 1, ap_fifo, out_V_V2714, pointer</column>
+<column name="out_V_V2715_din">out, 16, ap_fifo, out_V_V2715, pointer</column>
+<column name="out_V_V2715_full_n">in, 1, ap_fifo, out_V_V2715, pointer</column>
+<column name="out_V_V2715_write">out, 1, ap_fifo, out_V_V2715, pointer</column>
+<column name="frame_buffer_3_4_V_V_dout">in, 16, ap_fifo, frame_buffer_3_4_V_V, pointer</column>
+<column name="frame_buffer_3_4_V_V_empty_n">in, 1, ap_fifo, frame_buffer_3_4_V_V, pointer</column>
+<column name="frame_buffer_3_4_V_V_read">out, 1, ap_fifo, frame_buffer_3_4_V_V, pointer</column>
+<column name="frame_buffer_4_0_V_V_dout">in, 16, ap_fifo, frame_buffer_4_0_V_V, pointer</column>
+<column name="frame_buffer_4_0_V_V_empty_n">in, 1, ap_fifo, frame_buffer_4_0_V_V, pointer</column>
+<column name="frame_buffer_4_0_V_V_read">out, 1, ap_fifo, frame_buffer_4_0_V_V, pointer</column>
+<column name="frame_buffer_4_1_V_V_dout">in, 16, ap_fifo, frame_buffer_4_1_V_V, pointer</column>
+<column name="frame_buffer_4_1_V_V_empty_n">in, 1, ap_fifo, frame_buffer_4_1_V_V, pointer</column>
+<column name="frame_buffer_4_1_V_V_read">out, 1, ap_fifo, frame_buffer_4_1_V_V, pointer</column>
+<column name="out_V_V2716_din">out, 16, ap_fifo, out_V_V2716, pointer</column>
+<column name="out_V_V2716_full_n">in, 1, ap_fifo, out_V_V2716, pointer</column>
+<column name="out_V_V2716_write">out, 1, ap_fifo, out_V_V2716, pointer</column>
+<column name="out_V_V28_din">out, 16, ap_fifo, out_V_V28, pointer</column>
+<column name="out_V_V28_full_n">in, 1, ap_fifo, out_V_V28, pointer</column>
+<column name="out_V_V28_write">out, 1, ap_fifo, out_V_V28, pointer</column>
+<column name="out_V_V2817_din">out, 16, ap_fifo, out_V_V2817, pointer</column>
+<column name="out_V_V2817_full_n">in, 1, ap_fifo, out_V_V2817, pointer</column>
+<column name="out_V_V2817_write">out, 1, ap_fifo, out_V_V2817, pointer</column>
+<column name="frame_buffer_4_2_V_V_dout">in, 16, ap_fifo, frame_buffer_4_2_V_V, pointer</column>
+<column name="frame_buffer_4_2_V_V_empty_n">in, 1, ap_fifo, frame_buffer_4_2_V_V, pointer</column>
+<column name="frame_buffer_4_2_V_V_read">out, 1, ap_fifo, frame_buffer_4_2_V_V, pointer</column>
+<column name="frame_buffer_4_3_V_V_dout">in, 16, ap_fifo, frame_buffer_4_3_V_V, pointer</column>
+<column name="frame_buffer_4_3_V_V_empty_n">in, 1, ap_fifo, frame_buffer_4_3_V_V, pointer</column>
+<column name="frame_buffer_4_3_V_V_read">out, 1, ap_fifo, frame_buffer_4_3_V_V, pointer</column>
+<column name="out_V_V2818_din">out, 16, ap_fifo, out_V_V2818, pointer</column>
+<column name="out_V_V2818_full_n">in, 1, ap_fifo, out_V_V2818, pointer</column>
+<column name="out_V_V2818_write">out, 1, ap_fifo, out_V_V2818, pointer</column>
+<column name="out_V_V2819_din">out, 16, ap_fifo, out_V_V2819, pointer</column>
+<column name="out_V_V2819_full_n">in, 1, ap_fifo, out_V_V2819, pointer</column>
+<column name="out_V_V2819_write">out, 1, ap_fifo, out_V_V2819, pointer</column>
+<column name="frame_buffer_4_4_V_V_dout">in, 16, ap_fifo, frame_buffer_4_4_V_V, pointer</column>
+<column name="frame_buffer_4_4_V_V_empty_n">in, 1, ap_fifo, frame_buffer_4_4_V_V, pointer</column>
+<column name="frame_buffer_4_4_V_V_read">out, 1, ap_fifo, frame_buffer_4_4_V_V, pointer</column>
+<column name="out_V_V2820_din">out, 16, ap_fifo, out_V_V2820, pointer</column>
+<column name="out_V_V2820_full_n">in, 1, ap_fifo, out_V_V2820, pointer</column>
+<column name="out_V_V2820_write">out, 1, ap_fifo, out_V_V2820, pointer</column>
+</table>
+</item>
+</section>
+</profile>

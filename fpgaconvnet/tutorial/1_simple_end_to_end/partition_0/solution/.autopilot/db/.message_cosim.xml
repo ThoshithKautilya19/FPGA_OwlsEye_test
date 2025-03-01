@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Messages>
+	<Message severity="INFO" prefix="[COSIM 212-47]" key="COSIM_TCL_47_1115" tag="" content="Using XSIM for RTL simulation."/>
+	<Message severity="INFO" prefix="[COSIM 212-14]" key="COSIM_TCL_14_1084" tag="" content="Instrumenting C test bench ..."/>
+	<Message severity="ERROR" prefix="[COSIM 212-24]" key="COSIM_TCL_24_1093" tag="" content="TB preprocess failed : In file included from ../include/Conv_0.hpp:6:0,
+                 from ../include/single_layer_top.hpp:5,
+                 from /root/fpgaconvnet-tutorial/tutorial/1_simple_end_to_end/partition_0/tb/single_layer_tb.cpp:1:
+/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/conv.hpp:459:2: error: #endif without #if
+ #endif
+  ^~~~~"/>
+	<Message severity="ERROR" prefix="[COSIM 212-5]" key="COSIM_TCL_5_1075" tag="" content="*** C/RTL co-simulation file generation failed. ***"/>
+	<Message severity="ERROR" prefix="[COSIM 212-4]" key="COSIM_TCL_4_1074" tag="" content="*** C/RTL co-simulation finished: FAIL ***"/>
+</Messages>

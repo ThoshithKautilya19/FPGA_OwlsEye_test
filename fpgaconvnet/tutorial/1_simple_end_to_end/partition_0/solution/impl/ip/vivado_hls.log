@@ -1,0 +1,11 @@
+
+****** Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+  **** IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source /tools/Xilinx/Vivado/2019.2/scripts/vivado_hls/hls.tcl -notrace
+INFO: [HLS 200-10] Running '/tools/Xilinx/Vivado/2019.2/bin/unwrapped/lnx64.o/vivado_hls'
+INFO: [HLS 200-10] For user 'root' on host 'b986bf97e8bd' (Linux_x86_64 version 6.8.0-49-generic) on Sat Feb 15 08:48:03 +0000 2025
+INFO: [HLS 200-10] In directory '/root/fpgaconvnet-tutorial/tutorial/1_simple_end_to_end/partition_0/solution/impl/ip'
+[2Kvivado_hls> [12C[2Kvivado_hls> s[13C[2Kvivado_hls> so[14C[2Kvivado_hls> sou[15C[2Kvivado_hls> sour[16C[2Kvivado_hls> sourc[17C[2Kvivado_hls> source[18C[2Kvivado_hls> source [19C[2Kvivado_hls> source p[20C[2Kvivado_hls> source pa[21C[2Kvivado_hls> source pack.sh[26C

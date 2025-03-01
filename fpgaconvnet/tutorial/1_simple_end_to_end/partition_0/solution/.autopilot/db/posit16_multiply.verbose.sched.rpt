@@ -1,0 +1,229 @@
+
+
+================================================================
+== Vivado HLS Report for 'posit16_multiply'
+================================================================
+* Date:           Sat Feb 15 06:58:58 2025
+
+* Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
+* Project:        partition_0
+* Solution:       solution
+* Product family: zynq
+* Target device:  xc7z020-clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 5.00 ns | 6.562 ns |   0.62 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |        ?|        ?|         ?|         ?|    ?|    ?|   none  |
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 14
+* Pipeline : 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 3 
+3 --> 4 
+4 --> 5 
+5 --> 6 
+6 --> 7 
+7 --> 8 
+8 --> 9 
+9 --> 10 
+10 --> 11 
+11 --> 12 
+12 --> 13 
+13 --> 14 
+14 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 4.28>
+ST_1 : Operation 15 [1/1] (0.00ns)   --->   "%b_ui_read = call i16 @_ssdm_op_Read.ap_auto.i16(i16 %b_ui)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:44->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:234->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 15 'read' 'b_ui_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 16 [1/1] (0.00ns)   --->   "%a_ui_read = call i16 @_ssdm_op_Read.ap_auto.i16(i16 %a_ui)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:44->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:234->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 16 'read' 'a_ui_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 17 [2/2] (4.28ns)   --->   "%da = call fastcc double @posit16_to_double(i16 zeroext %a_ui_read)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:44->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:234->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 17 'call' 'da' <Predicate = true> <Delay = 4.28> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_1 : Operation 18 [2/2] (4.28ns)   --->   "%db = call fastcc double @posit16_to_double(i16 zeroext %b_ui_read)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:44->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:235->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 18 'call' 'db' <Predicate = true> <Delay = 4.28> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 2 <SV = 1> <Delay = 2.85>
+ST_2 : Operation 19 [1/2] (2.85ns)   --->   "%da = call fastcc double @posit16_to_double(i16 zeroext %a_ui_read)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:44->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:234->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 19 'call' 'da' <Predicate = true> <Delay = 2.85> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_2 : Operation 20 [1/2] (2.85ns)   --->   "%db = call fastcc double @posit16_to_double(i16 zeroext %b_ui_read)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:44->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:235->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 20 'call' 'db' <Predicate = true> <Delay = 2.85> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 3 <SV = 2> <Delay = 4.31>
+ST_3 : Operation 21 [10/10] (4.31ns)   --->   "%prod = fmul double %da, %db" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:236->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 21 'dmul' 'prod' <Predicate = true> <Delay = 4.31> <Core = "DMul">   --->   Core 116 'DMul' <Latency = 9> <II = 1> <Delay = 4.31> <FuncUnit> <Opcode : 'dmul'> <InPorts = 2> <OutPorts = 1>
+
+State 4 <SV = 3> <Delay = 4.31>
+ST_4 : Operation 22 [9/10] (4.31ns)   --->   "%prod = fmul double %da, %db" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:236->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 22 'dmul' 'prod' <Predicate = true> <Delay = 4.31> <Core = "DMul">   --->   Core 116 'DMul' <Latency = 9> <II = 1> <Delay = 4.31> <FuncUnit> <Opcode : 'dmul'> <InPorts = 2> <OutPorts = 1>
+
+State 5 <SV = 4> <Delay = 4.31>
+ST_5 : Operation 23 [8/10] (4.31ns)   --->   "%prod = fmul double %da, %db" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:236->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 23 'dmul' 'prod' <Predicate = true> <Delay = 4.31> <Core = "DMul">   --->   Core 116 'DMul' <Latency = 9> <II = 1> <Delay = 4.31> <FuncUnit> <Opcode : 'dmul'> <InPorts = 2> <OutPorts = 1>
+
+State 6 <SV = 5> <Delay = 4.31>
+ST_6 : Operation 24 [7/10] (4.31ns)   --->   "%prod = fmul double %da, %db" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:236->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 24 'dmul' 'prod' <Predicate = true> <Delay = 4.31> <Core = "DMul">   --->   Core 116 'DMul' <Latency = 9> <II = 1> <Delay = 4.31> <FuncUnit> <Opcode : 'dmul'> <InPorts = 2> <OutPorts = 1>
+
+State 7 <SV = 6> <Delay = 4.31>
+ST_7 : Operation 25 [6/10] (4.31ns)   --->   "%prod = fmul double %da, %db" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:236->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 25 'dmul' 'prod' <Predicate = true> <Delay = 4.31> <Core = "DMul">   --->   Core 116 'DMul' <Latency = 9> <II = 1> <Delay = 4.31> <FuncUnit> <Opcode : 'dmul'> <InPorts = 2> <OutPorts = 1>
+
+State 8 <SV = 7> <Delay = 4.31>
+ST_8 : Operation 26 [5/10] (4.31ns)   --->   "%prod = fmul double %da, %db" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:236->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 26 'dmul' 'prod' <Predicate = true> <Delay = 4.31> <Core = "DMul">   --->   Core 116 'DMul' <Latency = 9> <II = 1> <Delay = 4.31> <FuncUnit> <Opcode : 'dmul'> <InPorts = 2> <OutPorts = 1>
+
+State 9 <SV = 8> <Delay = 4.31>
+ST_9 : Operation 27 [4/10] (4.31ns)   --->   "%prod = fmul double %da, %db" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:236->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 27 'dmul' 'prod' <Predicate = true> <Delay = 4.31> <Core = "DMul">   --->   Core 116 'DMul' <Latency = 9> <II = 1> <Delay = 4.31> <FuncUnit> <Opcode : 'dmul'> <InPorts = 2> <OutPorts = 1>
+
+State 10 <SV = 9> <Delay = 4.31>
+ST_10 : Operation 28 [3/10] (4.31ns)   --->   "%prod = fmul double %da, %db" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:236->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 28 'dmul' 'prod' <Predicate = true> <Delay = 4.31> <Core = "DMul">   --->   Core 116 'DMul' <Latency = 9> <II = 1> <Delay = 4.31> <FuncUnit> <Opcode : 'dmul'> <InPorts = 2> <OutPorts = 1>
+
+State 11 <SV = 10> <Delay = 4.31>
+ST_11 : Operation 29 [2/10] (4.31ns)   --->   "%prod = fmul double %da, %db" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:236->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 29 'dmul' 'prod' <Predicate = true> <Delay = 4.31> <Core = "DMul">   --->   Core 116 'DMul' <Latency = 9> <II = 1> <Delay = 4.31> <FuncUnit> <Opcode : 'dmul'> <InPorts = 2> <OutPorts = 1>
+
+State 12 <SV = 11> <Delay = 4.31>
+ST_12 : Operation 30 [1/10] (4.31ns)   --->   "%prod = fmul double %da, %db" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:236->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 30 'dmul' 'prod' <Predicate = true> <Delay = 4.31> <Core = "DMul">   --->   Core 116 'DMul' <Latency = 9> <II = 1> <Delay = 4.31> <FuncUnit> <Opcode : 'dmul'> <InPorts = 2> <OutPorts = 1>
+
+State 13 <SV = 12> <Delay = 3.12>
+ST_13 : Operation 31 [2/2] (3.12ns)   --->   "%result_ui = call fastcc zeroext i16 @double_to_posit16(double %prod)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:237->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 31 'call' 'result_ui' <Predicate = true> <Delay = 3.12> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 14 <SV = 13> <Delay = 2.75>
+ST_14 : Operation 32 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecPipeline(i32 -1, i32 1, i32 1, i32 0, [1 x i8]* @p_str57) nounwind" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:245]   --->   Operation 32 'specpipeline' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 33 [1/2] (2.75ns)   --->   "%result_ui = call fastcc zeroext i16 @double_to_posit16(double %prod)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:237->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246]   --->   Operation 33 'call' 'result_ui' <Predicate = true> <Delay = 2.75> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_14 : Operation 34 [1/1] (0.00ns)   --->   "ret i16 %result_ui" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:247]   --->   Operation 34 'ret' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 5ns, clock uncertainty: 0.625ns.
+
+ <State 1>: 4.29ns
+The critical path consists of the following:
+	wire read on port 'b_ui' (/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:44->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:234->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246) [28]  (0 ns)
+	'call' operation ('db', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:44->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:235->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246) to 'posit16_to_double' [31]  (4.29 ns)
+
+ <State 2>: 2.85ns
+The critical path consists of the following:
+	'call' operation ('da', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:44->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:234->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246) to 'posit16_to_double' [30]  (2.85 ns)
+
+ <State 3>: 4.32ns
+The critical path consists of the following:
+	'dmul' operation ('prod', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:236->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246) [32]  (4.32 ns)
+
+ <State 4>: 4.32ns
+The critical path consists of the following:
+	'dmul' operation ('prod', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:236->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246) [32]  (4.32 ns)
+
+ <State 5>: 4.32ns
+The critical path consists of the following:
+	'dmul' operation ('prod', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:236->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246) [32]  (4.32 ns)
+
+ <State 6>: 4.32ns
+The critical path consists of the following:
+	'dmul' operation ('prod', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:236->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246) [32]  (4.32 ns)
+
+ <State 7>: 4.32ns
+The critical path consists of the following:
+	'dmul' operation ('prod', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:236->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246) [32]  (4.32 ns)
+
+ <State 8>: 4.32ns
+The critical path consists of the following:
+	'dmul' operation ('prod', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:236->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246) [32]  (4.32 ns)
+
+ <State 9>: 4.32ns
+The critical path consists of the following:
+	'dmul' operation ('prod', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:236->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246) [32]  (4.32 ns)
+
+ <State 10>: 4.32ns
+The critical path consists of the following:
+	'dmul' operation ('prod', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:236->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246) [32]  (4.32 ns)
+
+ <State 11>: 4.32ns
+The critical path consists of the following:
+	'dmul' operation ('prod', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:236->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246) [32]  (4.32 ns)
+
+ <State 12>: 4.32ns
+The critical path consists of the following:
+	'dmul' operation ('prod', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:236->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246) [32]  (4.32 ns)
+
+ <State 13>: 3.13ns
+The critical path consists of the following:
+	'call' operation ('result.ui', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:237->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246) to 'double_to_posit16' [33]  (3.13 ns)
+
+ <State 14>: 2.76ns
+The critical path consists of the following:
+	'call' operation ('result.ui', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:237->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/posit_hls.hpp:246) to 'double_to_posit16' [33]  (2.76 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+	State 12
+	State 13
+	State 14
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

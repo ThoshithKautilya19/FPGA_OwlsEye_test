@@ -1,0 +1,205 @@
+
+
+================================================================
+== Vivado HLS Report for 'squeeze'
+================================================================
+* Date:           Sat Feb 15 08:00:36 2025
+
+* Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
+* Project:        partition_0
+* Solution:       solution
+* Product family: zynq
+* Target device:  xc7z020-clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 5.00 ns | 4.375 ns |   0.62 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+-----------+------+------+----------+
+    |  Latency (cycles) |   Latency (absolute)  |   Interval  | Pipeline |
+    |   min   |   max   |    min    |    max    |  min |  max |   Type   |
+    +---------+---------+-----------+-----------+------+------+----------+
+    |     9216|     9217| 46.080 us | 46.085 us |  9216|  9216| dataflow |
+    +---------+---------+-----------+-----------+------+------+----------+
+
+    + Detail: 
+        * Instance: 
+        +------------------+---------------+---------+---------+-----------+-----------+------+------+---------------------------------------------+
+        |                  |               |  Latency (cycles) |   Latency (absolute)  |   Interval  |                   Pipeline                  |
+        |     Instance     |     Module    |   min   |   max   |    min    |    max    |  min |  max |                     Type                    |
+        +------------------+---------------+---------+---------+-----------+-----------+------+------+---------------------------------------------+
+        |squeeze_in_U0     |squeeze_in     |     9216|     9217| 46.080 us | 46.085 us |  9216|  9216| loop rewind(delay=0 initiation interval(s)) |
+        |squeeze_out_1_U0  |squeeze_out_1  |      575|      576|  2.875 us |  2.880 us |   575|   576|                     none                    |
+        +------------------+---------------+---------+---------+-----------+-----------+------+------+---------------------------------------------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+-----+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  | URAM|
++-----------------+---------+-------+--------+-------+-----+
+|DSP              |        -|      -|       -|      -|    -|
+|Expression       |        -|      -|       0|      2|    -|
+|FIFO             |        0|      -|      80|    448|    -|
+|Instance         |        -|      -|      71|    710|    -|
+|Memory           |        -|      -|       -|      -|    -|
+|Multiplexer      |        -|      -|       -|      -|    -|
+|Register         |        -|      -|       -|      -|    -|
++-----------------+---------+-------+--------+-------+-----+
+|Total            |        0|      0|     151|   1160|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Available        |      280|    220|  106400|  53200|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Utilization (%)  |        0|      0|   ~0   |      2|    0|
++-----------------+---------+-------+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    +------------------+---------------+---------+-------+----+-----+-----+
+    |     Instance     |     Module    | BRAM_18K| DSP48E| FF | LUT | URAM|
+    +------------------+---------------+---------+-------+----+-----+-----+
+    |squeeze_in_U0     |squeeze_in     |        0|      0|  58|  358|    0|
+    |squeeze_out_1_U0  |squeeze_out_1  |        0|      0|  13|  352|    0|
+    +------------------+---------------+---------+-------+----+-----+-----+
+    |Total             |               |        0|      0|  71|  710|    0|
+    +------------------+---------------+---------+-------+----+-----+-----+
+
+    * DSP48E: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    +------------+---------+---+----+-----+------+-----+---------+
+    |    Name    | BRAM_18K| FF| LUT| URAM| Depth| Bits| Size:D*B|
+    +------------+---------+---+----+-----+------+-----+---------+
+    |cache_0_U   |        0|  5|   0|    -|     2|   16|       32|
+    |cache_10_U  |        0|  5|   0|    -|     2|   16|       32|
+    |cache_11_U  |        0|  5|   0|    -|     2|   16|       32|
+    |cache_12_U  |        0|  5|   0|    -|     2|   16|       32|
+    |cache_13_U  |        0|  5|   0|    -|     2|   16|       32|
+    |cache_14_U  |        0|  5|   0|    -|     2|   16|       32|
+    |cache_15_U  |        0|  5|   0|    -|     2|   16|       32|
+    |cache_1_U   |        0|  5|   0|    -|     2|   16|       32|
+    |cache_2_U   |        0|  5|   0|    -|     2|   16|       32|
+    |cache_3_U   |        0|  5|   0|    -|     2|   16|       32|
+    |cache_4_U   |        0|  5|   0|    -|     2|   16|       32|
+    |cache_5_U   |        0|  5|   0|    -|     2|   16|       32|
+    |cache_6_U   |        0|  5|   0|    -|     2|   16|       32|
+    |cache_7_U   |        0|  5|   0|    -|     2|   16|       32|
+    |cache_8_U   |        0|  5|   0|    -|     2|   16|       32|
+    |cache_9_U   |        0|  5|   0|    -|     2|   16|       32|
+    +------------+---------+---+----+-----+------+-----+---------+
+    |Total       |        0| 80|   0|    0|    32|  256|      512|
+    +------------+---------+---+----+-----+------+-----+---------+
+
+    * Expression: 
+    +--------------+----------+-------+---+----+------------+------------+
+    | Variable Name| Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +--------------+----------+-------+---+----+------------+------------+
+    |ap_idle       |    and   |      0|  0|   2|           1|           1|
+    +--------------+----------+-------+---+----+------------+------------+
+    |Total         |          |      0|  0|   2|           1|           1|
+    +--------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    N/A
+
+    * Register: 
+    N/A
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-------------------+-----+-----+------------+--------------+--------------+
+|     RTL Ports     | Dir | Bits|  Protocol  | Source Object|    C Type    |
++-------------------+-----+-----+------------+--------------+--------------+
+|in_0_V_V_dout      |  in |   16|   ap_fifo  |   in_0_V_V   |    pointer   |
+|in_0_V_V_empty_n   |  in |    1|   ap_fifo  |   in_0_V_V   |    pointer   |
+|in_0_V_V_read      | out |    1|   ap_fifo  |   in_0_V_V   |    pointer   |
+|in_1_V_V_dout      |  in |   16|   ap_fifo  |   in_1_V_V   |    pointer   |
+|in_1_V_V_empty_n   |  in |    1|   ap_fifo  |   in_1_V_V   |    pointer   |
+|in_1_V_V_read      | out |    1|   ap_fifo  |   in_1_V_V   |    pointer   |
+|in_2_V_V_dout      |  in |   16|   ap_fifo  |   in_2_V_V   |    pointer   |
+|in_2_V_V_empty_n   |  in |    1|   ap_fifo  |   in_2_V_V   |    pointer   |
+|in_2_V_V_read      | out |    1|   ap_fifo  |   in_2_V_V   |    pointer   |
+|in_3_V_V_dout      |  in |   16|   ap_fifo  |   in_3_V_V   |    pointer   |
+|in_3_V_V_empty_n   |  in |    1|   ap_fifo  |   in_3_V_V   |    pointer   |
+|in_3_V_V_read      | out |    1|   ap_fifo  |   in_3_V_V   |    pointer   |
+|out_0_V_V_din      | out |   16|   ap_fifo  |   out_0_V_V  |    pointer   |
+|out_0_V_V_full_n   |  in |    1|   ap_fifo  |   out_0_V_V  |    pointer   |
+|out_0_V_V_write    | out |    1|   ap_fifo  |   out_0_V_V  |    pointer   |
+|out_1_V_V_din      | out |   16|   ap_fifo  |   out_1_V_V  |    pointer   |
+|out_1_V_V_full_n   |  in |    1|   ap_fifo  |   out_1_V_V  |    pointer   |
+|out_1_V_V_write    | out |    1|   ap_fifo  |   out_1_V_V  |    pointer   |
+|out_2_V_V_din      | out |   16|   ap_fifo  |   out_2_V_V  |    pointer   |
+|out_2_V_V_full_n   |  in |    1|   ap_fifo  |   out_2_V_V  |    pointer   |
+|out_2_V_V_write    | out |    1|   ap_fifo  |   out_2_V_V  |    pointer   |
+|out_3_V_V_din      | out |   16|   ap_fifo  |   out_3_V_V  |    pointer   |
+|out_3_V_V_full_n   |  in |    1|   ap_fifo  |   out_3_V_V  |    pointer   |
+|out_3_V_V_write    | out |    1|   ap_fifo  |   out_3_V_V  |    pointer   |
+|out_4_V_V_din      | out |   16|   ap_fifo  |   out_4_V_V  |    pointer   |
+|out_4_V_V_full_n   |  in |    1|   ap_fifo  |   out_4_V_V  |    pointer   |
+|out_4_V_V_write    | out |    1|   ap_fifo  |   out_4_V_V  |    pointer   |
+|out_5_V_V_din      | out |   16|   ap_fifo  |   out_5_V_V  |    pointer   |
+|out_5_V_V_full_n   |  in |    1|   ap_fifo  |   out_5_V_V  |    pointer   |
+|out_5_V_V_write    | out |    1|   ap_fifo  |   out_5_V_V  |    pointer   |
+|out_6_V_V_din      | out |   16|   ap_fifo  |   out_6_V_V  |    pointer   |
+|out_6_V_V_full_n   |  in |    1|   ap_fifo  |   out_6_V_V  |    pointer   |
+|out_6_V_V_write    | out |    1|   ap_fifo  |   out_6_V_V  |    pointer   |
+|out_7_V_V_din      | out |   16|   ap_fifo  |   out_7_V_V  |    pointer   |
+|out_7_V_V_full_n   |  in |    1|   ap_fifo  |   out_7_V_V  |    pointer   |
+|out_7_V_V_write    | out |    1|   ap_fifo  |   out_7_V_V  |    pointer   |
+|out_8_V_V_din      | out |   16|   ap_fifo  |   out_8_V_V  |    pointer   |
+|out_8_V_V_full_n   |  in |    1|   ap_fifo  |   out_8_V_V  |    pointer   |
+|out_8_V_V_write    | out |    1|   ap_fifo  |   out_8_V_V  |    pointer   |
+|out_9_V_V_din      | out |   16|   ap_fifo  |   out_9_V_V  |    pointer   |
+|out_9_V_V_full_n   |  in |    1|   ap_fifo  |   out_9_V_V  |    pointer   |
+|out_9_V_V_write    | out |    1|   ap_fifo  |   out_9_V_V  |    pointer   |
+|out_10_V_V_din     | out |   16|   ap_fifo  |  out_10_V_V  |    pointer   |
+|out_10_V_V_full_n  |  in |    1|   ap_fifo  |  out_10_V_V  |    pointer   |
+|out_10_V_V_write   | out |    1|   ap_fifo  |  out_10_V_V  |    pointer   |
+|out_11_V_V_din     | out |   16|   ap_fifo  |  out_11_V_V  |    pointer   |
+|out_11_V_V_full_n  |  in |    1|   ap_fifo  |  out_11_V_V  |    pointer   |
+|out_11_V_V_write   | out |    1|   ap_fifo  |  out_11_V_V  |    pointer   |
+|out_12_V_V_din     | out |   16|   ap_fifo  |  out_12_V_V  |    pointer   |
+|out_12_V_V_full_n  |  in |    1|   ap_fifo  |  out_12_V_V  |    pointer   |
+|out_12_V_V_write   | out |    1|   ap_fifo  |  out_12_V_V  |    pointer   |
+|out_13_V_V_din     | out |   16|   ap_fifo  |  out_13_V_V  |    pointer   |
+|out_13_V_V_full_n  |  in |    1|   ap_fifo  |  out_13_V_V  |    pointer   |
+|out_13_V_V_write   | out |    1|   ap_fifo  |  out_13_V_V  |    pointer   |
+|out_14_V_V_din     | out |   16|   ap_fifo  |  out_14_V_V  |    pointer   |
+|out_14_V_V_full_n  |  in |    1|   ap_fifo  |  out_14_V_V  |    pointer   |
+|out_14_V_V_write   | out |    1|   ap_fifo  |  out_14_V_V  |    pointer   |
+|out_15_V_V_din     | out |   16|   ap_fifo  |  out_15_V_V  |    pointer   |
+|out_15_V_V_full_n  |  in |    1|   ap_fifo  |  out_15_V_V  |    pointer   |
+|out_15_V_V_write   | out |    1|   ap_fifo  |  out_15_V_V  |    pointer   |
+|ap_clk             |  in |    1| ap_ctrl_hs |    squeeze   | return value |
+|ap_rst             |  in |    1| ap_ctrl_hs |    squeeze   | return value |
+|ap_start           |  in |    1| ap_ctrl_hs |    squeeze   | return value |
+|ap_done            | out |    1| ap_ctrl_hs |    squeeze   | return value |
+|ap_ready           | out |    1| ap_ctrl_hs |    squeeze   | return value |
+|ap_idle            | out |    1| ap_ctrl_hs |    squeeze   | return value |
+|ap_continue        |  in |    1| ap_ctrl_hs |    squeeze   | return value |
++-------------------+-----+-----+------------+--------------+--------------+
+

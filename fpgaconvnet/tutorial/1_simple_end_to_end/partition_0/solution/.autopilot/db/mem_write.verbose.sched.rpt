@@ -1,0 +1,255 @@
+
+
+================================================================
+== Vivado HLS Report for 'mem_write'
+================================================================
+* Date:           Sat Feb 15 07:24:55 2025
+
+* Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
+* Project:        partition_0
+* Solution:       solution
+* Product family: zynq
+* Target device:  xc7z020-clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 5.00 ns | 4.375 ns |   0.62 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+-----------+------+------+---------+
+    |  Latency (cycles) |   Latency (absolute)  |   Interval  | Pipeline|
+    |   min   |   max   |    min    |    max    |  min |  max |   Type  |
+    +---------+---------+-----------+-----------+------+------+---------+
+    |     2313|     2313| 11.565 us | 11.565 us |  2313|  2313|   none  |
+    +---------+---------+-----------+-----------+------+------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +----------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |                      |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |       Loop Name      |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +----------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- pixel_channel_loop  |     2311|     2311|         9|          1|          1|  2304|    yes   |
+        +----------------------+---------+---------+----------+-----------+-----------+------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 2
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 1, depth = 9
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 11
+* Pipeline : 1
+  Pipeline-0 : II = 1, D = 9, States = { 2 3 4 5 6 7 8 9 10 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 11 3 
+3 --> 4 
+4 --> 5 
+5 --> 6 
+6 --> 7 
+7 --> 8 
+8 --> 9 
+9 --> 10 
+10 --> 2 
+11 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 2.18>
+ST_1 : Operation 12 [1/1] (0.00ns)   --->   "%port_cache_0_V = alloca i64, align 8" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:72->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 12 'alloca' 'port_cache_0_V' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 13 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32* %weights_reloading_in_3, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [11 x i8]* @ScalarProp_str)"   --->   Operation 13 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 14 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %out_0_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 14 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 15 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %out_1_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 15 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 16 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %out_2_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 16 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 17 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %out_3_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 17 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 18 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i64* %out_hw_V, [6 x i8]* @p_str7, i32 0, i32 0, [1 x i8]* @p_str4, i32 0, i32 2304, [21 x i8]* @p_str13, [6 x i8]* @p_str9, [1 x i8]* @p_str4, i32 1, i32 1, i32 256, i32 256, [16 x i8]* @p_str14, [1 x i8]* @p_str4)"   --->   Operation 18 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 19 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i64* %out_hw_V, [6 x i8]* @p_str7, i32 0, i32 0, [1 x i8]* @p_str4, i32 0, i32 2304, [21 x i8]* @p_str13, [6 x i8]* @p_str9, [1 x i8]* @p_str4, i32 1, i32 1, i32 256, i32 256, [16 x i8]* @p_str14, [1 x i8]* @p_str4)"   --->   Operation 19 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 20 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i29* %out_hw_V_offset, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [11 x i8]* @ScalarProp_str)"   --->   Operation 20 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 21 [1/1] (2.18ns)   --->   "%out_hw_V_offset_read = call i29 @_ssdm_op_Read.ap_fifo.i29P(i29* %out_hw_V_offset)" [partition_0/src/single_layer_top.cpp:124]   --->   Operation 21 'read' 'out_hw_V_offset_read' <Predicate = true> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 0> <FIFO>
+ST_1 : Operation 22 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %out_3_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 22 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 23 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %out_2_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 23 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 24 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %out_1_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 24 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 25 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %out_0_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 25 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 26 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i64* %out_hw_V, [6 x i8]* @p_str7, i32 0, i32 0, [1 x i8]* @p_str4, i32 0, i32 2304, [21 x i8]* @p_str13, [6 x i8]* @p_str9, [1 x i8]* @p_str4, i32 1, i32 1, i32 256, i32 256, [16 x i8]* @p_str14, [1 x i8]* @p_str4)"   --->   Operation 26 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 27 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32* %weights_reloading_in_3, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [11 x i8]* @ScalarProp_str)"   --->   Operation 27 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 28 [1/1] (2.18ns)   --->   "%weights_reloading_in_5 = call i32 @_ssdm_op_Read.ap_fifo.i32P(i32* %weights_reloading_in_3)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:37->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 28 'read' 'weights_reloading_in_5' <Predicate = true> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 0> <FIFO>
+ST_1 : Operation 29 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i64* %out_hw_V, [6 x i8]* @p_str7, i32 0, i32 0, [1 x i8]* @p_str4, i32 0, i32 2304, [21 x i8]* @p_str13, [6 x i8]* @p_str9, [1 x i8]* @p_str4, i32 1, i32 1, i32 256, i32 256, [16 x i8]* @p_str14, [1 x i8]* @p_str4)"   --->   Operation 29 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 30 [1/1] (0.00ns)   --->   "%empty = trunc i32 %weights_reloading_in_5 to i30" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:37->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 30 'trunc' 'empty' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 31 [1/1] (0.00ns)   --->   "%zext_ln68 = zext i29 %out_hw_V_offset_read to i33" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:68->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 31 'zext' 'zext_ln68' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 32 [1/1] (1.76ns)   --->   "br label %"operator++.exit.i.i.i"" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:68->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 32 'br' <Predicate = true> <Delay = 1.76>
+
+State 2 <SV = 1> <Delay = 2.96>
+ST_2 : Operation 33 [1/1] (0.00ns)   --->   "%loops_1_0_i_i_i = phi i10 [ 0, %entry ], [ %select_ln891, %pixel_channel_loop ]" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/hlslib/include/hlslib/xilinx/Flatten.h:157->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/hlslib/include/hlslib/xilinx/Flatten.h:205->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/hlslib/include/hlslib/xilinx/Flatten.h:248->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:68->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 33 'phi' 'loops_1_0_i_i_i' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 34 [1/1] (0.00ns)   --->   "%loops_0_0_i_i_i = phi i2 [ 0, %entry ], [ %loops_impl_next_i_s, %pixel_channel_loop ]"   --->   Operation 34 'phi' 'loops_0_0_i_i_i' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 35 [1/1] (0.00ns)   --->   "%i_0_i_i_i = phi i12 [ 0, %entry ], [ %i, %pixel_channel_loop ]"   --->   Operation 35 'phi' 'i_0_i_i_i' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 36 [1/1] (1.99ns)   --->   "%icmp_ln68 = icmp eq i12 %i_0_i_i_i, -1792" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:68->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 36 'icmp' 'icmp_ln68' <Predicate = true> <Delay = 1.99> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.77> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 37 [1/1] (0.00ns)   --->   "%empty_220 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 2304, i64 2304, i64 2304)"   --->   Operation 37 'speclooptripcount' 'empty_220' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 38 [1/1] (1.56ns)   --->   "%loops_impl_next_i_s = add i2 %loops_0_0_i_i_i, 1" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/hlslib/include/hlslib/xilinx/Flatten.h:161->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/hlslib/include/hlslib/xilinx/Flatten.h:205->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/hlslib/include/hlslib/xilinx/Flatten.h:248->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:68->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 38 'add' 'loops_impl_next_i_s' <Predicate = true> <Delay = 1.56> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.73> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 39 [1/1] (0.00ns)   --->   "br i1 %icmp_ln68, label %.exit, label %pixel_channel_loop" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:68->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 39 'br' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 40 [1/1] (0.00ns)   --->   "%empty_221 = zext i10 %loops_1_0_i_i_i to i30" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/hlslib/include/hlslib/xilinx/Flatten.h:157->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/hlslib/include/hlslib/xilinx/Flatten.h:205->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/hlslib/include/hlslib/xilinx/Flatten.h:248->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:68->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 40 'zext' 'empty_221' <Predicate = (!icmp_ln68)> <Delay = 0.00>
+ST_2 : Operation 41 [1/1] (2.49ns)   --->   "%tmp4_i_i_i = add i30 %empty_221, %empty" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/hlslib/include/hlslib/xilinx/Flatten.h:157->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/hlslib/include/hlslib/xilinx/Flatten.h:205->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/hlslib/include/hlslib/xilinx/Flatten.h:248->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:68->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 41 'add' 'tmp4_i_i_i' <Predicate = (!icmp_ln68)> <Delay = 2.49> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.73> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 42 [1/1] (0.00ns)   --->   "%out_index = call i32 @_ssdm_op_BitConcatenate.i32.i30.i2(i30 %tmp4_i_i_i, i2 %loops_0_0_i_i_i)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:89->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 42 'bitconcatenate' 'out_index' <Predicate = (!icmp_ln68)> <Delay = 0.00>
+ST_2 : Operation 43 [1/1] (1.54ns)   --->   "%i = add i12 %i_0_i_i_i, 1" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:68->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 43 'add' 'i' <Predicate = (!icmp_ln68)> <Delay = 1.54> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.73> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 44 [1/1] (0.95ns)   --->   "%icmp_ln891 = icmp eq i2 %loops_0_0_i_i_i, -1" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/hlslib/include/hlslib/xilinx/Flatten.h:157->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/hlslib/include/hlslib/xilinx/Flatten.h:205->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/hlslib/include/hlslib/xilinx/Flatten.h:248->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:68->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 44 'icmp' 'icmp_ln891' <Predicate = (!icmp_ln68)> <Delay = 0.95> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.77> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 45 [1/1] (1.77ns)   --->   "%icmp_ln891_4 = icmp ugt i10 %loops_1_0_i_i_i, -450" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/hlslib/include/hlslib/xilinx/Flatten.h:206->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/hlslib/include/hlslib/xilinx/Flatten.h:248->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:68->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 45 'icmp' 'icmp_ln891_4' <Predicate = (!icmp_ln68)> <Delay = 1.77> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.77> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 46 [1/1] (1.73ns)   --->   "%loops_impl_i_V = add i10 %loops_1_0_i_i_i, 1" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/hlslib/include/hlslib/xilinx/Flatten.h:210->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/hlslib/include/hlslib/xilinx/Flatten.h:248->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:68->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 46 'add' 'loops_impl_i_V' <Predicate = (!icmp_ln68)> <Delay = 1.73> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.73> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 47 [1/1] (0.00ns) (grouped into LUT with out node select_ln891)   --->   "%select_ln206 = select i1 %icmp_ln891_4, i10 0, i10 %loops_impl_i_V" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/hlslib/include/hlslib/xilinx/Flatten.h:206->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/hlslib/include/hlslib/xilinx/Flatten.h:248->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:68->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 47 'select' 'select_ln206' <Predicate = (!icmp_ln68)> <Delay = 0.00> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_2 : Operation 48 [1/1] (0.68ns) (out node of the LUT)   --->   "%select_ln891 = select i1 %icmp_ln891, i10 %select_ln206, i10 %loops_1_0_i_i_i" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/hlslib/include/hlslib/xilinx/Flatten.h:157->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/hlslib/include/hlslib/xilinx/Flatten.h:205->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/hlslib/include/hlslib/xilinx/Flatten.h:248->/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:68->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 48 'select' 'select_ln891' <Predicate = (!icmp_ln68)> <Delay = 0.68> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.68> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+
+State 3 <SV = 2> <Delay = 2.55>
+ST_3 : Operation 49 [1/1] (0.00ns)   --->   "%sext_ln87 = sext i32 %out_index to i33" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:87->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 49 'sext' 'sext_ln87' <Predicate = (!icmp_ln68)> <Delay = 0.00>
+ST_3 : Operation 50 [1/1] (2.55ns)   --->   "%add_ln332 = add i33 %zext_ln68, %sext_ln87" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:90->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 50 'add' 'add_ln332' <Predicate = (!icmp_ln68)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.73> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 4 <SV = 3> <Delay = 4.37>
+ST_4 : Operation 51 [1/1] (2.18ns)   --->   "%tmp_V = call i16 @_ssdm_op_Read.ap_fifo.volatile.i16P(i16* %out_0_V_V)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:80->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 51 'read' 'tmp_V' <Predicate = (!icmp_ln68)> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 0> <FIFO>
+ST_4 : Operation 52 [1/1] (2.18ns)   --->   "%tmp_V_141 = call i16 @_ssdm_op_Read.ap_fifo.volatile.i16P(i16* %out_1_V_V)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:80->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 52 'read' 'tmp_V_141' <Predicate = (!icmp_ln68)> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 0> <FIFO>
+ST_4 : Operation 53 [1/1] (2.18ns)   --->   "%tmp_V_142 = call i16 @_ssdm_op_Read.ap_fifo.volatile.i16P(i16* %out_2_V_V)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:80->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 53 'read' 'tmp_V_142' <Predicate = (!icmp_ln68)> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 0> <FIFO>
+ST_4 : Operation 54 [1/1] (2.18ns)   --->   "%tmp_V_143 = call i16 @_ssdm_op_Read.ap_fifo.volatile.i16P(i16* %out_3_V_V)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:80->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 54 'read' 'tmp_V_143' <Predicate = (!icmp_ln68)> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 0> <FIFO>
+ST_4 : Operation 55 [1/1] (0.00ns)   --->   "%sext_ln332 = sext i33 %add_ln332 to i64" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:90->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 55 'sext' 'sext_ln332' <Predicate = (!icmp_ln68)> <Delay = 0.00>
+ST_4 : Operation 56 [1/1] (0.00ns)   --->   "%out_hw_V_addr = getelementptr i64* %out_hw_V, i64 %sext_ln332" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:90->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 56 'getelementptr' 'out_hw_V_addr' <Predicate = (!icmp_ln68)> <Delay = 0.00>
+ST_4 : Operation 57 [1/1] (4.37ns)   --->   "%out_hw_V_addr_i_i_re = call i1 @_ssdm_op_WriteReq.m_axi.i64P(i64* %out_hw_V_addr, i32 1)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:90->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 57 'writereq' 'out_hw_V_addr_i_i_re' <Predicate = (!icmp_ln68)> <Delay = 4.37> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 5 <SV = 4> <Delay = 4.37>
+ST_5 : Operation 58 [1/1] (0.00ns)   --->   "%port_cache_0_V_1 = call i64 @_ssdm_op_BitConcatenate.i64.i16.i16.i16.i16(i16 %tmp_V_143, i16 %tmp_V_142, i16 %tmp_V_141, i16 %tmp_V)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:84->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 58 'bitconcatenate' 'port_cache_0_V_1' <Predicate = (!icmp_ln68)> <Delay = 0.00>
+ST_5 : Operation 59 [1/1] (0.00ns)   --->   "store i64 %port_cache_0_V_1, i64* %port_cache_0_V, align 8" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:84->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 59 'store' <Predicate = (!icmp_ln68)> <Delay = 0.00>
+ST_5 : Operation 60 [1/1] (4.37ns)   --->   "call void @_ssdm_op_Write.m_axi.volatile.i64P(i64* %out_hw_V_addr, i64 %port_cache_0_V_1, i8 -1)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:90->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 60 'write' <Predicate = (!icmp_ln68)> <Delay = 4.37> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 6 <SV = 5> <Delay = 4.37>
+ST_6 : Operation 61 [5/5] (4.37ns)   --->   "%out_hw_V_addr_i_i_re_1 = call i1 @_ssdm_op_WriteResp.m_axi.i64P(i64* %out_hw_V_addr)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:90->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 61 'writeresp' 'out_hw_V_addr_i_i_re_1' <Predicate = (!icmp_ln68)> <Delay = 4.37> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 7 <SV = 6> <Delay = 4.37>
+ST_7 : Operation 62 [4/5] (4.37ns)   --->   "%out_hw_V_addr_i_i_re_1 = call i1 @_ssdm_op_WriteResp.m_axi.i64P(i64* %out_hw_V_addr)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:90->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 62 'writeresp' 'out_hw_V_addr_i_i_re_1' <Predicate = (!icmp_ln68)> <Delay = 4.37> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 8 <SV = 7> <Delay = 4.37>
+ST_8 : Operation 63 [3/5] (4.37ns)   --->   "%out_hw_V_addr_i_i_re_1 = call i1 @_ssdm_op_WriteResp.m_axi.i64P(i64* %out_hw_V_addr)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:90->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 63 'writeresp' 'out_hw_V_addr_i_i_re_1' <Predicate = (!icmp_ln68)> <Delay = 4.37> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 9 <SV = 8> <Delay = 4.37>
+ST_9 : Operation 64 [2/5] (4.37ns)   --->   "%out_hw_V_addr_i_i_re_1 = call i1 @_ssdm_op_WriteResp.m_axi.i64P(i64* %out_hw_V_addr)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:90->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 64 'writeresp' 'out_hw_V_addr_i_i_re_1' <Predicate = (!icmp_ln68)> <Delay = 4.37> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+
+State 10 <SV = 9> <Delay = 4.37>
+ST_10 : Operation 65 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopName([19 x i8]* @p_str15) nounwind" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:68->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 65 'specloopname' <Predicate = (!icmp_ln68)> <Delay = 0.00>
+ST_10 : Operation 66 [1/1] (0.00ns)   --->   "%tmp_i_i_i = call i32 (...)* @_ssdm_op_SpecRegionBegin([19 x i8]* @p_str15)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:68->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 66 'specregionbegin' 'tmp_i_i_i' <Predicate = (!icmp_ln68)> <Delay = 0.00>
+ST_10 : Operation 67 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecPipeline(i32 1, i32 1, i32 1, i32 0, [1 x i8]* @p_str4) nounwind" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:70->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 67 'specpipeline' <Predicate = (!icmp_ln68)> <Delay = 0.00>
+ST_10 : Operation 68 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopName([16 x i8]* @p_str17) nounwind" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:87->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 68 'specloopname' <Predicate = (!icmp_ln68)> <Delay = 0.00>
+ST_10 : Operation 69 [1/5] (4.37ns)   --->   "%out_hw_V_addr_i_i_re_1 = call i1 @_ssdm_op_WriteResp.m_axi.i64P(i64* %out_hw_V_addr)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:90->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 69 'writeresp' 'out_hw_V_addr_i_i_re_1' <Predicate = (!icmp_ln68)> <Delay = 4.37> <Core = "m_axi">   --->   Core 9 'm_axi' <Latency = 6> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write' 'readreq' 'writereq' 'writeresp'>
+ST_10 : Operation 70 [1/1] (0.00ns)   --->   "%empty_222 = call i32 (...)* @_ssdm_op_SpecRegionEnd([19 x i8]* @p_str15, i32 %tmp_i_i_i)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:93->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104]   --->   Operation 70 'specregionend' 'empty_222' <Predicate = (!icmp_ln68)> <Delay = 0.00>
+ST_10 : Operation 71 [1/1] (0.00ns)   --->   "br label %"operator++.exit.i.i.i""   --->   Operation 71 'br' <Predicate = (!icmp_ln68)> <Delay = 0.00>
+
+State 11 <SV = 2> <Delay = 0.00>
+ST_11 : Operation 72 [1/1] (0.00ns)   --->   "ret void" [partition_0/src/single_layer_top.cpp:104]   --->   Operation 72 'ret' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 5ns, clock uncertainty: 0.625ns.
+
+ <State 1>: 2.19ns
+The critical path consists of the following:
+	fifo read on port 'out_hw_V_offset' (partition_0/src/single_layer_top.cpp:124) [17]  (2.19 ns)
+
+ <State 2>: 2.97ns
+The critical path consists of the following:
+	'icmp' operation ('icmp_ln68', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:68->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104) [33]  (1.99 ns)
+	blocking operation 0.978 ns on control path)
+
+ <State 3>: 2.55ns
+The critical path consists of the following:
+	'add' operation ('add_ln332', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:90->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104) [52]  (2.55 ns)
+
+ <State 4>: 4.38ns
+The critical path consists of the following:
+	'getelementptr' operation ('out_hw_V_addr', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:90->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104) [54]  (0 ns)
+	bus request on port 'out_hw_V' (/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:90->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104) [55]  (4.38 ns)
+
+ <State 5>: 4.38ns
+The critical path consists of the following:
+	bus write on port 'out_hw_V' (/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:90->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104) [56]  (4.38 ns)
+
+ <State 6>: 4.38ns
+The critical path consists of the following:
+	bus access on port 'out_hw_V' (/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:90->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104) [57]  (4.38 ns)
+
+ <State 7>: 4.38ns
+The critical path consists of the following:
+	bus access on port 'out_hw_V' (/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:90->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104) [57]  (4.38 ns)
+
+ <State 8>: 4.38ns
+The critical path consists of the following:
+	bus access on port 'out_hw_V' (/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:90->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104) [57]  (4.38 ns)
+
+ <State 9>: 4.38ns
+The critical path consists of the following:
+	bus access on port 'out_hw_V' (/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:90->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104) [57]  (4.38 ns)
+
+ <State 10>: 4.38ns
+The critical path consists of the following:
+	bus access on port 'out_hw_V' (/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/mem_write.hpp:90->partition_0/src/single_layer_top.cpp:58->partition_0/src/single_layer_top.cpp:124->partition_0/src/single_layer_top.cpp:104) [57]  (4.38 ns)
+
+ <State 11>: 0ns
+The critical path consists of the following:
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

@@ -1,0 +1,29 @@
+# Makefile for Manual C Simulation Compilation
+
+CXX = g++  # Use g++ for C++ compilation
+CXXFLAGS = -g -O0 -std=c++11 # Debug build, no optimization, C++11 standard
+INCLUDES = -I../../../../partition_0/include -I/root/SoftPosit/source/include # Include paths
+LIB_PATH = -L/root/SoftPosit/build/Linux-x86_64-GCC/ # Path to SoftPosit library
+LIBS = -lsoftposit -lm # Libraries to link: SoftPosit, math library
+
+SRC_FILES = \
+    ../../../tb/single_layer_tb.cpp \
+    ../../../src/Relu_1.cpp \
+    ../../../src/single_layer_top.cpp \
+    ../../../src/Conv_0_squeeze_Relu_1.cpp \
+    ../../../src/squeeze_Relu_1.cpp \
+    ../../../src/Conv_0.cpp 
+
+OBJECTS = $(SRC_FILES:.cpp=.o)
+EXECUTABLE = csim_manual.exe  # Name of the executable
+
+all: $(EXECUTABLE)
+
+$(EXECUTABLE): $(OBJECTS) 
+    g++ $(CXXFLAGS) -o $@ $^ $(LIB_PATH) $(LIBS)
+
+%.o: %.cpp
+    $(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
+
+clean:
+rm -f $(OBJECTS) $(EXECUTABLE) 

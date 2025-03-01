@@ -1,0 +1,10 @@
+{
+    "type": "FORK",
+    "rows_in": 12,
+    "cols_in": 12,
+    "channels_in": 20,
+    "coarse_in": 10,
+    "coarse_out": 20,
+    "batch_size": 1,
+    "description": "module name: fork, layer name: res4f_branch2a, net name: resnet.prototxt"
+}

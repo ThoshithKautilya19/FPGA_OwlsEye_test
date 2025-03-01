@@ -1,0 +1,22 @@
+
+****** Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+  **** IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source /tools/Xilinx/Vivado/2019.2/scripts/vivado_hls/hls.tcl -notrace
+INFO: [HLS 200-10] Running '/tools/Xilinx/Vivado/2019.2/bin/unwrapped/lnx64.o/vivado_hls'
+INFO: [HLS 200-10] For user 'root' on host 'b986bf97e8bd' (Linux_x86_64 version 6.8.0-49-generic) on Fri Feb 14 11:21:27 +0000 2025
+INFO: [HLS 200-10] In directory '/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls'
+Sourcing Tcl script 'scripts/hls/run_csim.tcl'
+can't read "project_path": no such variable
+    while executing
+"open_project ${project_path}"
+    (file "scripts/hls/run_csim.tcl" line 14)
+    invoked from within
+"source scripts/hls/run_csim.tcl"
+    ("uplevel" body line 1)
+    invoked from within
+"uplevel \#0 [list source $arg] "
+
+INFO: [Common 17-206] Exiting vivado_hls at Fri Feb 14 11:21:27 2025...

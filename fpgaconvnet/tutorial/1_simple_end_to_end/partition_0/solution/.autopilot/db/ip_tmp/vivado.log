@@ -1,0 +1,19 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Fri Feb  7 10:02:01 2025
+# Process ID: 69892
+# Current directory: /root/fpgaconvnet-tutorial/tutorial/1_simple_end_to_end/partition_0/solution/.autopilot/db/ip_tmp
+# Command line: vivado  -notrace -mode batch -source run_vivado_gen_ip.tcl
+# Log file: /root/fpgaconvnet-tutorial/tutorial/1_simple_end_to_end/partition_0/solution/.autopilot/db/ip_tmp/vivado.log
+# Journal file: /root/fpgaconvnet-tutorial/tutorial/1_simple_end_to_end/partition_0/solution/.autopilot/db/ip_tmp/vivado.jou
+#-----------------------------------------------------------
+source run_vivado_gen_ip.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2019.2/data/ip'.
+WARNING: [IP_Flow 19-4832] The IP name 'fpgaconvnet_ip_ap_dcmp_2_no_dsp_64' you have specified is long. The Windows operating system has path length limitations. It is recommended you use shorter names to reduce the likelihood of issues.
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'fpgaconvnet_ip_ap_dcmp_2_no_dsp_64'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'fpgaconvnet_ip_ap_dcmp_2_no_dsp_64'...
+INFO: [Common 17-206] Exiting Vivado at Fri Feb  7 10:02:12 2025...

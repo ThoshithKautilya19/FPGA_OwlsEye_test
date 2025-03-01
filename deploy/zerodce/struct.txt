@@ -1,0 +1,24 @@
+.
+├── modeling
+│   ├── fpn.py
+│   ├── model.py
+│   ├── __pycache__
+│   │   └── model.cpython-310.pyc
+│   └── resnet.py
+├── option.py
+├── struct.txt
+├── test.py
+├── train_data
+│   ├── 1000.jpg
+│   ├── 1001.jpg
+│   ├── 1002.jpg
+|   :
+│   ├── 999.jpg
+│   ├── 99.jpg
+│   └── 9.jpg
+├── utils.py
+└── weight
+    ├── Epoch99.pth
+    └── readme.txt
+
+4 directories, 2012 files

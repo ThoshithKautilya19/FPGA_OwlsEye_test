@@ -1,0 +1,232 @@
+
+
+================================================================
+== Vivado HLS Report for 'sliding_window'
+================================================================
+* Date:           Sat Feb 15 07:46:52 2025
+
+* Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
+* Project:        partition_0
+* Solution:       solution
+* Product family: zynq
+* Target device:  xc7z020-clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 5.00 ns | 4.375 ns |   0.62 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+----------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline |
+    |   min   |   max   |    min   |    max   | min | max |   Type   |
+    +---------+---------+----------+----------+-----+-----+----------+
+    |      785|      786| 3.925 us | 3.930 us |  784|  784| dataflow |
+    +---------+---------+----------+----------+-----+-----+----------+
+
+    + Detail: 
+        * Instance: 
+        +------------------------+-----------------------+---------+---------+----------+----------+-----+-----+---------------------------------------------+
+        |                        |                       |  Latency (cycles) |  Latency (absolute) |  Interval |                   Pipeline                  |
+        |        Instance        |         Module        |   min   |   max   |    min   |    max   | min | max |                     Type                    |
+        +------------------------+-----------------------+---------+---------+----------+----------+-----+-----+---------------------------------------------+
+        |sliding_window_line_U0  |sliding_window_line_s  |      784|      785| 3.920 us | 3.925 us |  784|  784| loop rewind(delay=0 initiation interval(s)) |
+        |sliding_window_out_U0   |sliding_window_out     |      784|      785| 3.920 us | 3.925 us |  784|  784| loop rewind(delay=0 initiation interval(s)) |
+        +------------------------+-----------------------+---------+---------+----------+----------+-----+-----+---------------------------------------------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+-----+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  | URAM|
++-----------------+---------+-------+--------+-------+-----+
+|DSP              |        -|      -|       -|      -|    -|
+|Expression       |        -|      -|       0|      2|    -|
+|FIFO             |        0|      -|     125|    700|    -|
+|Instance         |       24|      -|     781|   2400|    -|
+|Memory           |        -|      -|       -|      -|    -|
+|Multiplexer      |        -|      -|       -|      -|    -|
+|Register         |        -|      -|       -|      -|    -|
++-----------------+---------+-------+--------+-------+-----+
+|Total            |       24|      0|     906|   3102|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Available        |      280|    220|  106400|  53200|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Utilization (%)  |        8|      0|   ~0   |      5|    0|
++-----------------+---------+-------+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    +------------------------+-----------------------+---------+-------+-----+------+-----+
+    |        Instance        |         Module        | BRAM_18K| DSP48E|  FF |  LUT | URAM|
+    +------------------------+-----------------------+---------+-------+-----+------+-----+
+    |sliding_window_line_U0  |sliding_window_line_s  |       24|      0|  733|  1695|    0|
+    |sliding_window_out_U0   |sliding_window_out     |        0|      0|   48|   705|    0|
+    +------------------------+-----------------------+---------+-------+-----+------+-----+
+    |Total                   |                       |       24|      0|  781|  2400|    0|
+    +------------------------+-----------------------+---------+-------+-----+------+-----+
+
+    * DSP48E: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    +--------------------+---------+---+----+-----+------+-----+---------+
+    |        Name        | BRAM_18K| FF| LUT| URAM| Depth| Bits| Size:D*B|
+    +--------------------+---------+---+----+-----+------+-----+---------+
+    |frame_buffer_0_0_U  |        0|  5|   0|    -|     2|   16|       32|
+    |frame_buffer_0_1_U  |        0|  5|   0|    -|     2|   16|       32|
+    |frame_buffer_0_2_U  |        0|  5|   0|    -|     2|   16|       32|
+    |frame_buffer_0_3_U  |        0|  5|   0|    -|     2|   16|       32|
+    |frame_buffer_0_4_U  |        0|  5|   0|    -|     2|   16|       32|
+    |frame_buffer_1_0_U  |        0|  5|   0|    -|     2|   16|       32|
+    |frame_buffer_1_1_U  |        0|  5|   0|    -|     2|   16|       32|
+    |frame_buffer_1_2_U  |        0|  5|   0|    -|     2|   16|       32|
+    |frame_buffer_1_3_U  |        0|  5|   0|    -|     2|   16|       32|
+    |frame_buffer_1_4_U  |        0|  5|   0|    -|     2|   16|       32|
+    |frame_buffer_2_0_U  |        0|  5|   0|    -|     2|   16|       32|
+    |frame_buffer_2_1_U  |        0|  5|   0|    -|     2|   16|       32|
+    |frame_buffer_2_2_U  |        0|  5|   0|    -|     2|   16|       32|
+    |frame_buffer_2_3_U  |        0|  5|   0|    -|     2|   16|       32|
+    |frame_buffer_2_4_U  |        0|  5|   0|    -|     2|   16|       32|
+    |frame_buffer_3_0_U  |        0|  5|   0|    -|     2|   16|       32|
+    |frame_buffer_3_1_U  |        0|  5|   0|    -|     2|   16|       32|
+    |frame_buffer_3_2_U  |        0|  5|   0|    -|     2|   16|       32|
+    |frame_buffer_3_3_U  |        0|  5|   0|    -|     2|   16|       32|
+    |frame_buffer_3_4_U  |        0|  5|   0|    -|     2|   16|       32|
+    |frame_buffer_4_0_U  |        0|  5|   0|    -|     2|   16|       32|
+    |frame_buffer_4_1_U  |        0|  5|   0|    -|     2|   16|       32|
+    |frame_buffer_4_2_U  |        0|  5|   0|    -|     2|   16|       32|
+    |frame_buffer_4_3_U  |        0|  5|   0|    -|     2|   16|       32|
+    |frame_buffer_4_4_U  |        0|  5|   0|    -|     2|   16|       32|
+    +--------------------+---------+---+----+-----+------+-----+---------+
+    |Total               |        0|125|   0|    0|    50|  400|      800|
+    +--------------------+---------+---+----+-----+------+-----+---------+
+
+    * Expression: 
+    +--------------+----------+-------+---+----+------------+------------+
+    | Variable Name| Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +--------------+----------+-------+---+----+------------+------------+
+    |ap_idle       |    and   |      0|  0|   2|           1|           1|
+    +--------------+----------+-------+---+----+------------+------------+
+    |Total         |          |      0|  0|   2|           1|           1|
+    +--------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    N/A
+
+    * Register: 
+    N/A
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-------------------+-----+-----+------------+----------------+--------------+
+|     RTL Ports     | Dir | Bits|  Protocol  |  Source Object |    C Type    |
++-------------------+-----+-----+------------+----------------+--------------+
+|in_V_V_dout        |  in |   16|   ap_fifo  |     in_V_V     |    pointer   |
+|in_V_V_empty_n     |  in |    1|   ap_fifo  |     in_V_V     |    pointer   |
+|in_V_V_read        | out |    1|   ap_fifo  |     in_V_V     |    pointer   |
+|out_V_V_din        | out |   16|   ap_fifo  |     out_V_V    |    pointer   |
+|out_V_V_full_n     |  in |    1|   ap_fifo  |     out_V_V    |    pointer   |
+|out_V_V_write      | out |    1|   ap_fifo  |     out_V_V    |    pointer   |
+|out_V_V1_din       | out |   16|   ap_fifo  |    out_V_V1    |    pointer   |
+|out_V_V1_full_n    |  in |    1|   ap_fifo  |    out_V_V1    |    pointer   |
+|out_V_V1_write     | out |    1|   ap_fifo  |    out_V_V1    |    pointer   |
+|out_V_V2_din       | out |   16|   ap_fifo  |    out_V_V2    |    pointer   |
+|out_V_V2_full_n    |  in |    1|   ap_fifo  |    out_V_V2    |    pointer   |
+|out_V_V2_write     | out |    1|   ap_fifo  |    out_V_V2    |    pointer   |
+|out_V_V3_din       | out |   16|   ap_fifo  |    out_V_V3    |    pointer   |
+|out_V_V3_full_n    |  in |    1|   ap_fifo  |    out_V_V3    |    pointer   |
+|out_V_V3_write     | out |    1|   ap_fifo  |    out_V_V3    |    pointer   |
+|out_V_V4_din       | out |   16|   ap_fifo  |    out_V_V4    |    pointer   |
+|out_V_V4_full_n    |  in |    1|   ap_fifo  |    out_V_V4    |    pointer   |
+|out_V_V4_write     | out |    1|   ap_fifo  |    out_V_V4    |    pointer   |
+|out_V_V15_din      | out |   16|   ap_fifo  |    out_V_V15   |    pointer   |
+|out_V_V15_full_n   |  in |    1|   ap_fifo  |    out_V_V15   |    pointer   |
+|out_V_V15_write    | out |    1|   ap_fifo  |    out_V_V15   |    pointer   |
+|out_V_V16_din      | out |   16|   ap_fifo  |    out_V_V16   |    pointer   |
+|out_V_V16_full_n   |  in |    1|   ap_fifo  |    out_V_V16   |    pointer   |
+|out_V_V16_write    | out |    1|   ap_fifo  |    out_V_V16   |    pointer   |
+|out_V_V17_din      | out |   16|   ap_fifo  |    out_V_V17   |    pointer   |
+|out_V_V17_full_n   |  in |    1|   ap_fifo  |    out_V_V17   |    pointer   |
+|out_V_V17_write    | out |    1|   ap_fifo  |    out_V_V17   |    pointer   |
+|out_V_V18_din      | out |   16|   ap_fifo  |    out_V_V18   |    pointer   |
+|out_V_V18_full_n   |  in |    1|   ap_fifo  |    out_V_V18   |    pointer   |
+|out_V_V18_write    | out |    1|   ap_fifo  |    out_V_V18   |    pointer   |
+|out_V_V19_din      | out |   16|   ap_fifo  |    out_V_V19   |    pointer   |
+|out_V_V19_full_n   |  in |    1|   ap_fifo  |    out_V_V19   |    pointer   |
+|out_V_V19_write    | out |    1|   ap_fifo  |    out_V_V19   |    pointer   |
+|out_V_V210_din     | out |   16|   ap_fifo  |   out_V_V210   |    pointer   |
+|out_V_V210_full_n  |  in |    1|   ap_fifo  |   out_V_V210   |    pointer   |
+|out_V_V210_write   | out |    1|   ap_fifo  |   out_V_V210   |    pointer   |
+|out_V_V211_din     | out |   16|   ap_fifo  |   out_V_V211   |    pointer   |
+|out_V_V211_full_n  |  in |    1|   ap_fifo  |   out_V_V211   |    pointer   |
+|out_V_V211_write   | out |    1|   ap_fifo  |   out_V_V211   |    pointer   |
+|out_V_V212_din     | out |   16|   ap_fifo  |   out_V_V212   |    pointer   |
+|out_V_V212_full_n  |  in |    1|   ap_fifo  |   out_V_V212   |    pointer   |
+|out_V_V212_write   | out |    1|   ap_fifo  |   out_V_V212   |    pointer   |
+|out_V_V213_din     | out |   16|   ap_fifo  |   out_V_V213   |    pointer   |
+|out_V_V213_full_n  |  in |    1|   ap_fifo  |   out_V_V213   |    pointer   |
+|out_V_V213_write   | out |    1|   ap_fifo  |   out_V_V213   |    pointer   |
+|out_V_V214_din     | out |   16|   ap_fifo  |   out_V_V214   |    pointer   |
+|out_V_V214_full_n  |  in |    1|   ap_fifo  |   out_V_V214   |    pointer   |
+|out_V_V214_write   | out |    1|   ap_fifo  |   out_V_V214   |    pointer   |
+|out_V_V315_din     | out |   16|   ap_fifo  |   out_V_V315   |    pointer   |
+|out_V_V315_full_n  |  in |    1|   ap_fifo  |   out_V_V315   |    pointer   |
+|out_V_V315_write   | out |    1|   ap_fifo  |   out_V_V315   |    pointer   |
+|out_V_V316_din     | out |   16|   ap_fifo  |   out_V_V316   |    pointer   |
+|out_V_V316_full_n  |  in |    1|   ap_fifo  |   out_V_V316   |    pointer   |
+|out_V_V316_write   | out |    1|   ap_fifo  |   out_V_V316   |    pointer   |
+|out_V_V317_din     | out |   16|   ap_fifo  |   out_V_V317   |    pointer   |
+|out_V_V317_full_n  |  in |    1|   ap_fifo  |   out_V_V317   |    pointer   |
+|out_V_V317_write   | out |    1|   ap_fifo  |   out_V_V317   |    pointer   |
+|out_V_V318_din     | out |   16|   ap_fifo  |   out_V_V318   |    pointer   |
+|out_V_V318_full_n  |  in |    1|   ap_fifo  |   out_V_V318   |    pointer   |
+|out_V_V318_write   | out |    1|   ap_fifo  |   out_V_V318   |    pointer   |
+|out_V_V319_din     | out |   16|   ap_fifo  |   out_V_V319   |    pointer   |
+|out_V_V319_full_n  |  in |    1|   ap_fifo  |   out_V_V319   |    pointer   |
+|out_V_V319_write   | out |    1|   ap_fifo  |   out_V_V319   |    pointer   |
+|out_V_V420_din     | out |   16|   ap_fifo  |   out_V_V420   |    pointer   |
+|out_V_V420_full_n  |  in |    1|   ap_fifo  |   out_V_V420   |    pointer   |
+|out_V_V420_write   | out |    1|   ap_fifo  |   out_V_V420   |    pointer   |
+|out_V_V421_din     | out |   16|   ap_fifo  |   out_V_V421   |    pointer   |
+|out_V_V421_full_n  |  in |    1|   ap_fifo  |   out_V_V421   |    pointer   |
+|out_V_V421_write   | out |    1|   ap_fifo  |   out_V_V421   |    pointer   |
+|out_V_V422_din     | out |   16|   ap_fifo  |   out_V_V422   |    pointer   |
+|out_V_V422_full_n  |  in |    1|   ap_fifo  |   out_V_V422   |    pointer   |
+|out_V_V422_write   | out |    1|   ap_fifo  |   out_V_V422   |    pointer   |
+|out_V_V423_din     | out |   16|   ap_fifo  |   out_V_V423   |    pointer   |
+|out_V_V423_full_n  |  in |    1|   ap_fifo  |   out_V_V423   |    pointer   |
+|out_V_V423_write   | out |    1|   ap_fifo  |   out_V_V423   |    pointer   |
+|out_V_V424_din     | out |   16|   ap_fifo  |   out_V_V424   |    pointer   |
+|out_V_V424_full_n  |  in |    1|   ap_fifo  |   out_V_V424   |    pointer   |
+|out_V_V424_write   | out |    1|   ap_fifo  |   out_V_V424   |    pointer   |
+|ap_clk             |  in |    1| ap_ctrl_hs | sliding_window | return value |
+|ap_rst             |  in |    1| ap_ctrl_hs | sliding_window | return value |
+|ap_start           |  in |    1| ap_ctrl_hs | sliding_window | return value |
+|ap_done            | out |    1| ap_ctrl_hs | sliding_window | return value |
+|ap_ready           | out |    1| ap_ctrl_hs | sliding_window | return value |
+|ap_idle            | out |    1| ap_ctrl_hs | sliding_window | return value |
+|ap_continue        |  in |    1| ap_ctrl_hs | sliding_window | return value |
++-------------------+-----+-----+------------+----------------+--------------+
+

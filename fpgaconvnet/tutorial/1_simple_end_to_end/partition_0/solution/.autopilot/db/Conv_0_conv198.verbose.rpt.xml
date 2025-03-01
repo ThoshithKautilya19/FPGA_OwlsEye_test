@@ -1,0 +1,298 @@
+<profile>
+
+<section name = "Vivado HLS Report for 'Conv_0_conv198'" level="0">
+<item name = "Date">Fri Feb  7 09:58:46 2025
+</item>
+<item name = "Version">2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)</item>
+<item name = "Project">partition_0</item>
+<item name = "Solution">solution</item>
+<item name = "Product family">zynq</item>
+<item name = "Target device">xc7z020-clg484-1</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">5.00 ns, 4.312 ns, 0.62 ns</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="8">, min, max, min, max, min, max, Type</keys>
+<column name="">2319, 2320, 11.595 us, 11.600 us, 2319, 2320, none</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="9">Instance, Module, min, max, min, max, min, max, Type</keys>
+<column name="grp_conv364_fu_126">conv364, 2318, 2319, 11.590 us, 11.595 us, 2311, 2311, dataflow</column>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Utilization Estimates" level="0">
+<item name = "Summary"><table name="" hasTotal="1">
+<keys size="6">Name, BRAM_18K, DSP48E, FF, LUT, URAM</keys>
+<column name="DSP">-, -, -, -, -</column>
+<column name="Expression">-, -, 0, 6, -</column>
+<column name="FIFO">-, -, -, -, -</column>
+<column name="Instance">0, 25, 5197, 5378, -</column>
+<column name="Memory">-, -, -, -, -</column>
+<column name="Multiplexer">-, -, -, 258, -</column>
+<column name="Register">-, -, 6, -, -</column>
+<specialColumn name="Available">280, 220, 106400, 53200, 0</specialColumn>
+<specialColumn name="Utilization (%)">0, 11, 4, 10, 0</specialColumn>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="1">
+<keys size="7">Instance, Module, BRAM_18K, DSP48E, FF, LUT, URAM</keys>
+<column name="grp_conv364_fu_126">conv364, 0, 25, 5197, 5378, 0</column>
+</table>
+</item>
+<item name = "DSP48E"><table name="" hasTotal="0">
+<keys size="3">Instance, Module, Expression</keys>
+</table>
+</item>
+<item name = "Memory"><table name="" hasTotal="1">
+<keys size="10">Memory, Module, BRAM_18K, FF, LUT, URAM, Words, Bits, Banks, W*Bits*Banks</keys>
+</table>
+</item>
+<item name = "FIFO"><table name="" hasTotal="1">
+<keys size="8">Name, BRAM_18K, FF, LUT, URAM, Depth, Bits, Size:D*B</keys>
+</table>
+</item>
+<item name = "Expression"><table name="" hasTotal="1">
+<keys size="7">Variable Name, Operation, DSP48E, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
+<column name="ap_block_state1">or, 0, 0, 2, 1, 1</column>
+<column name="ap_sync_grp_conv364_fu_126_ap_done">or, 0, 0, 2, 1, 1</column>
+<column name="ap_sync_grp_conv364_fu_126_ap_ready">or, 0, 0, 2, 1, 1</column>
+</table>
+</item>
+<item name = "Multiplexer"><table name="" hasTotal="1">
+<keys size="5">Name, LUT, Input Size, Bits, Total Bits</keys>
+<column name="ap_NS_fsm">15, 3, 1, 3</column>
+<column name="ap_done">9, 2, 1, 2</column>
+<column name="in_V_V6160_read">9, 2, 1, 2</column>
+<column name="in_V_V6161_read">9, 2, 1, 2</column>
+<column name="in_V_V6162_read">9, 2, 1, 2</column>
+<column name="in_V_V6163_read">9, 2, 1, 2</column>
+<column name="in_V_V632164_read">9, 2, 1, 2</column>
+<column name="in_V_V632165_read">9, 2, 1, 2</column>
+<column name="in_V_V632166_read">9, 2, 1, 2</column>
+<column name="in_V_V632167_read">9, 2, 1, 2</column>
+<column name="in_V_V632_read">9, 2, 1, 2</column>
+<column name="in_V_V633168_read">9, 2, 1, 2</column>
+<column name="in_V_V633169_read">9, 2, 1, 2</column>
+<column name="in_V_V633170_read">9, 2, 1, 2</column>
+<column name="in_V_V633171_read">9, 2, 1, 2</column>
+<column name="in_V_V633_read">9, 2, 1, 2</column>
+<column name="in_V_V634172_read">9, 2, 1, 2</column>
+<column name="in_V_V634173_read">9, 2, 1, 2</column>
+<column name="in_V_V634174_read">9, 2, 1, 2</column>
+<column name="in_V_V634175_read">9, 2, 1, 2</column>
+<column name="in_V_V634_read">9, 2, 1, 2</column>
+<column name="in_V_V635176_read">9, 2, 1, 2</column>
+<column name="in_V_V635177_read">9, 2, 1, 2</column>
+<column name="in_V_V635178_read">9, 2, 1, 2</column>
+<column name="in_V_V635179_read">9, 2, 1, 2</column>
+<column name="in_V_V635_read">9, 2, 1, 2</column>
+<column name="in_V_V6_read">9, 2, 1, 2</column>
+<column name="out_V_V9_write">9, 2, 1, 2</column>
+</table>
+</item>
+<item name = "Register"><table name="" hasTotal="1">
+<keys size="5">Name, FF, LUT, Bits, Const Bits</keys>
+<column name="ap_CS_fsm">2, 0, 2, 0</column>
+<column name="ap_done_reg">1, 0, 1, 0</column>
+<column name="ap_sync_reg_grp_conv364_fu_126_ap_done">1, 0, 1, 0</column>
+<column name="ap_sync_reg_grp_conv364_fu_126_ap_ready">1, 0, 1, 0</column>
+<column name="grp_conv364_fu_126_ap_start_reg">1, 0, 1, 0</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Interface" level="0">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="6">RTL Ports, Dir, Bits, Protocol, Source Object, C Type</keys>
+<column name="ap_clk">in, 1, ap_ctrl_hs, Conv_0_conv198, return value</column>
+<column name="ap_rst">in, 1, ap_ctrl_hs, Conv_0_conv198, return value</column>
+<column name="ap_start">in, 1, ap_ctrl_hs, Conv_0_conv198, return value</column>
+<column name="ap_done">out, 1, ap_ctrl_hs, Conv_0_conv198, return value</column>
+<column name="ap_continue">in, 1, ap_ctrl_hs, Conv_0_conv198, return value</column>
+<column name="ap_idle">out, 1, ap_ctrl_hs, Conv_0_conv198, return value</column>
+<column name="ap_ready">out, 1, ap_ctrl_hs, Conv_0_conv198, return value</column>
+<column name="weights_V31575_address0">out, 2, ap_stable, weights_V31575, array</column>
+<column name="weights_V31575_ce0">out, 1, ap_stable, weights_V31575, array</column>
+<column name="weights_V31575_q0">in, 16, ap_stable, weights_V31575, array</column>
+<column name="weights_V31576_address0">out, 2, ap_stable, weights_V31576, array</column>
+<column name="weights_V31576_ce0">out, 1, ap_stable, weights_V31576, array</column>
+<column name="weights_V31576_q0">in, 16, ap_stable, weights_V31576, array</column>
+<column name="weights_V31577_address0">out, 2, ap_stable, weights_V31577, array</column>
+<column name="weights_V31577_ce0">out, 1, ap_stable, weights_V31577, array</column>
+<column name="weights_V31577_q0">in, 16, ap_stable, weights_V31577, array</column>
+<column name="weights_V31578_address0">out, 2, ap_stable, weights_V31578, array</column>
+<column name="weights_V31578_ce0">out, 1, ap_stable, weights_V31578, array</column>
+<column name="weights_V31578_q0">in, 16, ap_stable, weights_V31578, array</column>
+<column name="weights_V31579_address0">out, 2, ap_stable, weights_V31579, array</column>
+<column name="weights_V31579_ce0">out, 1, ap_stable, weights_V31579, array</column>
+<column name="weights_V31579_q0">in, 16, ap_stable, weights_V31579, array</column>
+<column name="weights_V31680_address0">out, 2, ap_stable, weights_V31680, array</column>
+<column name="weights_V31680_ce0">out, 1, ap_stable, weights_V31680, array</column>
+<column name="weights_V31680_q0">in, 16, ap_stable, weights_V31680, array</column>
+<column name="weights_V31681_address0">out, 2, ap_stable, weights_V31681, array</column>
+<column name="weights_V31681_ce0">out, 1, ap_stable, weights_V31681, array</column>
+<column name="weights_V31681_q0">in, 16, ap_stable, weights_V31681, array</column>
+<column name="weights_V31682_address0">out, 2, ap_stable, weights_V31682, array</column>
+<column name="weights_V31682_ce0">out, 1, ap_stable, weights_V31682, array</column>
+<column name="weights_V31682_q0">in, 16, ap_stable, weights_V31682, array</column>
+<column name="weights_V31683_address0">out, 2, ap_stable, weights_V31683, array</column>
+<column name="weights_V31683_ce0">out, 1, ap_stable, weights_V31683, array</column>
+<column name="weights_V31683_q0">in, 16, ap_stable, weights_V31683, array</column>
+<column name="weights_V31684_address0">out, 2, ap_stable, weights_V31684, array</column>
+<column name="weights_V31684_ce0">out, 1, ap_stable, weights_V31684, array</column>
+<column name="weights_V31684_q0">in, 16, ap_stable, weights_V31684, array</column>
+<column name="weights_V31785_address0">out, 2, ap_stable, weights_V31785, array</column>
+<column name="weights_V31785_ce0">out, 1, ap_stable, weights_V31785, array</column>
+<column name="weights_V31785_q0">in, 16, ap_stable, weights_V31785, array</column>
+<column name="weights_V31786_address0">out, 2, ap_stable, weights_V31786, array</column>
+<column name="weights_V31786_ce0">out, 1, ap_stable, weights_V31786, array</column>
+<column name="weights_V31786_q0">in, 16, ap_stable, weights_V31786, array</column>
+<column name="weights_V31787_address0">out, 2, ap_stable, weights_V31787, array</column>
+<column name="weights_V31787_ce0">out, 1, ap_stable, weights_V31787, array</column>
+<column name="weights_V31787_q0">in, 16, ap_stable, weights_V31787, array</column>
+<column name="weights_V31788_address0">out, 2, ap_stable, weights_V31788, array</column>
+<column name="weights_V31788_ce0">out, 1, ap_stable, weights_V31788, array</column>
+<column name="weights_V31788_q0">in, 16, ap_stable, weights_V31788, array</column>
+<column name="weights_V31789_address0">out, 2, ap_stable, weights_V31789, array</column>
+<column name="weights_V31789_ce0">out, 1, ap_stable, weights_V31789, array</column>
+<column name="weights_V31789_q0">in, 16, ap_stable, weights_V31789, array</column>
+<column name="weights_V31890_address0">out, 2, ap_stable, weights_V31890, array</column>
+<column name="weights_V31890_ce0">out, 1, ap_stable, weights_V31890, array</column>
+<column name="weights_V31890_q0">in, 16, ap_stable, weights_V31890, array</column>
+<column name="weights_V31891_address0">out, 2, ap_stable, weights_V31891, array</column>
+<column name="weights_V31891_ce0">out, 1, ap_stable, weights_V31891, array</column>
+<column name="weights_V31891_q0">in, 16, ap_stable, weights_V31891, array</column>
+<column name="weights_V31892_address0">out, 2, ap_stable, weights_V31892, array</column>
+<column name="weights_V31892_ce0">out, 1, ap_stable, weights_V31892, array</column>
+<column name="weights_V31892_q0">in, 16, ap_stable, weights_V31892, array</column>
+<column name="weights_V31893_address0">out, 2, ap_stable, weights_V31893, array</column>
+<column name="weights_V31893_ce0">out, 1, ap_stable, weights_V31893, array</column>
+<column name="weights_V31893_q0">in, 16, ap_stable, weights_V31893, array</column>
+<column name="weights_V31894_address0">out, 2, ap_stable, weights_V31894, array</column>
+<column name="weights_V31894_ce0">out, 1, ap_stable, weights_V31894, array</column>
+<column name="weights_V31894_q0">in, 16, ap_stable, weights_V31894, array</column>
+<column name="weights_V31995_address0">out, 2, ap_stable, weights_V31995, array</column>
+<column name="weights_V31995_ce0">out, 1, ap_stable, weights_V31995, array</column>
+<column name="weights_V31995_q0">in, 16, ap_stable, weights_V31995, array</column>
+<column name="weights_V31996_address0">out, 2, ap_stable, weights_V31996, array</column>
+<column name="weights_V31996_ce0">out, 1, ap_stable, weights_V31996, array</column>
+<column name="weights_V31996_q0">in, 16, ap_stable, weights_V31996, array</column>
+<column name="weights_V31997_address0">out, 2, ap_stable, weights_V31997, array</column>
+<column name="weights_V31997_ce0">out, 1, ap_stable, weights_V31997, array</column>
+<column name="weights_V31997_q0">in, 16, ap_stable, weights_V31997, array</column>
+<column name="weights_V31998_address0">out, 2, ap_stable, weights_V31998, array</column>
+<column name="weights_V31998_ce0">out, 1, ap_stable, weights_V31998, array</column>
+<column name="weights_V31998_q0">in, 16, ap_stable, weights_V31998, array</column>
+<column name="weights_V31999_address0">out, 2, ap_stable, weights_V31999, array</column>
+<column name="weights_V31999_ce0">out, 1, ap_stable, weights_V31999, array</column>
+<column name="weights_V31999_q0">in, 16, ap_stable, weights_V31999, array</column>
+<column name="in_V_V6_dout">in, 16, ap_fifo, in_V_V6, pointer</column>
+<column name="in_V_V6_empty_n">in, 1, ap_fifo, in_V_V6, pointer</column>
+<column name="in_V_V6_read">out, 1, ap_fifo, in_V_V6, pointer</column>
+<column name="in_V_V6160_dout">in, 16, ap_fifo, in_V_V6160, pointer</column>
+<column name="in_V_V6160_empty_n">in, 1, ap_fifo, in_V_V6160, pointer</column>
+<column name="in_V_V6160_read">out, 1, ap_fifo, in_V_V6160, pointer</column>
+<column name="in_V_V6161_dout">in, 16, ap_fifo, in_V_V6161, pointer</column>
+<column name="in_V_V6161_empty_n">in, 1, ap_fifo, in_V_V6161, pointer</column>
+<column name="in_V_V6161_read">out, 1, ap_fifo, in_V_V6161, pointer</column>
+<column name="in_V_V6162_dout">in, 16, ap_fifo, in_V_V6162, pointer</column>
+<column name="in_V_V6162_empty_n">in, 1, ap_fifo, in_V_V6162, pointer</column>
+<column name="in_V_V6162_read">out, 1, ap_fifo, in_V_V6162, pointer</column>
+<column name="in_V_V6163_dout">in, 16, ap_fifo, in_V_V6163, pointer</column>
+<column name="in_V_V6163_empty_n">in, 1, ap_fifo, in_V_V6163, pointer</column>
+<column name="in_V_V6163_read">out, 1, ap_fifo, in_V_V6163, pointer</column>
+<column name="in_V_V632_dout">in, 16, ap_fifo, in_V_V632, pointer</column>
+<column name="in_V_V632_empty_n">in, 1, ap_fifo, in_V_V632, pointer</column>
+<column name="in_V_V632_read">out, 1, ap_fifo, in_V_V632, pointer</column>
+<column name="in_V_V632164_dout">in, 16, ap_fifo, in_V_V632164, pointer</column>
+<column name="in_V_V632164_empty_n">in, 1, ap_fifo, in_V_V632164, pointer</column>
+<column name="in_V_V632164_read">out, 1, ap_fifo, in_V_V632164, pointer</column>
+<column name="in_V_V632165_dout">in, 16, ap_fifo, in_V_V632165, pointer</column>
+<column name="in_V_V632165_empty_n">in, 1, ap_fifo, in_V_V632165, pointer</column>
+<column name="in_V_V632165_read">out, 1, ap_fifo, in_V_V632165, pointer</column>
+<column name="in_V_V632166_dout">in, 16, ap_fifo, in_V_V632166, pointer</column>
+<column name="in_V_V632166_empty_n">in, 1, ap_fifo, in_V_V632166, pointer</column>
+<column name="in_V_V632166_read">out, 1, ap_fifo, in_V_V632166, pointer</column>
+<column name="in_V_V632167_dout">in, 16, ap_fifo, in_V_V632167, pointer</column>
+<column name="in_V_V632167_empty_n">in, 1, ap_fifo, in_V_V632167, pointer</column>
+<column name="in_V_V632167_read">out, 1, ap_fifo, in_V_V632167, pointer</column>
+<column name="in_V_V633_dout">in, 16, ap_fifo, in_V_V633, pointer</column>
+<column name="in_V_V633_empty_n">in, 1, ap_fifo, in_V_V633, pointer</column>
+<column name="in_V_V633_read">out, 1, ap_fifo, in_V_V633, pointer</column>
+<column name="in_V_V633168_dout">in, 16, ap_fifo, in_V_V633168, pointer</column>
+<column name="in_V_V633168_empty_n">in, 1, ap_fifo, in_V_V633168, pointer</column>
+<column name="in_V_V633168_read">out, 1, ap_fifo, in_V_V633168, pointer</column>
+<column name="in_V_V633169_dout">in, 16, ap_fifo, in_V_V633169, pointer</column>
+<column name="in_V_V633169_empty_n">in, 1, ap_fifo, in_V_V633169, pointer</column>
+<column name="in_V_V633169_read">out, 1, ap_fifo, in_V_V633169, pointer</column>
+<column name="in_V_V633170_dout">in, 16, ap_fifo, in_V_V633170, pointer</column>
+<column name="in_V_V633170_empty_n">in, 1, ap_fifo, in_V_V633170, pointer</column>
+<column name="in_V_V633170_read">out, 1, ap_fifo, in_V_V633170, pointer</column>
+<column name="in_V_V633171_dout">in, 16, ap_fifo, in_V_V633171, pointer</column>
+<column name="in_V_V633171_empty_n">in, 1, ap_fifo, in_V_V633171, pointer</column>
+<column name="in_V_V633171_read">out, 1, ap_fifo, in_V_V633171, pointer</column>
+<column name="in_V_V634_dout">in, 16, ap_fifo, in_V_V634, pointer</column>
+<column name="in_V_V634_empty_n">in, 1, ap_fifo, in_V_V634, pointer</column>
+<column name="in_V_V634_read">out, 1, ap_fifo, in_V_V634, pointer</column>
+<column name="in_V_V634172_dout">in, 16, ap_fifo, in_V_V634172, pointer</column>
+<column name="in_V_V634172_empty_n">in, 1, ap_fifo, in_V_V634172, pointer</column>
+<column name="in_V_V634172_read">out, 1, ap_fifo, in_V_V634172, pointer</column>
+<column name="in_V_V634173_dout">in, 16, ap_fifo, in_V_V634173, pointer</column>
+<column name="in_V_V634173_empty_n">in, 1, ap_fifo, in_V_V634173, pointer</column>
+<column name="in_V_V634173_read">out, 1, ap_fifo, in_V_V634173, pointer</column>
+<column name="in_V_V634174_dout">in, 16, ap_fifo, in_V_V634174, pointer</column>
+<column name="in_V_V634174_empty_n">in, 1, ap_fifo, in_V_V634174, pointer</column>
+<column name="in_V_V634174_read">out, 1, ap_fifo, in_V_V634174, pointer</column>
+<column name="in_V_V634175_dout">in, 16, ap_fifo, in_V_V634175, pointer</column>
+<column name="in_V_V634175_empty_n">in, 1, ap_fifo, in_V_V634175, pointer</column>
+<column name="in_V_V634175_read">out, 1, ap_fifo, in_V_V634175, pointer</column>
+<column name="in_V_V635_dout">in, 16, ap_fifo, in_V_V635, pointer</column>
+<column name="in_V_V635_empty_n">in, 1, ap_fifo, in_V_V635, pointer</column>
+<column name="in_V_V635_read">out, 1, ap_fifo, in_V_V635, pointer</column>
+<column name="in_V_V635176_dout">in, 16, ap_fifo, in_V_V635176, pointer</column>
+<column name="in_V_V635176_empty_n">in, 1, ap_fifo, in_V_V635176, pointer</column>
+<column name="in_V_V635176_read">out, 1, ap_fifo, in_V_V635176, pointer</column>
+<column name="in_V_V635177_dout">in, 16, ap_fifo, in_V_V635177, pointer</column>
+<column name="in_V_V635177_empty_n">in, 1, ap_fifo, in_V_V635177, pointer</column>
+<column name="in_V_V635177_read">out, 1, ap_fifo, in_V_V635177, pointer</column>
+<column name="in_V_V635178_dout">in, 16, ap_fifo, in_V_V635178, pointer</column>
+<column name="in_V_V635178_empty_n">in, 1, ap_fifo, in_V_V635178, pointer</column>
+<column name="in_V_V635178_read">out, 1, ap_fifo, in_V_V635178, pointer</column>
+<column name="in_V_V635179_dout">in, 16, ap_fifo, in_V_V635179, pointer</column>
+<column name="in_V_V635179_empty_n">in, 1, ap_fifo, in_V_V635179, pointer</column>
+<column name="in_V_V635179_read">out, 1, ap_fifo, in_V_V635179, pointer</column>
+<column name="out_V_V9_din">out, 30, ap_fifo, out_V_V9, pointer</column>
+<column name="out_V_V9_full_n">in, 1, ap_fifo, out_V_V9, pointer</column>
+<column name="out_V_V9_write">out, 1, ap_fifo, out_V_V9, pointer</column>
+</table>
+</item>
+</section>
+</profile>

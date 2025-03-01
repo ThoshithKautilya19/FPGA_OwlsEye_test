@@ -1,0 +1,150 @@
+{
+  "name": "from_onnx",
+  "date_created": "2025-02-15 06:51:14.468756",
+  "platform": {
+    "part": "xc7z020clg484-1",
+    "board": "xilinx.com:zc702:part0:1.4",
+    "resources": {
+      "DSP": 220,
+      "BRAM": 280,
+      "FF": 106400,
+      "LUT": 53200
+    },
+    "board_freq": 200,
+    "mem_bw": 34.112,
+    "reconf_time": 0.08255,
+    "port_width": 64
+  },
+  "total_operations (OPs)": 479232.0,
+  "total_operations (MACs)": 239616.0,
+  "network": {
+    "multi_fpga": false,
+    "performance": {
+      "latency (s)": 1.3415e-05,
+      "throughput (FPS)": 74543.42154304883,
+      "performance (OP/s)": 35723592992.91837,
+      "performance (MAC/s)": 17861796496.459187,
+      "cycles": 2683,
+      "delays between partitions (s)": 0.08255
+    },
+    "num_partitions": 1,
+    "avg_resource_usage": {
+      "LUT": 14794.0,
+      "FF": 10916.0,
+      "BRAM": 45.0,
+      "DSP": 100.0
+    },
+    "avg_resource_usage_percentage": {
+      "LUT": 27.80827067669173,
+      "FF": 10.259398496240602,
+      "BRAM": 16.071428571428573,
+      "DSP": 45.45454545454545
+    },
+    "sum_resource_usage": {
+      "LUT": 14794,
+      "FF": 10916,
+      "BRAM": 45,
+      "DSP": 100
+    }
+  },
+  "partitions": {
+    "0": {
+      "partition_index": 0,
+      "batch_size": 1,
+      "num_layers": 4,
+      "latency": 1.3415e-05,
+      "cycles": 2683,
+      "slowdown": 1.0,
+      "weights_reloading_factor": 1,
+      "weights_reloading_layer": "Conv_0",
+      "resource_usage": {
+        "LUT": 14794,
+        "FF": 10916,
+        "BRAM": 45,
+        "DSP": 100
+      },
+      "resource_usage_percentage": {
+        "LUT": 27.80827067669173,
+        "FF": 10.259398496240602,
+        "BRAM": 16.071428571428573,
+        "DSP": 45.45454545454545
+      },
+      "bandwidth": {
+        "in (Gbps)": 1.088888888888889,
+        "out (Gbps)": 12.8,
+        "weight (Gbps)": 0.0
+      },
+      "layers": {
+        "Conv_0": {
+          "type": "LAYER_TYPE.Convolution",
+          "interval": 2304,
+          "cycle": 2304,
+          "resource_usage": {
+            "LUT": 4509,
+            "FF": 6518,
+            "BRAM": 45,
+            "DSP": 100,
+            "BW(weight)": 0.0
+          },
+          "resource_usage_percentage": {
+            "LUT": 8.475563909774436,
+            "FF": 6.125939849624061,
+            "BRAM": 16.071428571428573,
+            "DSP": 45.45454545454545
+          }
+        },
+        "Conv_0_squeeze_Relu_1": {
+          "type": "LAYER_TYPE.Squeeze",
+          "interval": 2304,
+          "cycle": 2304,
+          "resource_usage": {
+            "LUT": 3917,
+            "FF": 2231,
+            "BRAM": 0,
+            "DSP": 0
+          },
+          "resource_usage_percentage": {
+            "LUT": 7.362781954887218,
+            "FF": 2.0968045112781954,
+            "BRAM": 0.0,
+            "DSP": 0.0
+          }
+        },
+        "Relu_1": {
+          "type": "LAYER_TYPE.ReLU",
+          "interval": 576,
+          "cycle": 576,
+          "resource_usage": {
+            "LUT": 256,
+            "FF": 560,
+            "BRAM": 0,
+            "DSP": 0
+          },
+          "resource_usage_percentage": {
+            "LUT": 0.48120300751879697,
+            "FF": 0.5263157894736842,
+            "BRAM": 0.0,
+            "DSP": 0.0
+          }
+        },
+        "squeeze_Relu_1": {
+          "type": "LAYER_TYPE.Squeeze",
+          "interval": 2304,
+          "cycle": 2304,
+          "resource_usage": {
+            "LUT": 6112,
+            "FF": 1607,
+            "BRAM": 0,
+            "DSP": 0
+          },
+          "resource_usage_percentage": {
+            "LUT": 11.488721804511279,
+            "FF": 1.5103383458646618,
+            "BRAM": 0.0,
+            "DSP": 0.0
+          }
+        }
+      }
+    }
+  }
+}

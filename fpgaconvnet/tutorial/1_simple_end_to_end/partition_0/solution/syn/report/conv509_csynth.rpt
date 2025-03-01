@@ -1,0 +1,534 @@
+
+
+================================================================
+== Vivado HLS Report for 'conv509'
+================================================================
+* Date:           Sat Feb 15 07:50:24 2025
+
+* Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
+* Project:        partition_0
+* Solution:       solution
+* Product family: zynq
+* Target device:  xc7z020-clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 5.00 ns | 6.562 ns |   0.62 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+----------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline |
+    |   min   |   max   |    min   |    max   | min | max |   Type   |
+    +---------+---------+----------+----------+-----+-----+----------+
+    |        ?|        ?|         ?|         ?|    ?|    ?| dataflow |
+    +---------+---------+----------+----------+-----+-----+----------+
+
+    + Detail: 
+        * Instance: 
+        +-----------------+--------------+---------+---------+-----------+-----------+------+------+---------------------------------------------+
+        |                 |              |  Latency (cycles) |   Latency (absolute)  |   Interval  |                   Pipeline                  |
+        |     Instance    |    Module    |   min   |   max   |    min    |    max    |  min |  max |                     Type                    |
+        +-----------------+--------------+---------+---------+-----------+-----------+------+------+---------------------------------------------+
+        |conv_mul_U1_1    |conv_mul      |        ?|        ?|          ?|          ?|     ?|     ?|                     none                    |
+        |conv_acc_U1_1    |conv_acc      |     2309|     2310| 15.152 us | 15.158 us |  2304|  2304| loop rewind(delay=0 initiation interval(s)) |
+        |conv_intr510_U0  |conv_intr510  |     2305|     2306| 15.125 us | 15.132 us |  2304|  2304| loop rewind(delay=0 initiation interval(s)) |
+        +-----------------+--------------+---------+---------+-----------+-----------+------+------+---------------------------------------------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+---------+---------+-----+
+|       Name      | BRAM_18K| DSP48E|    FF   |   LUT   | URAM|
++-----------------+---------+-------+---------+---------+-----+
+|DSP              |        -|      -|        -|        -|    -|
+|Expression       |        -|      -|        0|        2|    -|
+|FIFO             |        0|      -|      375|     2450|    -|
+|Instance         |    10656|  15240|  7481711|  2838485|    -|
+|Memory           |        -|      -|        -|        -|    -|
+|Multiplexer      |        -|      -|        -|        -|    -|
+|Register         |        -|      -|        -|        -|    -|
++-----------------+---------+-------+---------+---------+-----+
+|Total            |    10656|  15240|  7482086|  2840937|    0|
++-----------------+---------+-------+---------+---------+-----+
+|Available        |      280|    220|   106400|    53200|    0|
++-----------------+---------+-------+---------+---------+-----+
+|Utilization (%)  |     3805|   6927|     7032|     5340|    0|
++-----------------+---------+-------+---------+---------+-----+
+
++ Detail: 
+    * Instance: 
+    +-----------------+--------------+---------+-------+---------+---------+-----+
+    |     Instance    |    Module    | BRAM_18K| DSP48E|    FF   |   LUT   | URAM|
+    +-----------------+--------------+---------+-------+---------+---------+-----+
+    |conv_acc_U1_1    |conv_acc      |        0|      0|     1738|      895|    0|
+    |conv_intr510_U0  |conv_intr510  |        0|      0|     1446|     1221|    0|
+    |conv_mul_U1_1    |conv_mul      |    10656|  15240|  7478527|  2836369|    0|
+    +-----------------+--------------+---------+-------+---------+---------+-----+
+    |Total            |              |    10656|  15240|  7481711|  2838485|    0|
+    +-----------------+--------------+---------+-------+---------+---------+-----+
+
+    * DSP48E: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    +--------------------+---------+---+----+-----+------+-----+---------+
+    |        Name        | BRAM_18K| FF| LUT| URAM| Depth| Bits| Size:D*B|
+    +--------------------+---------+---+----+-----+------+-----+---------+
+    |acc_stream_0_U      |        0|  5|   0|    -|     2|   30|       60|
+    |acc_stream_10_U     |        0|  5|   0|    -|     2|   30|       60|
+    |acc_stream_11_U     |        0|  5|   0|    -|     2|   30|       60|
+    |acc_stream_12_U     |        0|  5|   0|    -|     2|   30|       60|
+    |acc_stream_13_U     |        0|  5|   0|    -|     2|   30|       60|
+    |acc_stream_14_U     |        0|  5|   0|    -|     2|   30|       60|
+    |acc_stream_15_U     |        0|  5|   0|    -|     2|   30|       60|
+    |acc_stream_16_U     |        0|  5|   0|    -|     2|   30|       60|
+    |acc_stream_17_U     |        0|  5|   0|    -|     2|   30|       60|
+    |acc_stream_18_U     |        0|  5|   0|    -|     2|   30|       60|
+    |acc_stream_19_U     |        0|  5|   0|    -|     2|   30|       60|
+    |acc_stream_1_U      |        0|  5|   0|    -|     2|   30|       60|
+    |acc_stream_20_U     |        0|  5|   0|    -|     2|   30|       60|
+    |acc_stream_21_U     |        0|  5|   0|    -|     2|   30|       60|
+    |acc_stream_22_U     |        0|  5|   0|    -|     2|   30|       60|
+    |acc_stream_23_U     |        0|  5|   0|    -|     2|   30|       60|
+    |acc_stream_24_U     |        0|  5|   0|    -|     2|   30|       60|
+    |acc_stream_2_U      |        0|  5|   0|    -|     2|   30|       60|
+    |acc_stream_3_U      |        0|  5|   0|    -|     2|   30|       60|
+    |acc_stream_4_U      |        0|  5|   0|    -|     2|   30|       60|
+    |acc_stream_5_U      |        0|  5|   0|    -|     2|   30|       60|
+    |acc_stream_6_U      |        0|  5|   0|    -|     2|   30|       60|
+    |acc_stream_7_U      |        0|  5|   0|    -|     2|   30|       60|
+    |acc_stream_8_U      |        0|  5|   0|    -|     2|   30|       60|
+    |acc_stream_9_U      |        0|  5|   0|    -|     2|   30|       60|
+    |weight_stream_0_U   |        0|  5|   0|    -|     2|   16|       32|
+    |weight_stream_10_U  |        0|  5|   0|    -|     2|   16|       32|
+    |weight_stream_11_U  |        0|  5|   0|    -|     2|   16|       32|
+    |weight_stream_12_U  |        0|  5|   0|    -|     2|   16|       32|
+    |weight_stream_13_U  |        0|  5|   0|    -|     2|   16|       32|
+    |weight_stream_14_U  |        0|  5|   0|    -|     2|   16|       32|
+    |weight_stream_15_U  |        0|  5|   0|    -|     2|   16|       32|
+    |weight_stream_16_U  |        0|  5|   0|    -|     2|   16|       32|
+    |weight_stream_17_U  |        0|  5|   0|    -|     2|   16|       32|
+    |weight_stream_18_U  |        0|  5|   0|    -|     2|   16|       32|
+    |weight_stream_19_U  |        0|  5|   0|    -|     2|   16|       32|
+    |weight_stream_1_U   |        0|  5|   0|    -|     2|   16|       32|
+    |weight_stream_20_U  |        0|  5|   0|    -|     2|   16|       32|
+    |weight_stream_21_U  |        0|  5|   0|    -|     2|   16|       32|
+    |weight_stream_22_U  |        0|  5|   0|    -|     2|   16|       32|
+    |weight_stream_23_U  |        0|  5|   0|    -|     2|   16|       32|
+    |weight_stream_24_U  |        0|  5|   0|    -|     2|   16|       32|
+    |weight_stream_2_U   |        0|  5|   0|    -|     2|   16|       32|
+    |weight_stream_3_U   |        0|  5|   0|    -|     2|   16|       32|
+    |weight_stream_4_U   |        0|  5|   0|    -|     2|   16|       32|
+    |weight_stream_5_U   |        0|  5|   0|    -|     2|   16|       32|
+    |weight_stream_6_U   |        0|  5|   0|    -|     2|   16|       32|
+    |weight_stream_7_U   |        0|  5|   0|    -|     2|   16|       32|
+    |weight_stream_8_U   |        0|  5|   0|    -|     2|   16|       32|
+    |weight_stream_9_U   |        0|  5|   0|    -|     2|   16|       32|
+    |window_stream_0_U   |        0|  5|   0|    -|     2|   16|       32|
+    |window_stream_10_U  |        0|  5|   0|    -|     2|   16|       32|
+    |window_stream_11_U  |        0|  5|   0|    -|     2|   16|       32|
+    |window_stream_12_U  |        0|  5|   0|    -|     2|   16|       32|
+    |window_stream_13_U  |        0|  5|   0|    -|     2|   16|       32|
+    |window_stream_14_U  |        0|  5|   0|    -|     2|   16|       32|
+    |window_stream_15_U  |        0|  5|   0|    -|     2|   16|       32|
+    |window_stream_16_U  |        0|  5|   0|    -|     2|   16|       32|
+    |window_stream_17_U  |        0|  5|   0|    -|     2|   16|       32|
+    |window_stream_18_U  |        0|  5|   0|    -|     2|   16|       32|
+    |window_stream_19_U  |        0|  5|   0|    -|     2|   16|       32|
+    |window_stream_1_U   |        0|  5|   0|    -|     2|   16|       32|
+    |window_stream_20_U  |        0|  5|   0|    -|     2|   16|       32|
+    |window_stream_21_U  |        0|  5|   0|    -|     2|   16|       32|
+    |window_stream_22_U  |        0|  5|   0|    -|     2|   16|       32|
+    |window_stream_23_U  |        0|  5|   0|    -|     2|   16|       32|
+    |window_stream_24_U  |        0|  5|   0|    -|     2|   16|       32|
+    |window_stream_2_U   |        0|  5|   0|    -|     2|   16|       32|
+    |window_stream_3_U   |        0|  5|   0|    -|     2|   16|       32|
+    |window_stream_4_U   |        0|  5|   0|    -|     2|   16|       32|
+    |window_stream_5_U   |        0|  5|   0|    -|     2|   16|       32|
+    |window_stream_6_U   |        0|  5|   0|    -|     2|   16|       32|
+    |window_stream_7_U   |        0|  5|   0|    -|     2|   16|       32|
+    |window_stream_8_U   |        0|  5|   0|    -|     2|   16|       32|
+    |window_stream_9_U   |        0|  5|   0|    -|     2|   16|       32|
+    +--------------------+---------+---+----+-----+------+-----+---------+
+    |Total               |        0|375|   0|    0|   150| 1550|     3100|
+    +--------------------+---------+---+----+-----+------+-----+---------+
+
+    * Expression: 
+    +--------------+----------+-------+---+----+------------+------------+
+    | Variable Name| Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +--------------+----------+-------+---+----+------------+------------+
+    |ap_idle       |    and   |      0|  0|   2|           1|           1|
+    +--------------+----------+-------+---+----+------------+------------+
+    |Total         |          |      0|  0|   2|           1|           1|
+    +--------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    N/A
+
+    * Register: 
+    N/A
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++------------------------+-----+-----+------------+---------------+--------------+
+|        RTL Ports       | Dir | Bits|  Protocol  | Source Object |    C Type    |
++------------------------+-----+-----+------------+---------------+--------------+
+|in_V_V_dout             |  in |   16|   ap_fifo  |     in_V_V    |    pointer   |
+|in_V_V_empty_n          |  in |    1|   ap_fifo  |     in_V_V    |    pointer   |
+|in_V_V_read             | out |    1|   ap_fifo  |     in_V_V    |    pointer   |
+|in_V_V1_dout            |  in |   16|   ap_fifo  |    in_V_V1    |    pointer   |
+|in_V_V1_empty_n         |  in |    1|   ap_fifo  |    in_V_V1    |    pointer   |
+|in_V_V1_read            | out |    1|   ap_fifo  |    in_V_V1    |    pointer   |
+|in_V_V2_dout            |  in |   16|   ap_fifo  |    in_V_V2    |    pointer   |
+|in_V_V2_empty_n         |  in |    1|   ap_fifo  |    in_V_V2    |    pointer   |
+|in_V_V2_read            | out |    1|   ap_fifo  |    in_V_V2    |    pointer   |
+|in_V_V3_dout            |  in |   16|   ap_fifo  |    in_V_V3    |    pointer   |
+|in_V_V3_empty_n         |  in |    1|   ap_fifo  |    in_V_V3    |    pointer   |
+|in_V_V3_read            | out |    1|   ap_fifo  |    in_V_V3    |    pointer   |
+|in_V_V4_dout            |  in |   16|   ap_fifo  |    in_V_V4    |    pointer   |
+|in_V_V4_empty_n         |  in |    1|   ap_fifo  |    in_V_V4    |    pointer   |
+|in_V_V4_read            | out |    1|   ap_fifo  |    in_V_V4    |    pointer   |
+|in_V_V15_dout           |  in |   16|   ap_fifo  |    in_V_V15   |    pointer   |
+|in_V_V15_empty_n        |  in |    1|   ap_fifo  |    in_V_V15   |    pointer   |
+|in_V_V15_read           | out |    1|   ap_fifo  |    in_V_V15   |    pointer   |
+|in_V_V16_dout           |  in |   16|   ap_fifo  |    in_V_V16   |    pointer   |
+|in_V_V16_empty_n        |  in |    1|   ap_fifo  |    in_V_V16   |    pointer   |
+|in_V_V16_read           | out |    1|   ap_fifo  |    in_V_V16   |    pointer   |
+|in_V_V17_dout           |  in |   16|   ap_fifo  |    in_V_V17   |    pointer   |
+|in_V_V17_empty_n        |  in |    1|   ap_fifo  |    in_V_V17   |    pointer   |
+|in_V_V17_read           | out |    1|   ap_fifo  |    in_V_V17   |    pointer   |
+|in_V_V18_dout           |  in |   16|   ap_fifo  |    in_V_V18   |    pointer   |
+|in_V_V18_empty_n        |  in |    1|   ap_fifo  |    in_V_V18   |    pointer   |
+|in_V_V18_read           | out |    1|   ap_fifo  |    in_V_V18   |    pointer   |
+|in_V_V19_dout           |  in |   16|   ap_fifo  |    in_V_V19   |    pointer   |
+|in_V_V19_empty_n        |  in |    1|   ap_fifo  |    in_V_V19   |    pointer   |
+|in_V_V19_read           | out |    1|   ap_fifo  |    in_V_V19   |    pointer   |
+|in_V_V210_dout          |  in |   16|   ap_fifo  |   in_V_V210   |    pointer   |
+|in_V_V210_empty_n       |  in |    1|   ap_fifo  |   in_V_V210   |    pointer   |
+|in_V_V210_read          | out |    1|   ap_fifo  |   in_V_V210   |    pointer   |
+|in_V_V211_dout          |  in |   16|   ap_fifo  |   in_V_V211   |    pointer   |
+|in_V_V211_empty_n       |  in |    1|   ap_fifo  |   in_V_V211   |    pointer   |
+|in_V_V211_read          | out |    1|   ap_fifo  |   in_V_V211   |    pointer   |
+|in_V_V212_dout          |  in |   16|   ap_fifo  |   in_V_V212   |    pointer   |
+|in_V_V212_empty_n       |  in |    1|   ap_fifo  |   in_V_V212   |    pointer   |
+|in_V_V212_read          | out |    1|   ap_fifo  |   in_V_V212   |    pointer   |
+|in_V_V213_dout          |  in |   16|   ap_fifo  |   in_V_V213   |    pointer   |
+|in_V_V213_empty_n       |  in |    1|   ap_fifo  |   in_V_V213   |    pointer   |
+|in_V_V213_read          | out |    1|   ap_fifo  |   in_V_V213   |    pointer   |
+|in_V_V214_dout          |  in |   16|   ap_fifo  |   in_V_V214   |    pointer   |
+|in_V_V214_empty_n       |  in |    1|   ap_fifo  |   in_V_V214   |    pointer   |
+|in_V_V214_read          | out |    1|   ap_fifo  |   in_V_V214   |    pointer   |
+|in_V_V315_dout          |  in |   16|   ap_fifo  |   in_V_V315   |    pointer   |
+|in_V_V315_empty_n       |  in |    1|   ap_fifo  |   in_V_V315   |    pointer   |
+|in_V_V315_read          | out |    1|   ap_fifo  |   in_V_V315   |    pointer   |
+|in_V_V316_dout          |  in |   16|   ap_fifo  |   in_V_V316   |    pointer   |
+|in_V_V316_empty_n       |  in |    1|   ap_fifo  |   in_V_V316   |    pointer   |
+|in_V_V316_read          | out |    1|   ap_fifo  |   in_V_V316   |    pointer   |
+|in_V_V317_dout          |  in |   16|   ap_fifo  |   in_V_V317   |    pointer   |
+|in_V_V317_empty_n       |  in |    1|   ap_fifo  |   in_V_V317   |    pointer   |
+|in_V_V317_read          | out |    1|   ap_fifo  |   in_V_V317   |    pointer   |
+|in_V_V318_dout          |  in |   16|   ap_fifo  |   in_V_V318   |    pointer   |
+|in_V_V318_empty_n       |  in |    1|   ap_fifo  |   in_V_V318   |    pointer   |
+|in_V_V318_read          | out |    1|   ap_fifo  |   in_V_V318   |    pointer   |
+|in_V_V319_dout          |  in |   16|   ap_fifo  |   in_V_V319   |    pointer   |
+|in_V_V319_empty_n       |  in |    1|   ap_fifo  |   in_V_V319   |    pointer   |
+|in_V_V319_read          | out |    1|   ap_fifo  |   in_V_V319   |    pointer   |
+|in_V_V420_dout          |  in |   16|   ap_fifo  |   in_V_V420   |    pointer   |
+|in_V_V420_empty_n       |  in |    1|   ap_fifo  |   in_V_V420   |    pointer   |
+|in_V_V420_read          | out |    1|   ap_fifo  |   in_V_V420   |    pointer   |
+|in_V_V421_dout          |  in |   16|   ap_fifo  |   in_V_V421   |    pointer   |
+|in_V_V421_empty_n       |  in |    1|   ap_fifo  |   in_V_V421   |    pointer   |
+|in_V_V421_read          | out |    1|   ap_fifo  |   in_V_V421   |    pointer   |
+|in_V_V422_dout          |  in |   16|   ap_fifo  |   in_V_V422   |    pointer   |
+|in_V_V422_empty_n       |  in |    1|   ap_fifo  |   in_V_V422   |    pointer   |
+|in_V_V422_read          | out |    1|   ap_fifo  |   in_V_V422   |    pointer   |
+|in_V_V423_dout          |  in |   16|   ap_fifo  |   in_V_V423   |    pointer   |
+|in_V_V423_empty_n       |  in |    1|   ap_fifo  |   in_V_V423   |    pointer   |
+|in_V_V423_read          | out |    1|   ap_fifo  |   in_V_V423   |    pointer   |
+|in_V_V424_dout          |  in |   16|   ap_fifo  |   in_V_V424   |    pointer   |
+|in_V_V424_empty_n       |  in |    1|   ap_fifo  |   in_V_V424   |    pointer   |
+|in_V_V424_read          | out |    1|   ap_fifo  |   in_V_V424   |    pointer   |
+|weights_0_0_V_address0  | out |    2|  ap_stable | weights_0_0_V |     array    |
+|weights_0_0_V_ce0       | out |    1|  ap_stable | weights_0_0_V |     array    |
+|weights_0_0_V_d0        | out |   16|  ap_stable | weights_0_0_V |     array    |
+|weights_0_0_V_q0        |  in |   16|  ap_stable | weights_0_0_V |     array    |
+|weights_0_0_V_we0       | out |    1|  ap_stable | weights_0_0_V |     array    |
+|weights_0_0_V_address1  | out |    2|  ap_stable | weights_0_0_V |     array    |
+|weights_0_0_V_ce1       | out |    1|  ap_stable | weights_0_0_V |     array    |
+|weights_0_0_V_d1        | out |   16|  ap_stable | weights_0_0_V |     array    |
+|weights_0_0_V_q1        |  in |   16|  ap_stable | weights_0_0_V |     array    |
+|weights_0_0_V_we1       | out |    1|  ap_stable | weights_0_0_V |     array    |
+|weights_0_1_V_address0  | out |    2|  ap_stable | weights_0_1_V |     array    |
+|weights_0_1_V_ce0       | out |    1|  ap_stable | weights_0_1_V |     array    |
+|weights_0_1_V_d0        | out |   16|  ap_stable | weights_0_1_V |     array    |
+|weights_0_1_V_q0        |  in |   16|  ap_stable | weights_0_1_V |     array    |
+|weights_0_1_V_we0       | out |    1|  ap_stable | weights_0_1_V |     array    |
+|weights_0_1_V_address1  | out |    2|  ap_stable | weights_0_1_V |     array    |
+|weights_0_1_V_ce1       | out |    1|  ap_stable | weights_0_1_V |     array    |
+|weights_0_1_V_d1        | out |   16|  ap_stable | weights_0_1_V |     array    |
+|weights_0_1_V_q1        |  in |   16|  ap_stable | weights_0_1_V |     array    |
+|weights_0_1_V_we1       | out |    1|  ap_stable | weights_0_1_V |     array    |
+|weights_0_2_V_address0  | out |    2|  ap_stable | weights_0_2_V |     array    |
+|weights_0_2_V_ce0       | out |    1|  ap_stable | weights_0_2_V |     array    |
+|weights_0_2_V_d0        | out |   16|  ap_stable | weights_0_2_V |     array    |
+|weights_0_2_V_q0        |  in |   16|  ap_stable | weights_0_2_V |     array    |
+|weights_0_2_V_we0       | out |    1|  ap_stable | weights_0_2_V |     array    |
+|weights_0_2_V_address1  | out |    2|  ap_stable | weights_0_2_V |     array    |
+|weights_0_2_V_ce1       | out |    1|  ap_stable | weights_0_2_V |     array    |
+|weights_0_2_V_d1        | out |   16|  ap_stable | weights_0_2_V |     array    |
+|weights_0_2_V_q1        |  in |   16|  ap_stable | weights_0_2_V |     array    |
+|weights_0_2_V_we1       | out |    1|  ap_stable | weights_0_2_V |     array    |
+|weights_0_3_V_address0  | out |    2|  ap_stable | weights_0_3_V |     array    |
+|weights_0_3_V_ce0       | out |    1|  ap_stable | weights_0_3_V |     array    |
+|weights_0_3_V_d0        | out |   16|  ap_stable | weights_0_3_V |     array    |
+|weights_0_3_V_q0        |  in |   16|  ap_stable | weights_0_3_V |     array    |
+|weights_0_3_V_we0       | out |    1|  ap_stable | weights_0_3_V |     array    |
+|weights_0_3_V_address1  | out |    2|  ap_stable | weights_0_3_V |     array    |
+|weights_0_3_V_ce1       | out |    1|  ap_stable | weights_0_3_V |     array    |
+|weights_0_3_V_d1        | out |   16|  ap_stable | weights_0_3_V |     array    |
+|weights_0_3_V_q1        |  in |   16|  ap_stable | weights_0_3_V |     array    |
+|weights_0_3_V_we1       | out |    1|  ap_stable | weights_0_3_V |     array    |
+|weights_0_4_V_address0  | out |    2|  ap_stable | weights_0_4_V |     array    |
+|weights_0_4_V_ce0       | out |    1|  ap_stable | weights_0_4_V |     array    |
+|weights_0_4_V_d0        | out |   16|  ap_stable | weights_0_4_V |     array    |
+|weights_0_4_V_q0        |  in |   16|  ap_stable | weights_0_4_V |     array    |
+|weights_0_4_V_we0       | out |    1|  ap_stable | weights_0_4_V |     array    |
+|weights_0_4_V_address1  | out |    2|  ap_stable | weights_0_4_V |     array    |
+|weights_0_4_V_ce1       | out |    1|  ap_stable | weights_0_4_V |     array    |
+|weights_0_4_V_d1        | out |   16|  ap_stable | weights_0_4_V |     array    |
+|weights_0_4_V_q1        |  in |   16|  ap_stable | weights_0_4_V |     array    |
+|weights_0_4_V_we1       | out |    1|  ap_stable | weights_0_4_V |     array    |
+|weights_1_0_V_address0  | out |    2|  ap_stable | weights_1_0_V |     array    |
+|weights_1_0_V_ce0       | out |    1|  ap_stable | weights_1_0_V |     array    |
+|weights_1_0_V_d0        | out |   16|  ap_stable | weights_1_0_V |     array    |
+|weights_1_0_V_q0        |  in |   16|  ap_stable | weights_1_0_V |     array    |
+|weights_1_0_V_we0       | out |    1|  ap_stable | weights_1_0_V |     array    |
+|weights_1_0_V_address1  | out |    2|  ap_stable | weights_1_0_V |     array    |
+|weights_1_0_V_ce1       | out |    1|  ap_stable | weights_1_0_V |     array    |
+|weights_1_0_V_d1        | out |   16|  ap_stable | weights_1_0_V |     array    |
+|weights_1_0_V_q1        |  in |   16|  ap_stable | weights_1_0_V |     array    |
+|weights_1_0_V_we1       | out |    1|  ap_stable | weights_1_0_V |     array    |
+|weights_1_1_V_address0  | out |    2|  ap_stable | weights_1_1_V |     array    |
+|weights_1_1_V_ce0       | out |    1|  ap_stable | weights_1_1_V |     array    |
+|weights_1_1_V_d0        | out |   16|  ap_stable | weights_1_1_V |     array    |
+|weights_1_1_V_q0        |  in |   16|  ap_stable | weights_1_1_V |     array    |
+|weights_1_1_V_we0       | out |    1|  ap_stable | weights_1_1_V |     array    |
+|weights_1_1_V_address1  | out |    2|  ap_stable | weights_1_1_V |     array    |
+|weights_1_1_V_ce1       | out |    1|  ap_stable | weights_1_1_V |     array    |
+|weights_1_1_V_d1        | out |   16|  ap_stable | weights_1_1_V |     array    |
+|weights_1_1_V_q1        |  in |   16|  ap_stable | weights_1_1_V |     array    |
+|weights_1_1_V_we1       | out |    1|  ap_stable | weights_1_1_V |     array    |
+|weights_1_2_V_address0  | out |    2|  ap_stable | weights_1_2_V |     array    |
+|weights_1_2_V_ce0       | out |    1|  ap_stable | weights_1_2_V |     array    |
+|weights_1_2_V_d0        | out |   16|  ap_stable | weights_1_2_V |     array    |
+|weights_1_2_V_q0        |  in |   16|  ap_stable | weights_1_2_V |     array    |
+|weights_1_2_V_we0       | out |    1|  ap_stable | weights_1_2_V |     array    |
+|weights_1_2_V_address1  | out |    2|  ap_stable | weights_1_2_V |     array    |
+|weights_1_2_V_ce1       | out |    1|  ap_stable | weights_1_2_V |     array    |
+|weights_1_2_V_d1        | out |   16|  ap_stable | weights_1_2_V |     array    |
+|weights_1_2_V_q1        |  in |   16|  ap_stable | weights_1_2_V |     array    |
+|weights_1_2_V_we1       | out |    1|  ap_stable | weights_1_2_V |     array    |
+|weights_1_3_V_address0  | out |    2|  ap_stable | weights_1_3_V |     array    |
+|weights_1_3_V_ce0       | out |    1|  ap_stable | weights_1_3_V |     array    |
+|weights_1_3_V_d0        | out |   16|  ap_stable | weights_1_3_V |     array    |
+|weights_1_3_V_q0        |  in |   16|  ap_stable | weights_1_3_V |     array    |
+|weights_1_3_V_we0       | out |    1|  ap_stable | weights_1_3_V |     array    |
+|weights_1_3_V_address1  | out |    2|  ap_stable | weights_1_3_V |     array    |
+|weights_1_3_V_ce1       | out |    1|  ap_stable | weights_1_3_V |     array    |
+|weights_1_3_V_d1        | out |   16|  ap_stable | weights_1_3_V |     array    |
+|weights_1_3_V_q1        |  in |   16|  ap_stable | weights_1_3_V |     array    |
+|weights_1_3_V_we1       | out |    1|  ap_stable | weights_1_3_V |     array    |
+|weights_1_4_V_address0  | out |    2|  ap_stable | weights_1_4_V |     array    |
+|weights_1_4_V_ce0       | out |    1|  ap_stable | weights_1_4_V |     array    |
+|weights_1_4_V_d0        | out |   16|  ap_stable | weights_1_4_V |     array    |
+|weights_1_4_V_q0        |  in |   16|  ap_stable | weights_1_4_V |     array    |
+|weights_1_4_V_we0       | out |    1|  ap_stable | weights_1_4_V |     array    |
+|weights_1_4_V_address1  | out |    2|  ap_stable | weights_1_4_V |     array    |
+|weights_1_4_V_ce1       | out |    1|  ap_stable | weights_1_4_V |     array    |
+|weights_1_4_V_d1        | out |   16|  ap_stable | weights_1_4_V |     array    |
+|weights_1_4_V_q1        |  in |   16|  ap_stable | weights_1_4_V |     array    |
+|weights_1_4_V_we1       | out |    1|  ap_stable | weights_1_4_V |     array    |
+|weights_2_0_V_address0  | out |    2|  ap_stable | weights_2_0_V |     array    |
+|weights_2_0_V_ce0       | out |    1|  ap_stable | weights_2_0_V |     array    |
+|weights_2_0_V_d0        | out |   16|  ap_stable | weights_2_0_V |     array    |
+|weights_2_0_V_q0        |  in |   16|  ap_stable | weights_2_0_V |     array    |
+|weights_2_0_V_we0       | out |    1|  ap_stable | weights_2_0_V |     array    |
+|weights_2_0_V_address1  | out |    2|  ap_stable | weights_2_0_V |     array    |
+|weights_2_0_V_ce1       | out |    1|  ap_stable | weights_2_0_V |     array    |
+|weights_2_0_V_d1        | out |   16|  ap_stable | weights_2_0_V |     array    |
+|weights_2_0_V_q1        |  in |   16|  ap_stable | weights_2_0_V |     array    |
+|weights_2_0_V_we1       | out |    1|  ap_stable | weights_2_0_V |     array    |
+|weights_2_1_V_address0  | out |    2|  ap_stable | weights_2_1_V |     array    |
+|weights_2_1_V_ce0       | out |    1|  ap_stable | weights_2_1_V |     array    |
+|weights_2_1_V_d0        | out |   16|  ap_stable | weights_2_1_V |     array    |
+|weights_2_1_V_q0        |  in |   16|  ap_stable | weights_2_1_V |     array    |
+|weights_2_1_V_we0       | out |    1|  ap_stable | weights_2_1_V |     array    |
+|weights_2_1_V_address1  | out |    2|  ap_stable | weights_2_1_V |     array    |
+|weights_2_1_V_ce1       | out |    1|  ap_stable | weights_2_1_V |     array    |
+|weights_2_1_V_d1        | out |   16|  ap_stable | weights_2_1_V |     array    |
+|weights_2_1_V_q1        |  in |   16|  ap_stable | weights_2_1_V |     array    |
+|weights_2_1_V_we1       | out |    1|  ap_stable | weights_2_1_V |     array    |
+|weights_2_2_V_address0  | out |    2|  ap_stable | weights_2_2_V |     array    |
+|weights_2_2_V_ce0       | out |    1|  ap_stable | weights_2_2_V |     array    |
+|weights_2_2_V_d0        | out |   16|  ap_stable | weights_2_2_V |     array    |
+|weights_2_2_V_q0        |  in |   16|  ap_stable | weights_2_2_V |     array    |
+|weights_2_2_V_we0       | out |    1|  ap_stable | weights_2_2_V |     array    |
+|weights_2_2_V_address1  | out |    2|  ap_stable | weights_2_2_V |     array    |
+|weights_2_2_V_ce1       | out |    1|  ap_stable | weights_2_2_V |     array    |
+|weights_2_2_V_d1        | out |   16|  ap_stable | weights_2_2_V |     array    |
+|weights_2_2_V_q1        |  in |   16|  ap_stable | weights_2_2_V |     array    |
+|weights_2_2_V_we1       | out |    1|  ap_stable | weights_2_2_V |     array    |
+|weights_2_3_V_address0  | out |    2|  ap_stable | weights_2_3_V |     array    |
+|weights_2_3_V_ce0       | out |    1|  ap_stable | weights_2_3_V |     array    |
+|weights_2_3_V_d0        | out |   16|  ap_stable | weights_2_3_V |     array    |
+|weights_2_3_V_q0        |  in |   16|  ap_stable | weights_2_3_V |     array    |
+|weights_2_3_V_we0       | out |    1|  ap_stable | weights_2_3_V |     array    |
+|weights_2_3_V_address1  | out |    2|  ap_stable | weights_2_3_V |     array    |
+|weights_2_3_V_ce1       | out |    1|  ap_stable | weights_2_3_V |     array    |
+|weights_2_3_V_d1        | out |   16|  ap_stable | weights_2_3_V |     array    |
+|weights_2_3_V_q1        |  in |   16|  ap_stable | weights_2_3_V |     array    |
+|weights_2_3_V_we1       | out |    1|  ap_stable | weights_2_3_V |     array    |
+|weights_2_4_V_address0  | out |    2|  ap_stable | weights_2_4_V |     array    |
+|weights_2_4_V_ce0       | out |    1|  ap_stable | weights_2_4_V |     array    |
+|weights_2_4_V_d0        | out |   16|  ap_stable | weights_2_4_V |     array    |
+|weights_2_4_V_q0        |  in |   16|  ap_stable | weights_2_4_V |     array    |
+|weights_2_4_V_we0       | out |    1|  ap_stable | weights_2_4_V |     array    |
+|weights_2_4_V_address1  | out |    2|  ap_stable | weights_2_4_V |     array    |
+|weights_2_4_V_ce1       | out |    1|  ap_stable | weights_2_4_V |     array    |
+|weights_2_4_V_d1        | out |   16|  ap_stable | weights_2_4_V |     array    |
+|weights_2_4_V_q1        |  in |   16|  ap_stable | weights_2_4_V |     array    |
+|weights_2_4_V_we1       | out |    1|  ap_stable | weights_2_4_V |     array    |
+|weights_3_0_V_address0  | out |    2|  ap_stable | weights_3_0_V |     array    |
+|weights_3_0_V_ce0       | out |    1|  ap_stable | weights_3_0_V |     array    |
+|weights_3_0_V_d0        | out |   16|  ap_stable | weights_3_0_V |     array    |
+|weights_3_0_V_q0        |  in |   16|  ap_stable | weights_3_0_V |     array    |
+|weights_3_0_V_we0       | out |    1|  ap_stable | weights_3_0_V |     array    |
+|weights_3_0_V_address1  | out |    2|  ap_stable | weights_3_0_V |     array    |
+|weights_3_0_V_ce1       | out |    1|  ap_stable | weights_3_0_V |     array    |
+|weights_3_0_V_d1        | out |   16|  ap_stable | weights_3_0_V |     array    |
+|weights_3_0_V_q1        |  in |   16|  ap_stable | weights_3_0_V |     array    |
+|weights_3_0_V_we1       | out |    1|  ap_stable | weights_3_0_V |     array    |
+|weights_3_1_V_address0  | out |    2|  ap_stable | weights_3_1_V |     array    |
+|weights_3_1_V_ce0       | out |    1|  ap_stable | weights_3_1_V |     array    |
+|weights_3_1_V_d0        | out |   16|  ap_stable | weights_3_1_V |     array    |
+|weights_3_1_V_q0        |  in |   16|  ap_stable | weights_3_1_V |     array    |
+|weights_3_1_V_we0       | out |    1|  ap_stable | weights_3_1_V |     array    |
+|weights_3_1_V_address1  | out |    2|  ap_stable | weights_3_1_V |     array    |
+|weights_3_1_V_ce1       | out |    1|  ap_stable | weights_3_1_V |     array    |
+|weights_3_1_V_d1        | out |   16|  ap_stable | weights_3_1_V |     array    |
+|weights_3_1_V_q1        |  in |   16|  ap_stable | weights_3_1_V |     array    |
+|weights_3_1_V_we1       | out |    1|  ap_stable | weights_3_1_V |     array    |
+|weights_3_2_V_address0  | out |    2|  ap_stable | weights_3_2_V |     array    |
+|weights_3_2_V_ce0       | out |    1|  ap_stable | weights_3_2_V |     array    |
+|weights_3_2_V_d0        | out |   16|  ap_stable | weights_3_2_V |     array    |
+|weights_3_2_V_q0        |  in |   16|  ap_stable | weights_3_2_V |     array    |
+|weights_3_2_V_we0       | out |    1|  ap_stable | weights_3_2_V |     array    |
+|weights_3_2_V_address1  | out |    2|  ap_stable | weights_3_2_V |     array    |
+|weights_3_2_V_ce1       | out |    1|  ap_stable | weights_3_2_V |     array    |
+|weights_3_2_V_d1        | out |   16|  ap_stable | weights_3_2_V |     array    |
+|weights_3_2_V_q1        |  in |   16|  ap_stable | weights_3_2_V |     array    |
+|weights_3_2_V_we1       | out |    1|  ap_stable | weights_3_2_V |     array    |
+|weights_3_3_V_address0  | out |    2|  ap_stable | weights_3_3_V |     array    |
+|weights_3_3_V_ce0       | out |    1|  ap_stable | weights_3_3_V |     array    |
+|weights_3_3_V_d0        | out |   16|  ap_stable | weights_3_3_V |     array    |
+|weights_3_3_V_q0        |  in |   16|  ap_stable | weights_3_3_V |     array    |
+|weights_3_3_V_we0       | out |    1|  ap_stable | weights_3_3_V |     array    |
+|weights_3_3_V_address1  | out |    2|  ap_stable | weights_3_3_V |     array    |
+|weights_3_3_V_ce1       | out |    1|  ap_stable | weights_3_3_V |     array    |
+|weights_3_3_V_d1        | out |   16|  ap_stable | weights_3_3_V |     array    |
+|weights_3_3_V_q1        |  in |   16|  ap_stable | weights_3_3_V |     array    |
+|weights_3_3_V_we1       | out |    1|  ap_stable | weights_3_3_V |     array    |
+|weights_3_4_V_address0  | out |    2|  ap_stable | weights_3_4_V |     array    |
+|weights_3_4_V_ce0       | out |    1|  ap_stable | weights_3_4_V |     array    |
+|weights_3_4_V_d0        | out |   16|  ap_stable | weights_3_4_V |     array    |
+|weights_3_4_V_q0        |  in |   16|  ap_stable | weights_3_4_V |     array    |
+|weights_3_4_V_we0       | out |    1|  ap_stable | weights_3_4_V |     array    |
+|weights_3_4_V_address1  | out |    2|  ap_stable | weights_3_4_V |     array    |
+|weights_3_4_V_ce1       | out |    1|  ap_stable | weights_3_4_V |     array    |
+|weights_3_4_V_d1        | out |   16|  ap_stable | weights_3_4_V |     array    |
+|weights_3_4_V_q1        |  in |   16|  ap_stable | weights_3_4_V |     array    |
+|weights_3_4_V_we1       | out |    1|  ap_stable | weights_3_4_V |     array    |
+|weights_4_0_V_address0  | out |    2|  ap_stable | weights_4_0_V |     array    |
+|weights_4_0_V_ce0       | out |    1|  ap_stable | weights_4_0_V |     array    |
+|weights_4_0_V_d0        | out |   16|  ap_stable | weights_4_0_V |     array    |
+|weights_4_0_V_q0        |  in |   16|  ap_stable | weights_4_0_V |     array    |
+|weights_4_0_V_we0       | out |    1|  ap_stable | weights_4_0_V |     array    |
+|weights_4_0_V_address1  | out |    2|  ap_stable | weights_4_0_V |     array    |
+|weights_4_0_V_ce1       | out |    1|  ap_stable | weights_4_0_V |     array    |
+|weights_4_0_V_d1        | out |   16|  ap_stable | weights_4_0_V |     array    |
+|weights_4_0_V_q1        |  in |   16|  ap_stable | weights_4_0_V |     array    |
+|weights_4_0_V_we1       | out |    1|  ap_stable | weights_4_0_V |     array    |
+|weights_4_1_V_address0  | out |    2|  ap_stable | weights_4_1_V |     array    |
+|weights_4_1_V_ce0       | out |    1|  ap_stable | weights_4_1_V |     array    |
+|weights_4_1_V_d0        | out |   16|  ap_stable | weights_4_1_V |     array    |
+|weights_4_1_V_q0        |  in |   16|  ap_stable | weights_4_1_V |     array    |
+|weights_4_1_V_we0       | out |    1|  ap_stable | weights_4_1_V |     array    |
+|weights_4_1_V_address1  | out |    2|  ap_stable | weights_4_1_V |     array    |
+|weights_4_1_V_ce1       | out |    1|  ap_stable | weights_4_1_V |     array    |
+|weights_4_1_V_d1        | out |   16|  ap_stable | weights_4_1_V |     array    |
+|weights_4_1_V_q1        |  in |   16|  ap_stable | weights_4_1_V |     array    |
+|weights_4_1_V_we1       | out |    1|  ap_stable | weights_4_1_V |     array    |
+|weights_4_2_V_address0  | out |    2|  ap_stable | weights_4_2_V |     array    |
+|weights_4_2_V_ce0       | out |    1|  ap_stable | weights_4_2_V |     array    |
+|weights_4_2_V_d0        | out |   16|  ap_stable | weights_4_2_V |     array    |
+|weights_4_2_V_q0        |  in |   16|  ap_stable | weights_4_2_V |     array    |
+|weights_4_2_V_we0       | out |    1|  ap_stable | weights_4_2_V |     array    |
+|weights_4_2_V_address1  | out |    2|  ap_stable | weights_4_2_V |     array    |
+|weights_4_2_V_ce1       | out |    1|  ap_stable | weights_4_2_V |     array    |
+|weights_4_2_V_d1        | out |   16|  ap_stable | weights_4_2_V |     array    |
+|weights_4_2_V_q1        |  in |   16|  ap_stable | weights_4_2_V |     array    |
+|weights_4_2_V_we1       | out |    1|  ap_stable | weights_4_2_V |     array    |
+|weights_4_3_V_address0  | out |    2|  ap_stable | weights_4_3_V |     array    |
+|weights_4_3_V_ce0       | out |    1|  ap_stable | weights_4_3_V |     array    |
+|weights_4_3_V_d0        | out |   16|  ap_stable | weights_4_3_V |     array    |
+|weights_4_3_V_q0        |  in |   16|  ap_stable | weights_4_3_V |     array    |
+|weights_4_3_V_we0       | out |    1|  ap_stable | weights_4_3_V |     array    |
+|weights_4_3_V_address1  | out |    2|  ap_stable | weights_4_3_V |     array    |
+|weights_4_3_V_ce1       | out |    1|  ap_stable | weights_4_3_V |     array    |
+|weights_4_3_V_d1        | out |   16|  ap_stable | weights_4_3_V |     array    |
+|weights_4_3_V_q1        |  in |   16|  ap_stable | weights_4_3_V |     array    |
+|weights_4_3_V_we1       | out |    1|  ap_stable | weights_4_3_V |     array    |
+|weights_4_4_V_address0  | out |    2|  ap_stable | weights_4_4_V |     array    |
+|weights_4_4_V_ce0       | out |    1|  ap_stable | weights_4_4_V |     array    |
+|weights_4_4_V_d0        | out |   16|  ap_stable | weights_4_4_V |     array    |
+|weights_4_4_V_q0        |  in |   16|  ap_stable | weights_4_4_V |     array    |
+|weights_4_4_V_we0       | out |    1|  ap_stable | weights_4_4_V |     array    |
+|weights_4_4_V_address1  | out |    2|  ap_stable | weights_4_4_V |     array    |
+|weights_4_4_V_ce1       | out |    1|  ap_stable | weights_4_4_V |     array    |
+|weights_4_4_V_d1        | out |   16|  ap_stable | weights_4_4_V |     array    |
+|weights_4_4_V_q1        |  in |   16|  ap_stable | weights_4_4_V |     array    |
+|weights_4_4_V_we1       | out |    1|  ap_stable | weights_4_4_V |     array    |
+|out_V_V_din             | out |   30|   ap_fifo  |    out_V_V    |    pointer   |
+|out_V_V_full_n          |  in |    1|   ap_fifo  |    out_V_V    |    pointer   |
+|out_V_V_write           | out |    1|   ap_fifo  |    out_V_V    |    pointer   |
+|ap_clk                  |  in |    1| ap_ctrl_hs |    conv509    | return value |
+|ap_rst                  |  in |    1| ap_ctrl_hs |    conv509    | return value |
+|ap_start                |  in |    1| ap_ctrl_hs |    conv509    | return value |
+|ap_done                 | out |    1| ap_ctrl_hs |    conv509    | return value |
+|ap_ready                | out |    1| ap_ctrl_hs |    conv509    | return value |
+|ap_idle                 | out |    1| ap_ctrl_hs |    conv509    | return value |
+|ap_continue             |  in |    1| ap_ctrl_hs |    conv509    | return value |
++------------------------+-----+-----+------------+---------------+--------------+
+

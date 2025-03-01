@@ -1,0 +1,152 @@
+syntax = "proto2";
+
+message fixed_point {
+    required int32 width = 1;
+    required int32 binary_point = 2;
+}
+
+message quant_format {
+    repeated float scale = 1;
+    repeated int32 zero_point = 2;
+}
+
+message stream {
+    required string name = 1;
+    required int32  coarse = 2;
+    required int32  buffer_depth = 3 [default = 2];
+    optional string node = 4;
+}
+
+message parameter {
+    optional int32 buffer_depth = 1 [default = 2];
+    optional int32 batch_size   = 2;
+    optional int32 rows_in      = 3;
+    optional int32 cols_in      = 4;
+    optional int32 depth_in     = 5;
+    optional int32 channels_in  = 6;
+    optional int32 rows_out     = 7;
+    optional int32 cols_out     = 8;
+    optional int32 depth_out    = 9;
+    optional int32 channels_out = 10;
+    optional int32 coarse_in    = 11;
+    optional int32 coarse_out   = 12;
+    optional int32 coarse       = 13;
+    optional int32 coarse_group = 14;
+    optional int32 groups       = 15;
+    optional int32 fine         = 16;
+    optional int32 filters      = 17;
+    optional int32 pad_top      = 18;
+    optional int32 pad_right    = 19;
+    optional int32 pad_front    = 20;
+    optional int32 pad_bottom   = 21;
+    optional int32 pad_left     = 22;
+    optional int32 pad_back     = 23;
+    optional int32 kernel_rows  = 24;
+    optional int32 kernel_cols  = 25;
+    optional int32 kernel_depth = 26;
+    repeated int32 kernel_size  = 27;
+    optional int32 stride_rows  = 28;
+    optional int32 stride_cols  = 29;
+    optional int32 stride_depth = 30;
+    repeated int32 stride       = 31;
+    optional float mem_bw_in    = 32;
+    optional float mem_bw_out   = 33;
+    optional fixed_point data_t     = 34;
+    optional fixed_point weight_t   = 35;
+    optional fixed_point acc_t      = 36;
+    optional fixed_point input_t    = 37;
+    optional fixed_point output_t   = 38;
+    optional int32 has_bias     = 39;
+    optional int32 biases_width = 40;
+    optional int32 ports_in     = 41;
+    optional int32 ports_out    = 42;
+    repeated int32 rows_in_array        = 43;
+    repeated int32 cols_in_array        = 44;
+    repeated int32 depth_in_array       = 45;
+    repeated int32 channels_in_array    = 46;
+    repeated float mem_bw_in_array      = 47;
+    repeated int32 rows_out_array       = 48;
+    repeated int32 cols_out_array       = 49;
+    repeated int32 depth_out_array      = 50;
+    repeated int32 channels_out_array   = 51;
+    repeated float mem_bw_out_array     = 52;
+    optional quant_format input_quant   = 53;
+    optional quant_format outnput_quant = 54;
+    optional quant_format weight_quant  = 55;
+    optional quant_format bias_quant    = 56;
+    optional bool use_uram = 58;
+    optional bool block_floating_point = 59;
+    repeated float scale = 60;
+    repeated float shift = 61;
+    optional fixed_point scale_t = 62;
+    optional fixed_point shift_t = 63;
+    optional string weights_ram_style = 64;
+    repeated int32 split = 65;
+    optional bool skipping_windows = 66;
+    optional float threshold = 67;
+    repeated float sparsity = 68;
+    optional int32 on_chip_addr_range = 70;
+    optional int32 off_chip_buffer_size = 71;
+    optional int32 off_chip_interval = 72;
+    optional int32 stream_weights = 73;
+    optional bool skip_all_zero_window = 74;
+    repeated bool stream_inputs = 75;
+    repeated bool stream_outputs = 76;
+    optional int32 clusters = 77;
+    repeated float input_compression_ratio = 78;
+    repeated float output_compression_ratio = 79;
+    repeated float weight_compression_ratio = 80;
+}
+
+message layer {
+    required string name = 1;
+    required string onnx_node = 2;
+    required layer_type type = 3;
+    optional string op_type = 4;
+    repeated stream streams_in  = 5;
+    repeated stream streams_out = 6;
+    required parameter parameters = 7;
+
+    enum layer_type {
+        CONVOLUTION     = 0;
+        POOLING         = 1;
+        ACTIVATION      = 2;
+        SQUEEZE         = 3;
+        INNER_PRODUCT   = 4;
+        CONCAT          = 5;
+        BATCH_NORM      = 6;
+        SPLIT           = 7;
+        ELTWISE         = 8;
+        AVERAGE_POOLING = 9;
+        CONVOLUTION_SPARSE = 10;
+        RELU            = 11;
+        SILU            = 12;
+        SIGMOID         = 13;
+        HARD_SIGMOID    = 14;
+        HARD_SWISH      = 15;
+        RESIZE          = 16;
+        CHOP            = 17;
+        THRESHOLDEDRELU = 18;
+    }
+
+    optional string weights_path = 8;
+    optional string bias_path    = 9;
+}
+
+message partition {
+    required int32  id = 1;
+    required int32  ports = 2;
+    required int32  batch_size = 3;
+    repeated string input_nodes = 4;
+    repeated string output_nodes = 5;
+    required int32  weights_reloading_factor = 6;
+    required string weights_reloading_layer  = 7;
+
+    repeated layer layers = 8;
+    optional int32 gen_last_width = 9;
+}
+
+message partitions {
+    repeated partition partition = 1;
+}
+

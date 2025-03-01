@@ -1,0 +1,69 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+  **** IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source /tools/Xilinx/Vitis/2019.2/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] Running '/tools/Xilinx/Vitis/2019.2/bin/unwrapped/lnx64.o/vitis_hls'
+INFO: [HLS 200-10] For user 'root' on host 'b986bf97e8bd' (Linux_x86_64 version 6.8.0-49-generic) on Thu Feb 13 10:54:24 +0000 2025
+INFO: [HLS 200-10] In directory '/root/fpgaconvnet-tutorial/tutorial/1_simple_end_to_end/partition_0/solution'
+[2Kvitis_hls> [11C[2Kvitis_hls> [11C[2Kvitis_hls> [11C[2Kvitis_hls> [11C[2Kvitis_hls> [11C[2Kvitis_hls> c[12C[2Kvitis_hls> cs[13C[2K
+[1;32mcsim_design 
+csynth_design 
+[0m[32mcs_server 
+csplit 
+[0m
+[2Kvitis_hls> cs[13C[2Kvitis_hls> cs[13C[2Kvitis_hls> csi[14C[2Kvitis_hls> csim[15C[2Kvitis_hls> csim_design[22C
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+   Generating csim.exe
+obj/single_layer_top.o: In function `posit16_multiply':
+/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/conv.hpp:32: multiple definition of `posit16_multiply'
+obj/single_layer_tb.o:/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/conv.hpp:32: first defined here
+obj/Conv_0.o: In function `posit16_multiply':
+/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/conv.hpp:32: multiple definition of `posit16_multiply'
+obj/single_layer_tb.o:/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/conv.hpp:32: first defined here
+obj/single_layer_tb.o: In function `posit16_multiply':
+/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/conv.hpp:34: undefined reference to `p16_mul'
+obj/single_layer_top.o: In function `posit16_multiply':
+/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/conv.hpp:34: undefined reference to `p16_mul'
+obj/Conv_0.o: In function `posit16_multiply':
+/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/conv.hpp:34: undefined reference to `p16_mul'
+obj/Conv_0.o: In function `void conv_mul<1u, 24u, 24u, 1u, 4u, 1u, 25u, 5u, 5u, ap_fixed<16, 8, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<16, -1, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<30, 5, (ap_q_mode)0, (ap_o_mode)3, 0> >(hls::stream<ap_fixed<16, 8, (ap_q_mode)0, (ap_o_mode)3, 0> >*, hls::stream<ap_fixed<16, -1, (ap_q_mode)0, (ap_o_mode)3, 0> >*, hls::stream<ap_fixed<30, 5, (ap_q_mode)0, (ap_o_mode)3, 0> >*)':
+/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/conv.hpp:211: undefined reference to `convertFloatToP16'
+/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/conv.hpp:212: undefined reference to `convertFloatToP16'
+/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/conv.hpp:214: undefined reference to `convertP16ToDouble'
+collect2: error: ld returned 1 exit status
+make: *** [Makefile.rules:334: csim.exe] Error 1
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+4
+[2Kvitis_hls> [11C[2Kvitis_hls> c[12C[2Kvitis_hls> cd[13C[2Kvitis_hls> cd [14C[2Kvitis_hls> cd s[15C[2Kvitis_hls> cd [14C[2Kvitis_hls> cd c[15C[2Kvitis_hls> cd cs[16C[2Kvitis_hls> cd csim/[19C
+[2Kvitis_hls> [11C[2Kvitis_hls> cd csim/[19C[2Kvitis_hls> csim_design[22C
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+   Generating csim.exe
+obj/single_layer_top.o: In function `posit16_multiply':
+/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/conv.hpp:32: multiple definition of `posit16_multiply'
+obj/single_layer_tb.o:/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/conv.hpp:32: first defined here
+obj/Conv_0.o: In function `posit16_multiply':
+/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/conv.hpp:32: multiple definition of `posit16_multiply'
+obj/single_layer_tb.o:/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/conv.hpp:32: first defined here
+obj/single_layer_tb.o: In function `posit16_multiply':
+/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/conv.hpp:34: undefined reference to `p16_mul'
+obj/single_layer_top.o: In function `posit16_multiply':
+/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/conv.hpp:34: undefined reference to `p16_mul'
+obj/Conv_0.o: In function `posit16_multiply':
+/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/conv.hpp:34: undefined reference to `p16_mul'
+obj/Conv_0.o: In function `void conv_mul<1u, 24u, 24u, 1u, 4u, 1u, 25u, 5u, 5u, ap_fixed<16, 8, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<16, -1, (ap_q_mode)0, (ap_o_mode)3, 0>, ap_fixed<30, 5, (ap_q_mode)0, (ap_o_mode)3, 0> >(hls::stream<ap_fixed<16, 8, (ap_q_mode)0, (ap_o_mode)3, 0> >*, hls::stream<ap_fixed<16, -1, (ap_q_mode)0, (ap_o_mode)3, 0> >*, hls::stream<ap_fixed<30, 5, (ap_q_mode)0, (ap_o_mode)3, 0> >*)':
+/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/conv.hpp:211: undefined reference to `convertFloatToP16'
+/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/conv.hpp:212: undefined reference to `convertFloatToP16'
+/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/conv.hpp:214: undefined reference to `convertP16ToDouble'
+collect2: error: ld returned 1 exit status
+make: *** [Makefile.rules:334: csim.exe] Error 1
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+4
+[2Kvitis_hls> [11C[2Kvitis_hls> ex[13C[2Kvitis_hls> exi[14C[2Kvitis_hls> exit[15C
+INFO: [Common 17-206] Exiting vitis_hls at Thu Feb 13 10:55:42 2025...

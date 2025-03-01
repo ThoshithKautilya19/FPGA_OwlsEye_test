@@ -1,0 +1,176 @@
+
+
+================================================================
+== Vivado HLS Report for 'squeeze_Relu_1'
+================================================================
+* Date:           Sat Feb 15 08:01:05 2025
+
+* Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
+* Project:        partition_0
+* Solution:       solution
+* Product family: zynq
+* Target device:  xc7z020-clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 5.00 ns | 4.375 ns |   0.62 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+-----------+------+------+----------+
+    |  Latency (cycles) |   Latency (absolute)  |   Interval  | Pipeline |
+    |   min   |   max   |    min    |    max    |  min |  max |   Type   |
+    +---------+---------+-----------+-----------+------+------+----------+
+    |     9217|     9218| 46.085 us | 46.090 us |  9216|  9216| dataflow |
+    +---------+---------+-----------+-----------+------+------+----------+
+
+    + Detail: 
+        * Instance: 
+        +--------------+-----------+---------+---------+-----------+-----------+------+------+----------+
+        |              |           |  Latency (cycles) |   Latency (absolute)  |   Interval  | Pipeline |
+        |   Instance   |   Module  |   min   |   max   |    min    |    max    |  min |  max |   Type   |
+        +--------------+-----------+---------+---------+-----------+-----------+------+------+----------+
+        |squeeze_1_U0  |squeeze_1  |     9217|     9218| 46.085 us | 46.090 us |  9216|  9216| dataflow |
+        +--------------+-----------+---------+---------+-----------+-----------+------+------+----------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+-----+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  | URAM|
++-----------------+---------+-------+--------+-------+-----+
+|DSP              |        -|      -|       -|      -|    -|
+|Expression       |        -|      -|       -|      -|    -|
+|FIFO             |        -|      -|       -|      -|    -|
+|Instance         |        0|      -|     215|   1270|    -|
+|Memory           |        -|      -|       -|      -|    -|
+|Multiplexer      |        -|      -|       -|      -|    -|
+|Register         |        -|      -|       -|      -|    -|
++-----------------+---------+-------+--------+-------+-----+
+|Total            |        0|      0|     215|   1270|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Available        |      280|    220|  106400|  53200|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Utilization (%)  |        0|      0|   ~0   |      2|    0|
++-----------------+---------+-------+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    +--------------+-----------+---------+-------+-----+------+-----+
+    |   Instance   |   Module  | BRAM_18K| DSP48E|  FF |  LUT | URAM|
+    +--------------+-----------+---------+-------+-----+------+-----+
+    |squeeze_1_U0  |squeeze_1  |        0|      0|  215|  1270|    0|
+    +--------------+-----------+---------+-------+-----+------+-----+
+    |Total         |           |        0|      0|  215|  1270|    0|
+    +--------------+-----------+---------+-------+-----+------+-----+
+
+    * DSP48E: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    N/A
+
+    * Multiplexer: 
+    N/A
+
+    * Register: 
+    N/A
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-------------------+-----+-----+------------+----------------+--------------+
+|     RTL Ports     | Dir | Bits|  Protocol  |  Source Object |    C Type    |
++-------------------+-----+-----+------------+----------------+--------------+
+|in_0_V_V_dout      |  in |   16|   ap_fifo  |    in_0_V_V    |    pointer   |
+|in_0_V_V_empty_n   |  in |    1|   ap_fifo  |    in_0_V_V    |    pointer   |
+|in_0_V_V_read      | out |    1|   ap_fifo  |    in_0_V_V    |    pointer   |
+|in_1_V_V_dout      |  in |   16|   ap_fifo  |    in_1_V_V    |    pointer   |
+|in_1_V_V_empty_n   |  in |    1|   ap_fifo  |    in_1_V_V    |    pointer   |
+|in_1_V_V_read      | out |    1|   ap_fifo  |    in_1_V_V    |    pointer   |
+|in_2_V_V_dout      |  in |   16|   ap_fifo  |    in_2_V_V    |    pointer   |
+|in_2_V_V_empty_n   |  in |    1|   ap_fifo  |    in_2_V_V    |    pointer   |
+|in_2_V_V_read      | out |    1|   ap_fifo  |    in_2_V_V    |    pointer   |
+|in_3_V_V_dout      |  in |   16|   ap_fifo  |    in_3_V_V    |    pointer   |
+|in_3_V_V_empty_n   |  in |    1|   ap_fifo  |    in_3_V_V    |    pointer   |
+|in_3_V_V_read      | out |    1|   ap_fifo  |    in_3_V_V    |    pointer   |
+|in_4_V_V_dout      |  in |   16|   ap_fifo  |    in_4_V_V    |    pointer   |
+|in_4_V_V_empty_n   |  in |    1|   ap_fifo  |    in_4_V_V    |    pointer   |
+|in_4_V_V_read      | out |    1|   ap_fifo  |    in_4_V_V    |    pointer   |
+|in_5_V_V_dout      |  in |   16|   ap_fifo  |    in_5_V_V    |    pointer   |
+|in_5_V_V_empty_n   |  in |    1|   ap_fifo  |    in_5_V_V    |    pointer   |
+|in_5_V_V_read      | out |    1|   ap_fifo  |    in_5_V_V    |    pointer   |
+|in_6_V_V_dout      |  in |   16|   ap_fifo  |    in_6_V_V    |    pointer   |
+|in_6_V_V_empty_n   |  in |    1|   ap_fifo  |    in_6_V_V    |    pointer   |
+|in_6_V_V_read      | out |    1|   ap_fifo  |    in_6_V_V    |    pointer   |
+|in_7_V_V_dout      |  in |   16|   ap_fifo  |    in_7_V_V    |    pointer   |
+|in_7_V_V_empty_n   |  in |    1|   ap_fifo  |    in_7_V_V    |    pointer   |
+|in_7_V_V_read      | out |    1|   ap_fifo  |    in_7_V_V    |    pointer   |
+|in_8_V_V_dout      |  in |   16|   ap_fifo  |    in_8_V_V    |    pointer   |
+|in_8_V_V_empty_n   |  in |    1|   ap_fifo  |    in_8_V_V    |    pointer   |
+|in_8_V_V_read      | out |    1|   ap_fifo  |    in_8_V_V    |    pointer   |
+|in_9_V_V_dout      |  in |   16|   ap_fifo  |    in_9_V_V    |    pointer   |
+|in_9_V_V_empty_n   |  in |    1|   ap_fifo  |    in_9_V_V    |    pointer   |
+|in_9_V_V_read      | out |    1|   ap_fifo  |    in_9_V_V    |    pointer   |
+|in_10_V_V_dout     |  in |   16|   ap_fifo  |    in_10_V_V   |    pointer   |
+|in_10_V_V_empty_n  |  in |    1|   ap_fifo  |    in_10_V_V   |    pointer   |
+|in_10_V_V_read     | out |    1|   ap_fifo  |    in_10_V_V   |    pointer   |
+|in_11_V_V_dout     |  in |   16|   ap_fifo  |    in_11_V_V   |    pointer   |
+|in_11_V_V_empty_n  |  in |    1|   ap_fifo  |    in_11_V_V   |    pointer   |
+|in_11_V_V_read     | out |    1|   ap_fifo  |    in_11_V_V   |    pointer   |
+|in_12_V_V_dout     |  in |   16|   ap_fifo  |    in_12_V_V   |    pointer   |
+|in_12_V_V_empty_n  |  in |    1|   ap_fifo  |    in_12_V_V   |    pointer   |
+|in_12_V_V_read     | out |    1|   ap_fifo  |    in_12_V_V   |    pointer   |
+|in_13_V_V_dout     |  in |   16|   ap_fifo  |    in_13_V_V   |    pointer   |
+|in_13_V_V_empty_n  |  in |    1|   ap_fifo  |    in_13_V_V   |    pointer   |
+|in_13_V_V_read     | out |    1|   ap_fifo  |    in_13_V_V   |    pointer   |
+|in_14_V_V_dout     |  in |   16|   ap_fifo  |    in_14_V_V   |    pointer   |
+|in_14_V_V_empty_n  |  in |    1|   ap_fifo  |    in_14_V_V   |    pointer   |
+|in_14_V_V_read     | out |    1|   ap_fifo  |    in_14_V_V   |    pointer   |
+|in_15_V_V_dout     |  in |   16|   ap_fifo  |    in_15_V_V   |    pointer   |
+|in_15_V_V_empty_n  |  in |    1|   ap_fifo  |    in_15_V_V   |    pointer   |
+|in_15_V_V_read     | out |    1|   ap_fifo  |    in_15_V_V   |    pointer   |
+|out_0_V_V_din      | out |   16|   ap_fifo  |    out_0_V_V   |    pointer   |
+|out_0_V_V_full_n   |  in |    1|   ap_fifo  |    out_0_V_V   |    pointer   |
+|out_0_V_V_write    | out |    1|   ap_fifo  |    out_0_V_V   |    pointer   |
+|out_1_V_V_din      | out |   16|   ap_fifo  |    out_1_V_V   |    pointer   |
+|out_1_V_V_full_n   |  in |    1|   ap_fifo  |    out_1_V_V   |    pointer   |
+|out_1_V_V_write    | out |    1|   ap_fifo  |    out_1_V_V   |    pointer   |
+|out_2_V_V_din      | out |   16|   ap_fifo  |    out_2_V_V   |    pointer   |
+|out_2_V_V_full_n   |  in |    1|   ap_fifo  |    out_2_V_V   |    pointer   |
+|out_2_V_V_write    | out |    1|   ap_fifo  |    out_2_V_V   |    pointer   |
+|out_3_V_V_din      | out |   16|   ap_fifo  |    out_3_V_V   |    pointer   |
+|out_3_V_V_full_n   |  in |    1|   ap_fifo  |    out_3_V_V   |    pointer   |
+|out_3_V_V_write    | out |    1|   ap_fifo  |    out_3_V_V   |    pointer   |
+|ap_clk             |  in |    1| ap_ctrl_hs | squeeze_Relu_1 | return value |
+|ap_rst             |  in |    1| ap_ctrl_hs | squeeze_Relu_1 | return value |
+|ap_start           |  in |    1| ap_ctrl_hs | squeeze_Relu_1 | return value |
+|ap_done            | out |    1| ap_ctrl_hs | squeeze_Relu_1 | return value |
+|ap_ready           | out |    1| ap_ctrl_hs | squeeze_Relu_1 | return value |
+|ap_idle            | out |    1| ap_ctrl_hs | squeeze_Relu_1 | return value |
+|ap_continue        |  in |    1| ap_ctrl_hs | squeeze_Relu_1 | return value |
++-------------------+-----+-----+------------+----------------+--------------+
+

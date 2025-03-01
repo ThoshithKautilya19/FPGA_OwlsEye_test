@@ -1,0 +1,269 @@
+
+
+================================================================
+== Vivado HLS Report for 'squeeze_out'
+================================================================
+* Date:           Sat Feb 15 07:24:53 2025
+
+* Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
+* Project:        partition_0
+* Solution:       solution
+* Product family: zynq
+* Target device:  xc7z020-clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 5.00 ns | 2.188 ns |   0.62 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+-----------+------+------+---------------------------------------------+
+    |  Latency (cycles) |   Latency (absolute)  |   Interval  |                   Pipeline                  |
+    |   min   |   max   |    min    |    max    |  min |  max |                     Type                    |
+    +---------+---------+-----------+-----------+------+------+---------------------------------------------+
+    |     9217|     9218| 46.085 us | 46.090 us |  9216|  9216| loop rewind(delay=0 initiation interval(s)) |
+    +---------+---------+-----------+-----------+------+------+---------------------------------------------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +----------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |                      |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |       Loop Name      |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +----------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- pixel_channel_loop  |     9217|     9217|         6|          4|          1|  2304|    yes   |
+        +----------------------+---------+---------+----------+-----------+-----------+------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 2
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 4, depth = 6
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 7
+* Pipeline : 1
+  Pipeline-0 : II = 4, D = 6, States = { 2 3 4 5 7 6 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 3 
+3 --> 4 
+4 --> 5 
+5 --> 7 
+6 --> 2 
+7 --> 6 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 1.76>
+ST_1 : Operation 8 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %in_15_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 8 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 9 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %in_14_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 9 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 10 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %in_13_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 10 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 11 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %in_12_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 11 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 12 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %in_11_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 12 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 13 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %in_10_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 13 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 14 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %in_9_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 14 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 15 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %in_8_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 15 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 16 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %in_7_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 16 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 17 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %in_6_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 17 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 18 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %in_5_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 18 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 19 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %in_4_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 19 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 20 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %in_3_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 20 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 21 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %in_2_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 21 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 22 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %in_1_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 22 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 23 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %in_0_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 23 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 24 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %out_3_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 24 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 25 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %out_2_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 25 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 26 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %out_1_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 26 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 27 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %out_0_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 27 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 28 [1/1] (1.76ns)   --->   "br label %rewind_header" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:122]   --->   Operation 28 'br' <Predicate = true> <Delay = 1.76>
+
+State 2 <SV = 1> <Delay = 0.00>
+ST_2 : Operation 29 [1/1] (0.00ns)   --->   "%cache_index_01 = phi i4 [ 0, %0 ], [ %cache_index, %pixel_channel_loop_end ], [ 0, %4 ]"   --->   Operation 29 'phi' 'cache_index_01' <Predicate = true> <Delay = 0.00>
+
+State 3 <SV = 2> <Delay = 2.18>
+ST_3 : Operation 30 [1/1] (2.18ns)   --->   "%tmp_V_19 = call i16 @_ssdm_op_Read.ap_fifo.volatile.i16P(i16* %in_12_V_V)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 30 'read' 'tmp_V_19' <Predicate = (cache_index_01 == 12)> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 0> <FIFO>
+ST_3 : Operation 31 [1/1] (1.90ns)   --->   "br label %1" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 31 'br' <Predicate = (cache_index_01 == 12)> <Delay = 1.90>
+ST_3 : Operation 32 [1/1] (2.18ns)   --->   "%tmp_V_18 = call i16 @_ssdm_op_Read.ap_fifo.volatile.i16P(i16* %in_8_V_V)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 32 'read' 'tmp_V_18' <Predicate = (cache_index_01 == 8)> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 0> <FIFO>
+ST_3 : Operation 33 [1/1] (1.90ns)   --->   "br label %1" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 33 'br' <Predicate = (cache_index_01 == 8)> <Delay = 1.90>
+ST_3 : Operation 34 [1/1] (2.18ns)   --->   "%tmp_V_17 = call i16 @_ssdm_op_Read.ap_fifo.volatile.i16P(i16* %in_4_V_V)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 34 'read' 'tmp_V_17' <Predicate = (cache_index_01 == 4)> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 0> <FIFO>
+ST_3 : Operation 35 [1/1] (1.90ns)   --->   "br label %1" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 35 'br' <Predicate = (cache_index_01 == 4)> <Delay = 1.90>
+ST_3 : Operation 36 [1/1] (2.18ns)   --->   "%tmp_V_16 = call i16 @_ssdm_op_Read.ap_fifo.volatile.i16P(i16* %in_0_V_V)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 36 'read' 'tmp_V_16' <Predicate = (cache_index_01 == 0)> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 0> <FIFO>
+ST_3 : Operation 37 [1/1] (1.90ns)   --->   "br label %1" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 37 'br' <Predicate = (cache_index_01 == 0)> <Delay = 1.90>
+ST_3 : Operation 38 [1/1] (2.18ns)   --->   "%tmp_V = call i16 @_ssdm_op_Read.ap_fifo.volatile.i16P(i16* %in_15_V_V)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 38 'read' 'tmp_V' <Predicate = (cache_index_01 != 0 & cache_index_01 != 4 & cache_index_01 != 8 & cache_index_01 != 12)> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 0> <FIFO>
+ST_3 : Operation 39 [1/1] (1.90ns)   --->   "br label %1" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 39 'br' <Predicate = (cache_index_01 != 0 & cache_index_01 != 4 & cache_index_01 != 8 & cache_index_01 != 12)> <Delay = 1.90>
+
+State 4 <SV = 3> <Delay = 2.18>
+ST_4 : Operation 40 [1/1] (0.00ns)   --->   "%tmp_V_20 = phi i16 [ %tmp_V, %branch63 ], [ %tmp_V_19, %branch60 ], [ %tmp_V_18, %branch56 ], [ %tmp_V_17, %branch52 ], [ %tmp_V_16, %branch48 ]"   --->   Operation 40 'phi' 'tmp_V_20' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 41 [1/1] (2.18ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i16P(i16* %out_0_V_V, i16 %tmp_V_20)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 41 'write' <Predicate = true> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 0> <FIFO>
+ST_4 : Operation 42 [1/1] (1.30ns)   --->   "switch i4 %cache_index_01, label %branch47 [
+    i4 0, label %branch33
+    i4 4, label %branch37
+    i4 -4, label %branch45
+    i4 -8, label %branch41
+  ]" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 42 'switch' <Predicate = true> <Delay = 1.30>
+ST_4 : Operation 43 [1/1] (2.18ns)   --->   "%tmp_V_21 = call i16 @_ssdm_op_Read.ap_fifo.volatile.i16P(i16* %in_15_V_V)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 43 'read' 'tmp_V_21' <Predicate = (cache_index_01 != 0 & cache_index_01 != 4 & cache_index_01 != 8 & cache_index_01 != 12)> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 0> <FIFO>
+ST_4 : Operation 44 [1/1] (1.90ns)   --->   "br label %2" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 44 'br' <Predicate = (cache_index_01 != 0 & cache_index_01 != 4 & cache_index_01 != 8 & cache_index_01 != 12)> <Delay = 1.90>
+
+State 5 <SV = 4> <Delay = 2.18>
+ST_5 : Operation 45 [1/1] (0.00ns)   --->   "%do_init = phi i1 [ true, %0 ], [ false, %pixel_channel_loop_end ], [ true, %4 ]"   --->   Operation 45 'phi' 'do_init' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 46 [1/1] (0.00ns)   --->   "%i_02 = phi i12 [ 0, %0 ], [ %i, %pixel_channel_loop_end ], [ 0, %4 ]"   --->   Operation 46 'phi' 'i_02' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 47 [1/1] (0.00ns)   --->   "br i1 %do_init, label %rewind_init, label %pixel_channel_loop_begin"   --->   Operation 47 'br' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 48 [1/1] (1.54ns)   --->   "%i = add i12 %i_02, 1" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:122]   --->   Operation 48 'add' 'i' <Predicate = true> <Delay = 1.54> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.73> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 49 [1/1] (1.30ns)   --->   "switch i4 %cache_index_01, label %branch63 [
+    i4 0, label %branch48
+    i4 4, label %branch52
+    i4 -8, label %branch56
+    i4 -4, label %branch60
+  ]" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 49 'switch' <Predicate = true> <Delay = 1.30>
+ST_5 : Operation 50 [1/1] (2.18ns)   --->   "%tmp_V_25 = call i16 @_ssdm_op_Read.ap_fifo.volatile.i16P(i16* %in_9_V_V)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 50 'read' 'tmp_V_25' <Predicate = (cache_index_01 == 8)> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 0> <FIFO>
+ST_5 : Operation 51 [1/1] (1.90ns)   --->   "br label %2" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 51 'br' <Predicate = (cache_index_01 == 8)> <Delay = 1.90>
+ST_5 : Operation 52 [1/1] (2.18ns)   --->   "%tmp_V_24 = call i16 @_ssdm_op_Read.ap_fifo.volatile.i16P(i16* %in_13_V_V)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 52 'read' 'tmp_V_24' <Predicate = (cache_index_01 == 12)> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 0> <FIFO>
+ST_5 : Operation 53 [1/1] (1.90ns)   --->   "br label %2" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 53 'br' <Predicate = (cache_index_01 == 12)> <Delay = 1.90>
+ST_5 : Operation 54 [1/1] (2.18ns)   --->   "%tmp_V_23 = call i16 @_ssdm_op_Read.ap_fifo.volatile.i16P(i16* %in_5_V_V)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 54 'read' 'tmp_V_23' <Predicate = (cache_index_01 == 4)> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 0> <FIFO>
+ST_5 : Operation 55 [1/1] (1.90ns)   --->   "br label %2" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 55 'br' <Predicate = (cache_index_01 == 4)> <Delay = 1.90>
+ST_5 : Operation 56 [1/1] (2.18ns)   --->   "%tmp_V_22 = call i16 @_ssdm_op_Read.ap_fifo.volatile.i16P(i16* %in_1_V_V)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 56 'read' 'tmp_V_22' <Predicate = (cache_index_01 == 0)> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 0> <FIFO>
+ST_5 : Operation 57 [1/1] (1.90ns)   --->   "br label %2" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 57 'br' <Predicate = (cache_index_01 == 0)> <Delay = 1.90>
+ST_5 : Operation 58 [1/1] (1.30ns)   --->   "switch i4 %cache_index_01, label %branch31 [
+    i4 0, label %branch18
+    i4 -4, label %branch30
+    i4 4, label %branch22
+    i4 -8, label %branch26
+  ]" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 58 'switch' <Predicate = true> <Delay = 1.30>
+ST_5 : Operation 59 [1/1] (2.18ns)   --->   "%tmp_V_27 = call i16 @_ssdm_op_Read.ap_fifo.volatile.i16P(i16* %in_15_V_V)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 59 'read' 'tmp_V_27' <Predicate = (cache_index_01 != 0 & cache_index_01 != 4 & cache_index_01 != 8 & cache_index_01 != 12)> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 0> <FIFO>
+ST_5 : Operation 60 [1/1] (1.90ns)   --->   "br label %3" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 60 'br' <Predicate = (cache_index_01 != 0 & cache_index_01 != 4 & cache_index_01 != 8 & cache_index_01 != 12)> <Delay = 1.90>
+ST_5 : Operation 61 [1/1] (1.30ns)   --->   "switch i4 %cache_index_01, label %branch15 [
+    i4 0, label %branch3
+    i4 -8, label %branch11
+    i4 4, label %branch7
+  ]" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 61 'switch' <Predicate = true> <Delay = 1.30>
+ST_5 : Operation 62 [1/1] (1.73ns)   --->   "%cache_index = add i4 %cache_index_01, 4" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:133]   --->   Operation 62 'add' 'cache_index' <Predicate = true> <Delay = 1.73> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.73> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 63 [1/1] (1.99ns)   --->   "%icmp_ln122 = icmp eq i12 %i_02, -1793" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:122]   --->   Operation 63 'icmp' 'icmp_ln122' <Predicate = true> <Delay = 1.99> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.99> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 64 [1/1] (0.00ns)   --->   "br label %rewind_header" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:137]   --->   Operation 64 'br' <Predicate = (icmp_ln122)> <Delay = 0.00>
+
+State 6 <SV = 6> <Delay = 2.18>
+ST_6 : Operation 65 [1/1] (0.00ns)   --->   "br label %pixel_channel_loop_begin" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:122]   --->   Operation 65 'br' <Predicate = (do_init)> <Delay = 0.00>
+ST_6 : Operation 66 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopName([19 x i8]* @p_str239) nounwind" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:122]   --->   Operation 66 'specloopname' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 67 [1/1] (0.00ns)   --->   "%tmp = call i32 (...)* @_ssdm_op_SpecRegionBegin([19 x i8]* @p_str239)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:122]   --->   Operation 67 'specregionbegin' 'tmp' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 68 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecPipeline(i32 1, i32 1, i32 1, i32 0, [1 x i8]* @p_str37) nounwind" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:125]   --->   Operation 68 'specpipeline' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 69 [1/1] (0.00ns)   --->   "%tmp_V_32 = phi i16 [ %tmp_V_27, %branch31 ], [ %tmp_V_31, %branch26 ], [ %tmp_V_30, %branch22 ], [ %tmp_V_29, %branch30 ], [ %tmp_V_28, %branch18 ]"   --->   Operation 69 'phi' 'tmp_V_32' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 70 [1/1] (2.18ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i16P(i16* %out_2_V_V, i16 %tmp_V_32)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 70 'write' <Predicate = true> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 0> <FIFO>
+ST_6 : Operation 71 [1/1] (0.00ns)   --->   "%tmp_V_37 = phi i16 [ %tmp_V_33, %branch15 ], [ %tmp_V_36, %branch7 ], [ %tmp_V_35, %branch11 ], [ %tmp_V_34, %branch3 ]"   --->   Operation 71 'phi' 'tmp_V_37' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 72 [1/1] (2.18ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i16P(i16* %out_3_V_V, i16 %tmp_V_37)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 72 'write' <Predicate = true> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 0> <FIFO>
+ST_6 : Operation 73 [1/1] (0.00ns)   --->   "%empty = call i32 (...)* @_ssdm_op_SpecRegionEnd([19 x i8]* @p_str239, i32 %tmp)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:135]   --->   Operation 73 'specregionend' 'empty' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 74 [1/1] (0.00ns)   --->   "%empty_80 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 2304, i64 2304, i64 2304)"   --->   Operation 74 'speclooptripcount' 'empty_80' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 75 [1/1] (0.00ns)   --->   "br i1 %icmp_ln122, label %4, label %rewind_header" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:122]   --->   Operation 75 'br' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 76 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_Return()" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:137]   --->   Operation 76 'return' <Predicate = (icmp_ln122)> <Delay = 0.00>
+
+State 7 <SV = 5> <Delay = 2.18>
+ST_7 : Operation 77 [1/1] (0.00ns)   --->   "%tmp_V_26 = phi i16 [ %tmp_V_21, %branch47 ], [ %tmp_V_25, %branch41 ], [ %tmp_V_24, %branch45 ], [ %tmp_V_23, %branch37 ], [ %tmp_V_22, %branch33 ]"   --->   Operation 77 'phi' 'tmp_V_26' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 78 [1/1] (2.18ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i16P(i16* %out_1_V_V, i16 %tmp_V_26)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 78 'write' <Predicate = true> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 0> <FIFO>
+ST_7 : Operation 79 [1/1] (2.18ns)   --->   "%tmp_V_31 = call i16 @_ssdm_op_Read.ap_fifo.volatile.i16P(i16* %in_10_V_V)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 79 'read' 'tmp_V_31' <Predicate = (cache_index_01 == 8)> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 0> <FIFO>
+ST_7 : Operation 80 [1/1] (1.90ns)   --->   "br label %3" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 80 'br' <Predicate = (cache_index_01 == 8)> <Delay = 1.90>
+ST_7 : Operation 81 [1/1] (2.18ns)   --->   "%tmp_V_30 = call i16 @_ssdm_op_Read.ap_fifo.volatile.i16P(i16* %in_6_V_V)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 81 'read' 'tmp_V_30' <Predicate = (cache_index_01 == 4)> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 0> <FIFO>
+ST_7 : Operation 82 [1/1] (1.90ns)   --->   "br label %3" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 82 'br' <Predicate = (cache_index_01 == 4)> <Delay = 1.90>
+ST_7 : Operation 83 [1/1] (2.18ns)   --->   "%tmp_V_29 = call i16 @_ssdm_op_Read.ap_fifo.volatile.i16P(i16* %in_14_V_V)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 83 'read' 'tmp_V_29' <Predicate = (cache_index_01 == 12)> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 0> <FIFO>
+ST_7 : Operation 84 [1/1] (1.90ns)   --->   "br label %3" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 84 'br' <Predicate = (cache_index_01 == 12)> <Delay = 1.90>
+ST_7 : Operation 85 [1/1] (2.18ns)   --->   "%tmp_V_28 = call i16 @_ssdm_op_Read.ap_fifo.volatile.i16P(i16* %in_2_V_V)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 85 'read' 'tmp_V_28' <Predicate = (cache_index_01 == 0)> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 0> <FIFO>
+ST_7 : Operation 86 [1/1] (1.90ns)   --->   "br label %3" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 86 'br' <Predicate = (cache_index_01 == 0)> <Delay = 1.90>
+ST_7 : Operation 87 [1/1] (2.18ns)   --->   "%tmp_V_36 = call i16 @_ssdm_op_Read.ap_fifo.volatile.i16P(i16* %in_7_V_V)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 87 'read' 'tmp_V_36' <Predicate = (cache_index_01 == 4)> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 0> <FIFO>
+ST_7 : Operation 88 [1/1] (1.86ns)   --->   "br label %pixel_channel_loop_end" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 88 'br' <Predicate = (cache_index_01 == 4)> <Delay = 1.86>
+ST_7 : Operation 89 [1/1] (2.18ns)   --->   "%tmp_V_35 = call i16 @_ssdm_op_Read.ap_fifo.volatile.i16P(i16* %in_11_V_V)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 89 'read' 'tmp_V_35' <Predicate = (cache_index_01 == 8)> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 0> <FIFO>
+ST_7 : Operation 90 [1/1] (1.86ns)   --->   "br label %pixel_channel_loop_end" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 90 'br' <Predicate = (cache_index_01 == 8)> <Delay = 1.86>
+ST_7 : Operation 91 [1/1] (2.18ns)   --->   "%tmp_V_34 = call i16 @_ssdm_op_Read.ap_fifo.volatile.i16P(i16* %in_3_V_V)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 91 'read' 'tmp_V_34' <Predicate = (cache_index_01 == 0)> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 0> <FIFO>
+ST_7 : Operation 92 [1/1] (1.86ns)   --->   "br label %pixel_channel_loop_end" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 92 'br' <Predicate = (cache_index_01 == 0)> <Delay = 1.86>
+ST_7 : Operation 93 [1/1] (2.18ns)   --->   "%tmp_V_33 = call i16 @_ssdm_op_Read.ap_fifo.volatile.i16P(i16* %in_15_V_V)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 93 'read' 'tmp_V_33' <Predicate = (cache_index_01 != 0 & cache_index_01 != 4 & cache_index_01 != 8)> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 0> <FIFO>
+ST_7 : Operation 94 [1/1] (1.86ns)   --->   "br label %pixel_channel_loop_end" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129]   --->   Operation 94 'br' <Predicate = (cache_index_01 != 0 & cache_index_01 != 4 & cache_index_01 != 8)> <Delay = 1.86>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 5ns, clock uncertainty: 0.625ns.
+
+ <State 1>: 1.77ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('do_init') [43]  (1.77 ns)
+
+ <State 2>: 0ns
+The critical path consists of the following:
+
+ <State 3>: 2.19ns
+The critical path consists of the following:
+	fifo read on port 'in_12_V_V' (/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129) [56]  (2.19 ns)
+
+ <State 4>: 2.19ns
+The critical path consists of the following:
+	'phi' operation ('tmp.V') with incoming values : ('tmp.V', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129) [71]  (0 ns)
+	fifo write on port 'out_0_V_V' (/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129) [72]  (2.19 ns)
+
+ <State 5>: 2.19ns
+The critical path consists of the following:
+	fifo read on port 'in_9_V_V' (/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129) [75]  (2.19 ns)
+
+ <State 6>: 2.19ns
+The critical path consists of the following:
+	'phi' operation ('tmp.V') with incoming values : ('tmp.V', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129) [109]  (0 ns)
+	fifo write on port 'out_2_V_V' (/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129) [110]  (2.19 ns)
+
+ <State 7>: 2.19ns
+The critical path consists of the following:
+	'phi' operation ('tmp.V') with incoming values : ('tmp.V', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129) [90]  (0 ns)
+	fifo write on port 'out_1_V_V' (/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/squeeze.hpp:129) [91]  (2.19 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

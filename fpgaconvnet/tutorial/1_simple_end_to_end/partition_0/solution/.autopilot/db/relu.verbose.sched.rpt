@@ -1,0 +1,316 @@
+
+
+================================================================
+== Vivado HLS Report for 'relu'
+================================================================
+* Date:           Sat Feb 15 07:24:43 2025
+
+* Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
+* Project:        partition_0
+* Solution:       solution
+* Product family: zynq
+* Target device:  xc7z020-clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 5.00 ns | 4.332 ns |   0.62 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------------------------------------------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval |                   Pipeline                  |
+    |   min   |   max   |    min   |    max   | min | max |                     Type                    |
+    +---------+---------+----------+----------+-----+-----+---------------------------------------------+
+    |      588|      589| 2.940 us | 2.945 us |  576|  576| loop rewind(delay=0 initiation interval(s)) |
+    +---------+---------+----------+----------+-----+-----+---------------------------------------------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +----------+---------+---------+----------+-----------+-----------+------+----------+
+        |          |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        | Loop Name|   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +----------+---------+---------+----------+-----------+-----------+------+----------+
+        |- Loop 1  |      588|      588|        14|          1|          1|   576|    yes   |
+        +----------+---------+---------+----------+-----------+-----------+------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 1, depth = 14
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 15
+* Pipeline : 1
+  Pipeline-0 : II = 1, D = 14, States = { 2 4 5 6 7 8 9 10 11 12 13 14 15 3 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 4 
+3 --> 2 
+4 --> 5 
+5 --> 6 
+6 --> 7 
+7 --> 8 
+8 --> 9 
+9 --> 10 
+10 --> 11 
+11 --> 12 
+12 --> 13 
+13 --> 14 
+14 --> 15 
+15 --> 3 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 1.76>
+ST_1 : Operation 16 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %out_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 16 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 17 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i16* %in_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 17 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 18 [1/1] (1.76ns)   --->   "br label %rewind_header" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:49]   --->   Operation 18 'br' <Predicate = true> <Delay = 1.76>
+
+State 2 <SV = 1> <Delay = 2.18>
+ST_2 : Operation 19 [1/1] (0.00ns)   --->   "%do_init = phi i1 [ true, %branch1 ], [ false, %hls_label_1_end ], [ true, %0 ]"   --->   Operation 19 'phi' 'do_init' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 20 [1/1] (0.00ns)   --->   "%pixel_index_01 = phi i10 [ 0, %branch1 ], [ %pixel_index, %hls_label_1_end ], [ 0, %0 ]"   --->   Operation 20 'phi' 'pixel_index_01' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 21 [1/1] (0.00ns)   --->   "br i1 %do_init, label %rewind_init, label %hls_label_1_begin"   --->   Operation 21 'br' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 22 [1/1] (2.18ns)   --->   "%tmp_V_132 = call i16 @_ssdm_op_Read.ap_fifo.volatile.i16P(i16* %in_V_V)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:51]   --->   Operation 22 'read' 'tmp_V_132' <Predicate = true> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 0> <FIFO>
+ST_2 : Operation 23 [1/1] (1.73ns)   --->   "%pixel_index = add i10 %pixel_index_01, 1" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:49]   --->   Operation 23 'add' 'pixel_index' <Predicate = true> <Delay = 1.73> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 3.52> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 24 [1/1] (1.77ns)   --->   "%icmp_ln49 = icmp eq i10 %pixel_index_01, -449" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:49]   --->   Operation 24 'icmp' 'icmp_ln49' <Predicate = true> <Delay = 1.77> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.77> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 25 [1/1] (0.00ns)   --->   "br i1 %icmp_ln49, label %0, label %rewind_header" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:49]   --->   Operation 25 'br' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 26 [1/1] (0.00ns)   --->   "br label %rewind_header" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:57]   --->   Operation 26 'br' <Predicate = (icmp_ln49)> <Delay = 0.00>
+
+State 3 <SV = 14> <Delay = 2.18>
+ST_3 : Operation 27 [1/1] (0.00ns)   --->   "br label %hls_label_1_begin" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:49]   --->   Operation 27 'br' <Predicate = (do_init)> <Delay = 0.00>
+ST_3 : Operation 28 [1/1] (0.00ns)   --->   "%tmp = call i32 (...)* @_ssdm_op_SpecRegionBegin([12 x i8]* @p_str3)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:49]   --->   Operation 28 'specregionbegin' 'tmp' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 29 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecPipeline(i32 1, i32 1, i32 1, i32 0, [1 x i8]* @p_str) nounwind" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:50]   --->   Operation 29 'specpipeline' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 30 [1/1] (2.18ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i16P(i16* %out_V_V, i16 0)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:53]   --->   Operation 30 'write' <Predicate = (!icmp_ln885 & and_ln924)> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 0> <FIFO>
+ST_3 : Operation 31 [1/1] (0.00ns)   --->   "br label %hls_label_1_end" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:53]   --->   Operation 31 'br' <Predicate = (!icmp_ln885 & and_ln924)> <Delay = 0.00>
+ST_3 : Operation 32 [1/1] (2.18ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i16P(i16* %out_V_V, i16 %tmp_V_132)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:55]   --->   Operation 32 'write' <Predicate = (!and_ln924) | (icmp_ln885)> <Delay = 2.18> <Core = "FIFO_SRL">   --->   Core 36 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 0> <FIFO>
+ST_3 : Operation 33 [1/1] (0.00ns)   --->   "br label %hls_label_1_end"   --->   Operation 33 'br' <Predicate = (!and_ln924) | (icmp_ln885)> <Delay = 0.00>
+ST_3 : Operation 34 [1/1] (0.00ns)   --->   "%empty = call i32 (...)* @_ssdm_op_SpecRegionEnd([12 x i8]* @p_str3, i32 %tmp)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:56]   --->   Operation 34 'specregionend' 'empty' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 35 [1/1] (0.00ns)   --->   "%empty_177 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 576, i64 576, i64 576)"   --->   Operation 35 'speclooptripcount' 'empty_177' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 36 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_Return()" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:57]   --->   Operation 36 'return' <Predicate = (icmp_ln49)> <Delay = 0.00>
+
+State 4 <SV = 2> <Delay = 3.40>
+ST_4 : Operation 37 [1/1] (2.42ns)   --->   "%icmp_ln885 = icmp eq i16 %tmp_V_132, 0" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 37 'icmp' 'icmp_ln885' <Predicate = true> <Delay = 2.42> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.77> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 38 [1/1] (0.00ns)   --->   "br i1 %icmp_ln885, label %.critedge, label %_ifconv" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 38 'br' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 39 [1/1] (2.07ns)   --->   "%tmp_V = sub i16 0, %tmp_V_132" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 39 'sub' 'tmp_V' <Predicate = (!icmp_ln885)> <Delay = 2.07> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 3.52> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 5 <SV = 3> <Delay = 4.20>
+ST_5 : Operation 40 [1/1] (0.00ns)   --->   "%p_Result_6 = call i1 @_ssdm_op_BitSelect.i1.i16.i32(i16 %tmp_V_132, i32 15)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 40 'bitselect' 'p_Result_6' <Predicate = (!icmp_ln885)> <Delay = 0.00>
+ST_5 : Operation 41 [1/1] (0.80ns)   --->   "%tmp_V_133 = select i1 %p_Result_6, i16 %tmp_V, i16 %tmp_V_132" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 41 'select' 'tmp_V_133' <Predicate = (!icmp_ln885)> <Delay = 0.80> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_5 : Operation 42 [1/1] (0.00ns)   --->   "%p_Result_s = call i16 @llvm.part.select.i16(i16 %tmp_V_133, i32 15, i32 0)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 42 'partselect' 'p_Result_s' <Predicate = (!icmp_ln885)> <Delay = 0.00>
+ST_5 : Operation 43 [1/1] (0.00ns)   --->   "%p_Result_7 = call i32 @_ssdm_op_BitConcatenate.i32.i16.i16(i16 -1, i16 %p_Result_s)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 43 'bitconcatenate' 'p_Result_7' <Predicate = (!icmp_ln885)> <Delay = 0.00>
+ST_5 : Operation 44 [1/1] (3.39ns)   --->   "%l = call i32 @llvm.cttz.i32(i32 %p_Result_7, i1 true)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 44 'cttz' 'l' <Predicate = (!icmp_ln885)> <Delay = 3.39> <Core = "CTTZ">   --->   Core 64 'CTTZ' <Latency = 0> <II = 1> <Delay = 3.39> <FuncUnit> <Opcode : 'cttz'> <InPorts = 1> <OutPorts = 1>
+ST_5 : Operation 45 [1/1] (0.00ns)   --->   "%trunc_ln893 = trunc i32 %l to i11" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 45 'trunc' 'trunc_ln893' <Predicate = (!icmp_ln885)> <Delay = 0.00>
+
+State 6 <SV = 4> <Delay = 4.33>
+ST_6 : Operation 46 [1/1] (2.55ns)   --->   "%sub_ln894 = sub nsw i32 16, %l" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 46 'sub' 'sub_ln894' <Predicate = (!icmp_ln885)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 3.52> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 47 [1/1] (0.00ns)   --->   "%trunc_ln894 = trunc i32 %sub_ln894 to i16" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 47 'trunc' 'trunc_ln894' <Predicate = (!icmp_ln885)> <Delay = 0.00>
+ST_6 : Operation 48 [1/1] (0.00ns)   --->   "%trunc_ln897 = trunc i32 %sub_ln894 to i5" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 48 'trunc' 'trunc_ln897' <Predicate = (!icmp_ln885)> <Delay = 0.00>
+ST_6 : Operation 49 [1/1] (1.78ns)   --->   "%sub_ln897 = sub i5 6, %trunc_ln897" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 49 'sub' 'sub_ln897' <Predicate = (!icmp_ln885)> <Delay = 1.78> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 3.52> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 7 <SV = 5> <Delay = 2.66>
+ST_7 : Operation 50 [1/1] (2.55ns)   --->   "%lsb_index = add nsw i32 -53, %sub_ln894" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 50 'add' 'lsb_index' <Predicate = (!icmp_ln885)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 3.52> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 51 [1/1] (0.00ns)   --->   "%tmp_10 = call i31 @_ssdm_op_PartSelect.i31.i32.i32.i32(i32 %lsb_index, i32 1, i32 31)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 51 'partselect' 'tmp_10' <Predicate = (!icmp_ln885)> <Delay = 0.00>
+ST_7 : Operation 52 [1/1] (0.00ns) (grouped into LUT with out node icmp_ln897_1)   --->   "%zext_ln897 = zext i5 %sub_ln897 to i16" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 52 'zext' 'zext_ln897' <Predicate = (!icmp_ln885)> <Delay = 0.00>
+ST_7 : Operation 53 [1/1] (0.00ns) (grouped into LUT with out node icmp_ln897_1)   --->   "%lshr_ln897 = lshr i16 -1, %zext_ln897" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 53 'lshr' 'lshr_ln897' <Predicate = (!icmp_ln885)> <Delay = 0.00> <Core = "Shift">   --->   Core 28 'Shift' <Latency = 0> <II = 1> <Delay = 2.66> <FuncUnit> <Opcode : 'shl' 'lshr' 'ashr'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 54 [1/1] (0.00ns) (grouped into LUT with out node icmp_ln897_1)   --->   "%p_Result_4 = and i16 %tmp_V_133, %lshr_ln897" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 54 'and' 'p_Result_4' <Predicate = (!icmp_ln885)> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 55 [1/1] (2.66ns) (out node of the LUT)   --->   "%icmp_ln897_1 = icmp ne i16 %p_Result_4, 0" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 55 'icmp' 'icmp_ln897_1' <Predicate = (!icmp_ln885)> <Delay = 2.66> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.77> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 56 [1/1] (2.55ns)   --->   "%add_ln908 = add nsw i32 -54, %sub_ln894" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 56 'add' 'add_ln908' <Predicate = (!icmp_ln885)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 3.52> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 57 [1/1] (2.55ns)   --->   "%sub_ln908 = sub i32 54, %sub_ln894" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 57 'sub' 'sub_ln908' <Predicate = (!icmp_ln885)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 3.52> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 8 <SV = 6> <Delay = 3.60>
+ST_8 : Operation 58 [1/1] (2.47ns)   --->   "%icmp_ln897 = icmp sgt i31 %tmp_10, 0" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 58 'icmp' 'icmp_ln897' <Predicate = (!icmp_ln885)> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.77> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 59 [1/1] (0.00ns) (grouped into LUT with out node or_ln)   --->   "%a = and i1 %icmp_ln897, %icmp_ln897_1" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 59 'and' 'a' <Predicate = (!icmp_ln885)> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 60 [1/1] (0.00ns) (grouped into LUT with out node or_ln)   --->   "%tmp_11 = call i1 @_ssdm_op_BitSelect.i1.i32.i32(i32 %lsb_index, i32 31)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 60 'bitselect' 'tmp_11' <Predicate = (!icmp_ln885)> <Delay = 0.00>
+ST_8 : Operation 61 [1/1] (0.00ns) (grouped into LUT with out node or_ln)   --->   "%xor_ln899 = xor i1 %tmp_11, true" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 61 'xor' 'xor_ln899' <Predicate = (!icmp_ln885)> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 62 [1/1] (2.07ns)   --->   "%add_ln899 = add i16 -53, %trunc_ln894" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 62 'add' 'add_ln899' <Predicate = (!icmp_ln885)> <Delay = 2.07> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 3.52> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 63 [1/1] (0.00ns) (grouped into LUT with out node or_ln)   --->   "%p_Result_3 = call i1 @_ssdm_op_BitSelect.i1.i16.i16(i16 %tmp_V_133, i16 %add_ln899)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 63 'bitselect' 'p_Result_3' <Predicate = (!icmp_ln885)> <Delay = 0.00>
+ST_8 : Operation 64 [1/1] (0.00ns) (grouped into LUT with out node or_ln)   --->   "%and_ln899 = and i1 %p_Result_3, %xor_ln899" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 64 'and' 'and_ln899' <Predicate = (!icmp_ln885)> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 65 [1/1] (0.00ns) (grouped into LUT with out node or_ln)   --->   "%or_ln899 = or i1 %and_ln899, %a" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 65 'or' 'or_ln899' <Predicate = (!icmp_ln885)> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 66 [1/1] (0.97ns) (out node of the LUT)   --->   "%or_ln = call i32 @_ssdm_op_BitConcatenate.i32.i31.i1(i31 0, i1 %or_ln899)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 66 'bitconcatenate' 'or_ln' <Predicate = (!icmp_ln885)> <Delay = 0.97>
+ST_8 : Operation 67 [1/1] (0.00ns)   --->   "%m = zext i16 %tmp_V_133 to i64" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 67 'zext' 'm' <Predicate = (!icmp_ln885)> <Delay = 0.00>
+ST_8 : Operation 68 [1/1] (0.00ns)   --->   "%zext_ln907_1 = zext i16 %tmp_V_133 to i32" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 68 'zext' 'zext_ln907_1' <Predicate = (!icmp_ln885)> <Delay = 0.00>
+ST_8 : Operation 69 [1/1] (2.47ns)   --->   "%icmp_ln908 = icmp sgt i32 %lsb_index, 0" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 69 'icmp' 'icmp_ln908' <Predicate = (!icmp_ln885)> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.77> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 70 [2/2] (3.60ns)   --->   "%lshr_ln908 = lshr i32 %zext_ln907_1, %add_ln908" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 70 'lshr' 'lshr_ln908' <Predicate = (!icmp_ln885)> <Delay = 3.60> <Core = "ShiftnS">   --->   Core 29 'ShiftnS' <Latency = 1> <II = 1> <Delay = 3.60> <FuncUnit> <Opcode : 'shl' 'lshr' 'ashr'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 71 [1/1] (0.00ns)   --->   "%zext_ln908_1 = zext i32 %sub_ln908 to i64" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 71 'zext' 'zext_ln908_1' <Predicate = (!icmp_ln885)> <Delay = 0.00>
+ST_8 : Operation 72 [2/2] (3.60ns)   --->   "%shl_ln908 = shl i64 %m, %zext_ln908_1" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 72 'shl' 'shl_ln908' <Predicate = (!icmp_ln885)> <Delay = 3.60> <Core = "ShiftnS">   --->   Core 29 'ShiftnS' <Latency = 1> <II = 1> <Delay = 3.60> <FuncUnit> <Opcode : 'shl' 'lshr' 'ashr'> <InPorts = 2> <OutPorts = 1>
+
+State 9 <SV = 7> <Delay = 3.60>
+ST_9 : Operation 73 [1/2] (3.60ns)   --->   "%lshr_ln908 = lshr i32 %zext_ln907_1, %add_ln908" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 73 'lshr' 'lshr_ln908' <Predicate = (!icmp_ln885)> <Delay = 3.60> <Core = "ShiftnS">   --->   Core 29 'ShiftnS' <Latency = 1> <II = 1> <Delay = 3.60> <FuncUnit> <Opcode : 'shl' 'lshr' 'ashr'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 74 [1/2] (3.60ns)   --->   "%shl_ln908 = shl i64 %m, %zext_ln908_1" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 74 'shl' 'shl_ln908' <Predicate = (!icmp_ln885)> <Delay = 3.60> <Core = "ShiftnS">   --->   Core 29 'ShiftnS' <Latency = 1> <II = 1> <Delay = 3.60> <FuncUnit> <Opcode : 'shl' 'lshr' 'ashr'> <InPorts = 2> <OutPorts = 1>
+
+State 10 <SV = 8> <Delay = 4.21>
+ST_10 : Operation 75 [1/1] (0.00ns) (grouped into LUT with out node m_2)   --->   "%zext_ln908 = zext i32 %lshr_ln908 to i64" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 75 'zext' 'zext_ln908' <Predicate = (!icmp_ln885 & icmp_ln908)> <Delay = 0.00>
+ST_10 : Operation 76 [1/1] (0.00ns) (grouped into LUT with out node m_2)   --->   "%m_1 = select i1 %icmp_ln908, i64 %zext_ln908, i64 %shl_ln908" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 76 'select' 'm_1' <Predicate = (!icmp_ln885)> <Delay = 0.00> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_10 : Operation 77 [1/1] (0.00ns) (grouped into LUT with out node m_2)   --->   "%zext_ln911 = zext i32 %or_ln to i64" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 77 'zext' 'zext_ln911' <Predicate = (!icmp_ln885)> <Delay = 0.00>
+ST_10 : Operation 78 [1/1] (3.52ns) (out node of the LUT)   --->   "%m_2 = add i64 %zext_ln911, %m_1" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 78 'add' 'm_2' <Predicate = (!icmp_ln885)> <Delay = 3.52> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 3.52> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_10 : Operation 79 [1/1] (0.00ns)   --->   "%m_5 = call i63 @_ssdm_op_PartSelect.i63.i64.i32.i32(i64 %m_2, i32 1, i32 63)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 79 'partselect' 'm_5' <Predicate = (!icmp_ln885)> <Delay = 0.00>
+ST_10 : Operation 80 [1/1] (0.00ns)   --->   "%tmp_12 = call i1 @_ssdm_op_BitSelect.i1.i64.i32(i64 %m_2, i32 54)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 80 'bitselect' 'tmp_12' <Predicate = (!icmp_ln885)> <Delay = 0.00>
+ST_10 : Operation 81 [1/1] (0.69ns)   --->   "%select_ln915 = select i1 %tmp_12, i11 1023, i11 1022" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 81 'select' 'select_ln915' <Predicate = (!icmp_ln885)> <Delay = 0.69> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_10 : Operation 82 [1/1] (0.00ns)   --->   "%trunc_ln4 = call i52 @_ssdm_op_PartSelect.i52.i64.i32.i32(i64 %m_2, i32 1, i32 52)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 82 'partselect' 'trunc_ln4' <Predicate = (!icmp_ln885)> <Delay = 0.00>
+
+State 11 <SV = 9> <Delay = 3.75>
+ST_11 : Operation 83 [1/1] (0.00ns) (grouped into TernaryAdder)   --->   "%sub_ln915 = sub i11 8, %trunc_ln893" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 83 'sub' 'sub_ln915' <Predicate = (!icmp_ln885)> <Delay = 0.00> <Core = "TAddSub">   --->   Core 83 'TAddSub' <Latency = 0> <II = 1> <Delay = 1.87> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
+ST_11 : Operation 84 [1/1] (3.75ns) (root node of TernaryAdder)   --->   "%add_ln915 = add i11 %sub_ln915, %select_ln915" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 84 'add' 'add_ln915' <Predicate = (!icmp_ln885)> <Delay = 3.75> <Core = "TAddSub">   --->   Core 83 'TAddSub' <Latency = 0> <II = 1> <Delay = 1.87> <IPBlock> <Opcode : 'add' 'sub'> <InPorts = 3> <OutPorts = 1> <Sync> <CReg>
+ST_11 : Operation 85 [1/1] (2.89ns)   --->   "%icmp_ln924_1 = icmp eq i52 %trunc_ln4, 0" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 85 'icmp' 'icmp_ln924_1' <Predicate = (!icmp_ln885)> <Delay = 2.89> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.77> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+
+State 12 <SV = 10> <Delay = 3.12>
+ST_12 : Operation 86 [1/1] (0.00ns)   --->   "%m_6 = zext i63 %m_5 to i64" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 86 'zext' 'm_6' <Predicate = (!icmp_ln885)> <Delay = 0.00>
+ST_12 : Operation 87 [1/1] (0.00ns)   --->   "%tmp_2 = call i12 @_ssdm_op_BitConcatenate.i12.i1.i11(i1 %p_Result_6, i11 %add_ln915)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 87 'bitconcatenate' 'tmp_2' <Predicate = (!icmp_ln885)> <Delay = 0.00>
+ST_12 : Operation 88 [1/1] (0.00ns)   --->   "%p_Result_8 = call i64 @_ssdm_op_PartSet.i64.i64.i12.i32.i32(i64 %m_6, i12 %tmp_2, i32 52, i32 63)" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 88 'partset' 'p_Result_8' <Predicate = (!icmp_ln885)> <Delay = 0.00>
+ST_12 : Operation 89 [1/1] (0.00ns)   --->   "%bitcast_ln729 = bitcast i64 %p_Result_8 to double" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 89 'bitcast' 'bitcast_ln729' <Predicate = (!icmp_ln885)> <Delay = 0.00>
+ST_12 : Operation 90 [1/1] (1.88ns)   --->   "%icmp_ln924 = icmp ne i11 %add_ln915, -1" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 90 'icmp' 'icmp_ln924' <Predicate = (!icmp_ln885)> <Delay = 1.88> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.77> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_12 : Operation 91 [4/4] (3.12ns)   --->   "%tmp_1 = fcmp olt double %bitcast_ln729, 0.000000e+00" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 91 'dcmp' 'tmp_1' <Predicate = (!icmp_ln885)> <Delay = 3.12> <Core = "DCmp">   --->   Core 120 'DCmp' <Latency = 3> <II = 1> <Delay = 3.12> <FuncUnit> <Opcode : 'dcmp'> <InPorts = 2> <OutPorts = 1>
+
+State 13 <SV = 11> <Delay = 3.12>
+ST_13 : Operation 92 [3/4] (3.12ns)   --->   "%tmp_1 = fcmp olt double %bitcast_ln729, 0.000000e+00" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 92 'dcmp' 'tmp_1' <Predicate = (!icmp_ln885)> <Delay = 3.12> <Core = "DCmp">   --->   Core 120 'DCmp' <Latency = 3> <II = 1> <Delay = 3.12> <FuncUnit> <Opcode : 'dcmp'> <InPorts = 2> <OutPorts = 1>
+
+State 14 <SV = 12> <Delay = 3.12>
+ST_14 : Operation 93 [2/4] (3.12ns)   --->   "%tmp_1 = fcmp olt double %bitcast_ln729, 0.000000e+00" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 93 'dcmp' 'tmp_1' <Predicate = (!icmp_ln885)> <Delay = 3.12> <Core = "DCmp">   --->   Core 120 'DCmp' <Latency = 3> <II = 1> <Delay = 3.12> <FuncUnit> <Opcode : 'dcmp'> <InPorts = 2> <OutPorts = 1>
+
+State 15 <SV = 13> <Delay = 4.10>
+ST_15 : Operation 94 [1/1] (0.00ns) (grouped into LUT with out node and_ln924)   --->   "%or_ln924 = or i1 %icmp_ln924_1, %icmp_ln924" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 94 'or' 'or_ln924' <Predicate = (!icmp_ln885)> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 95 [1/4] (3.12ns)   --->   "%tmp_1 = fcmp olt double %bitcast_ln729, 0.000000e+00" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 95 'dcmp' 'tmp_1' <Predicate = (!icmp_ln885)> <Delay = 3.12> <Core = "DCmp">   --->   Core 120 'DCmp' <Latency = 3> <II = 1> <Delay = 3.12> <FuncUnit> <Opcode : 'dcmp'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 96 [1/1] (0.97ns) (out node of the LUT)   --->   "%and_ln924 = and i1 %or_ln924, %tmp_1" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 96 'and' 'and_ln924' <Predicate = (!icmp_ln885)> <Delay = 0.97> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 97 [1/1] (0.00ns)   --->   "br i1 %and_ln924, label %branch3, label %.critedge" [/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52]   --->   Operation 97 'br' <Predicate = (!icmp_ln885)> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 5ns, clock uncertainty: 0.625ns.
+
+ <State 1>: 1.77ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('do_init') [7]  (1.77 ns)
+
+ <State 2>: 2.19ns
+The critical path consists of the following:
+	fifo read on port 'in_V_V' (/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:51) [15]  (2.19 ns)
+
+ <State 3>: 2.19ns
+The critical path consists of the following:
+	fifo write on port 'out_V_V' (/root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:53) [75]  (2.19 ns)
+
+ <State 4>: 3.41ns
+The critical path consists of the following:
+	'icmp' operation ('icmp_ln885', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52) [16]  (2.43 ns)
+	blocking operation 0.978 ns on control path)
+
+ <State 5>: 4.2ns
+The critical path consists of the following:
+	'select' operation ('tmp.V', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52) [22]  (0.805 ns)
+	'cttz' operation ('l', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52) [25]  (3.4 ns)
+
+ <State 6>: 4.33ns
+The critical path consists of the following:
+	'sub' operation ('sub_ln894', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52) [26]  (2.55 ns)
+	'sub' operation ('sub_ln897', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52) [32]  (1.78 ns)
+
+ <State 7>: 2.67ns
+The critical path consists of the following:
+	'lshr' operation ('lshr_ln897', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52) [34]  (0 ns)
+	'and' operation ('__Result__', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52) [35]  (0 ns)
+	'icmp' operation ('icmp_ln897_1', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52) [36]  (2.67 ns)
+
+ <State 8>: 3.61ns
+The critical path consists of the following:
+	'shl' operation ('shl_ln908', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52) [53]  (3.61 ns)
+
+ <State 9>: 3.61ns
+The critical path consists of the following:
+	'lshr' operation ('lshr_ln908', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52) [49]  (3.61 ns)
+
+ <State 10>: 4.21ns
+The critical path consists of the following:
+	'select' operation ('m', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52) [54]  (0 ns)
+	'add' operation ('m', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52) [56]  (3.52 ns)
+	'select' operation ('select_ln915', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52) [60]  (0.692 ns)
+
+ <State 11>: 3.76ns
+The critical path consists of the following:
+	'sub' operation ('sub_ln915', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52) [62]  (0 ns)
+	'add' operation ('add_ln915', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52) [63]  (3.76 ns)
+
+ <State 12>: 3.13ns
+The critical path consists of the following:
+	'dcmp' operation ('tmp_1', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52) [71]  (3.13 ns)
+
+ <State 13>: 3.13ns
+The critical path consists of the following:
+	'dcmp' operation ('tmp_1', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52) [71]  (3.13 ns)
+
+ <State 14>: 3.13ns
+The critical path consists of the following:
+	'dcmp' operation ('tmp_1', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52) [71]  (3.13 ns)
+
+ <State 15>: 4.11ns
+The critical path consists of the following:
+	'dcmp' operation ('tmp_1', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52) [71]  (3.13 ns)
+	'and' operation ('and_ln924', /root/fpgaconvnet-tutorial/fpgaconvnet-hls/fpgaconvnet/hls/hardware/relu.hpp:52) [72]  (0.978 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+	State 12
+	State 13
+	State 14
+	State 15
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

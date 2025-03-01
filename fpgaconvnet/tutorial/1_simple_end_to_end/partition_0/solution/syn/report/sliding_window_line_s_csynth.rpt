@@ -1,0 +1,375 @@
+
+
+================================================================
+== Vivado HLS Report for 'sliding_window_line_s'
+================================================================
+* Date:           Sat Feb 15 07:46:50 2025
+
+* Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
+* Project:        partition_0
+* Solution:       solution
+* Product family: zynq
+* Target device:  xc7z020-clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 5.00 ns | 4.375 ns |   0.62 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------------------------------------------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval |                   Pipeline                  |
+    |   min   |   max   |    min   |    max   | min | max |                     Type                    |
+    +---------+---------+----------+----------+-----+-----+---------------------------------------------+
+    |      784|      785| 3.920 us | 3.925 us |  784|  784| loop rewind(delay=0 initiation interval(s)) |
+    +---------+---------+----------+----------+-----+-----+---------------------------------------------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +------------------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |                              |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |           Loop Name          |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +------------------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- batch_row_col_channel_loop  |      784|      784|         2|          1|          1|   784|    yes   |
+        +------------------------------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+-----+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  | URAM|
++-----------------+---------+-------+--------+-------+-----+
+|DSP              |        -|      -|       -|      -|    -|
+|Expression       |        -|      -|       0|    262|    -|
+|FIFO             |       24|      -|     656|    740|    -|
+|Instance         |        -|      -|       -|      -|    -|
+|Memory           |        -|      -|       -|      -|    -|
+|Multiplexer      |        -|      -|       -|    693|    -|
+|Register         |        -|      -|      77|      -|    -|
++-----------------+---------+-------+--------+-------+-----+
+|Total            |       24|      0|     733|   1695|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Available        |      280|    220|  106400|  53200|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Utilization (%)  |        8|      0|   ~0   |      3|    0|
++-----------------+---------+-------+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP48E: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    +----------------------------+---------+----+----+-----+------+-----+---------+
+    |            Name            | BRAM_18K| FF | LUT| URAM| Depth| Bits| Size:D*B|
+    +----------------------------+---------+----+----+-----+------+-----+---------+
+    |line_buffer_0_V_V_fifo_U    |        1|  34|   0|    -|    29|   16|      464|
+    |line_buffer_1_V_V_fifo_U    |        1|  34|   0|    -|    29|   16|      464|
+    |line_buffer_2_V_V_fifo_U    |        1|  34|   0|    -|    29|   16|      464|
+    |line_buffer_3_V_V_fifo_U    |        1|  34|   0|    -|    29|   16|      464|
+    |window_buffer_0_0_s_fifo_U  |        1|  26|   0|    -|     2|   16|       32|
+    |window_buffer_0_1_s_fifo_U  |        1|  26|   0|    -|     2|   16|       32|
+    |window_buffer_0_2_s_fifo_U  |        1|  26|   0|    -|     2|   16|       32|
+    |window_buffer_0_3_s_fifo_U  |        1|  26|   0|    -|     2|   16|       32|
+    |window_buffer_1_0_s_fifo_U  |        1|  26|   0|    -|     2|   16|       32|
+    |window_buffer_1_1_s_fifo_U  |        1|  26|   0|    -|     2|   16|       32|
+    |window_buffer_1_2_s_fifo_U  |        1|  26|   0|    -|     2|   16|       32|
+    |window_buffer_1_3_s_fifo_U  |        1|  26|   0|    -|     2|   16|       32|
+    |window_buffer_2_0_s_fifo_U  |        1|  26|   0|    -|     2|   16|       32|
+    |window_buffer_2_1_s_fifo_U  |        1|  26|   0|    -|     2|   16|       32|
+    |window_buffer_2_2_s_fifo_U  |        1|  26|   0|    -|     2|   16|       32|
+    |window_buffer_2_3_s_fifo_U  |        1|  26|   0|    -|     2|   16|       32|
+    |window_buffer_3_0_s_fifo_U  |        1|  26|   0|    -|     2|   16|       32|
+    |window_buffer_3_1_s_fifo_U  |        1|  26|   0|    -|     2|   16|       32|
+    |window_buffer_3_2_s_fifo_U  |        1|  26|   0|    -|     2|   16|       32|
+    |window_buffer_3_3_s_fifo_U  |        1|  26|   0|    -|     2|   16|       32|
+    |window_buffer_4_0_s_fifo_U  |        1|  26|   0|    -|     2|   16|       32|
+    |window_buffer_4_1_s_fifo_U  |        1|  26|   0|    -|     2|   16|       32|
+    |window_buffer_4_2_s_fifo_U  |        1|  26|   0|    -|     2|   16|       32|
+    |window_buffer_4_3_s_fifo_U  |        1|  26|   0|    -|     2|   16|       32|
+    +----------------------------+---------+----+----+-----+------+-----+---------+
+    |Total                       |       24| 656|   0|    0|   156|  384|     2496|
+    +----------------------------+---------+----+----+-----+------+-----+---------+
+
+    * Expression: 
+    +----------------------------------+----------+-------+---+----+------------+------------+
+    |           Variable Name          | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +----------------------------------+----------+-------+---+----+------------+------------+
+    |i_fu_1003_p2                      |     +    |      0|  0|  14|           1|          10|
+    |loops_impl_next_i_s_fu_1093_p2    |     +    |      0|  0|  15|           5|           1|
+    |loops_impl_next_ne_fu_1107_p2     |     +    |      0|  0|  15|           5|           1|
+    |and_ln136_fu_1031_p2              |    and   |      0|  0|   2|           1|           1|
+    |and_ln170_fu_1049_p2              |    and   |      0|  0|   2|           1|           1|
+    |ap_block_state2_pp0_stage0_iter0  |    and   |      0|  0|   2|           1|           1|
+    |ap_condition_1230                 |    and   |      0|  0|   2|           1|           1|
+    |ap_condition_921                  |    and   |      0|  0|   2|           1|           1|
+    |ap_condition_938                  |    and   |      0|  0|   2|           1|           1|
+    |ap_predicate_op211_read_state3    |    and   |      0|  0|   2|           1|           1|
+    |ap_predicate_op260_write_state3   |    and   |      0|  0|   2|           1|           1|
+    |ap_predicate_op281_write_state3   |    and   |      0|  0|   2|           1|           1|
+    |ap_predicate_op320_write_state3   |    and   |      0|  0|   2|           1|           1|
+    |ap_predicate_op321_write_state3   |    and   |      0|  0|   2|           1|           1|
+    |ap_predicate_op323_write_state3   |    and   |      0|  0|   2|           1|           1|
+    |ap_predicate_op325_write_state3   |    and   |      0|  0|   2|           1|           1|
+    |ap_predicate_op327_write_state3   |    and   |      0|  0|   2|           1|           1|
+    |ap_predicate_op329_write_state3   |    and   |      0|  0|   2|           1|           1|
+    |ap_predicate_op331_write_state3   |    and   |      0|  0|   2|           1|           1|
+    |ap_predicate_op333_write_state3   |    and   |      0|  0|   2|           1|           1|
+    |ap_predicate_op335_write_state3   |    and   |      0|  0|   2|           1|           1|
+    |ap_predicate_op369_write_state3   |    and   |      0|  0|   2|           1|           1|
+    |ap_predicate_op371_write_state3   |    and   |      0|  0|   2|           1|           1|
+    |ap_predicate_op373_write_state3   |    and   |      0|  0|   2|           1|           1|
+    |ap_predicate_op375_write_state3   |    and   |      0|  0|   2|           1|           1|
+    |ap_predicate_op377_write_state3   |    and   |      0|  0|   2|           1|           1|
+    |ap_predicate_op379_write_state3   |    and   |      0|  0|   2|           1|           1|
+    |ap_predicate_op381_write_state3   |    and   |      0|  0|   2|           1|           1|
+    |ap_predicate_op383_write_state3   |    and   |      0|  0|   2|           1|           1|
+    |ap_predicate_op385_write_state3   |    and   |      0|  0|   2|           1|           1|
+    |ap_predicate_op387_write_state3   |    and   |      0|  0|   2|           1|           1|
+    |ap_predicate_op389_write_state3   |    and   |      0|  0|   2|           1|           1|
+    |ap_predicate_op391_write_state3   |    and   |      0|  0|   2|           1|           1|
+    |ap_predicate_op393_write_state3   |    and   |      0|  0|   2|           1|           1|
+    |ap_predicate_op395_write_state3   |    and   |      0|  0|   2|           1|           1|
+    |ap_predicate_op397_write_state3   |    and   |      0|  0|   2|           1|           1|
+    |ap_predicate_op399_write_state3   |    and   |      0|  0|   2|           1|           1|
+    |ap_predicate_op401_write_state3   |    and   |      0|  0|   2|           1|           1|
+    |ap_predicate_op403_write_state3   |    and   |      0|  0|   2|           1|           1|
+    |ap_predicate_op405_write_state3   |    and   |      0|  0|   2|           1|           1|
+    |grp_fu_975_p2                     |   icmp   |      0|  0|   9|           3|           1|
+    |icmp_ln101_fu_985_p2              |   icmp   |      0|  0|  11|           5|           4|
+    |icmp_ln107_fu_991_p2              |   icmp   |      0|  0|  11|           5|           4|
+    |icmp_ln115_fu_1019_p2             |   icmp   |      0|  0|   9|           3|           1|
+    |icmp_ln123_fu_1075_p2             |   icmp   |      0|  0|  11|           5|           1|
+    |icmp_ln136_fu_1025_p2             |   icmp   |      0|  0|  11|           5|           3|
+    |icmp_ln170_1_fu_1043_p2           |   icmp   |      0|  0|  11|           5|           4|
+    |icmp_ln170_fu_1037_p2             |   icmp   |      0|  0|  11|           5|           4|
+    |icmp_ln81_fu_1129_p2              |   icmp   |      0|  0|  13|          10|           9|
+    |icmp_ln891_3_fu_1087_p2           |   icmp   |      0|  0|  11|           5|           4|
+    |icmp_ln891_fu_1081_p2             |   icmp   |      0|  0|  11|           5|           4|
+    |ap_block_pp0_stage0_01001         |    or    |      0|  0|   2|           1|           1|
+    |ap_block_state1                   |    or    |      0|  0|   2|           1|           1|
+    |ap_block_state3_pp0_stage0_iter1  |    or    |      0|  0|   2|           1|           1|
+    |or_ln107_fu_997_p2                |    or    |      0|  0|   2|           1|           1|
+    |select_ln206_fu_1099_p3           |  select  |      0|  0|   5|           1|           1|
+    |select_ln891_9_fu_1121_p3         |  select  |      0|  0|   5|           1|           1|
+    |select_ln891_fu_1113_p3           |  select  |      0|  0|   5|           1|           5|
+    |ap_enable_pp0                     |    xor   |      0|  0|   2|           1|           2|
+    +----------------------------------+----------+-------+---+----+------------+------------+
+    |Total                             |          |      0|  0| 262|         112|         101|
+    +----------------------------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-----------------------------------------+----+-----------+-----+-----------+
+    |                   Name                  | LUT| Input Size| Bits| Total Bits|
+    +-----------------------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                                |  15|          3|    1|          3|
+    |ap_done                                  |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter1                  |   9|          2|    1|          2|
+    |ap_phi_mux_i_03_phi_fu_891_p6            |  15|          3|   10|         30|
+    |ap_phi_mux_loops_0_0_1_02_phi_fu_905_p6  |  15|          3|    5|         15|
+    |ap_phi_mux_loops_0_1_01_phi_fu_919_p6    |  15|          3|    5|         15|
+    |ap_phi_reg_pp0_iter1_tmp_V_123_reg_929   |  15|          3|   16|         48|
+    |frame_buffer_0_0_V_V_blk_n               |   9|          2|    1|          2|
+    |frame_buffer_0_1_V_V_blk_n               |   9|          2|    1|          2|
+    |frame_buffer_0_2_V_V_blk_n               |   9|          2|    1|          2|
+    |frame_buffer_0_3_V_V_blk_n               |   9|          2|    1|          2|
+    |frame_buffer_0_4_V_V_blk_n               |   9|          2|    1|          2|
+    |frame_buffer_1_0_V_V_blk_n               |   9|          2|    1|          2|
+    |frame_buffer_1_1_V_V_blk_n               |   9|          2|    1|          2|
+    |frame_buffer_1_2_V_V_blk_n               |   9|          2|    1|          2|
+    |frame_buffer_1_3_V_V_blk_n               |   9|          2|    1|          2|
+    |frame_buffer_1_4_V_V_blk_n               |   9|          2|    1|          2|
+    |frame_buffer_2_0_V_V_blk_n               |   9|          2|    1|          2|
+    |frame_buffer_2_1_V_V_blk_n               |   9|          2|    1|          2|
+    |frame_buffer_2_2_V_V_blk_n               |   9|          2|    1|          2|
+    |frame_buffer_2_3_V_V_blk_n               |   9|          2|    1|          2|
+    |frame_buffer_2_4_V_V_blk_n               |   9|          2|    1|          2|
+    |frame_buffer_3_0_V_V_blk_n               |   9|          2|    1|          2|
+    |frame_buffer_3_1_V_V_blk_n               |   9|          2|    1|          2|
+    |frame_buffer_3_2_V_V_blk_n               |   9|          2|    1|          2|
+    |frame_buffer_3_3_V_V_blk_n               |   9|          2|    1|          2|
+    |frame_buffer_3_4_V_V_blk_n               |   9|          2|    1|          2|
+    |frame_buffer_4_0_V_V_blk_n               |   9|          2|    1|          2|
+    |frame_buffer_4_1_V_V_blk_n               |   9|          2|    1|          2|
+    |frame_buffer_4_2_V_V_blk_n               |   9|          2|    1|          2|
+    |frame_buffer_4_3_V_V_blk_n               |   9|          2|    1|          2|
+    |frame_buffer_4_4_V_V_blk_n               |   9|          2|    1|          2|
+    |i_03_reg_887                             |   9|          2|   10|         20|
+    |in_V_V_blk_n                             |   9|          2|    1|          2|
+    |line_buffer_0_V_V_din                    |  15|          3|   16|         48|
+    |line_buffer_1_V_V_din                    |  15|          3|   16|         48|
+    |line_buffer_2_V_V_din                    |  15|          3|   16|         48|
+    |loops_0_0_1_02_reg_901                   |   9|          2|    5|         10|
+    |loops_0_1_01_reg_915                     |   9|          2|    5|         10|
+    |real_start                               |   9|          2|    1|          2|
+    |window_buffer_0_0_s_din                  |  15|          3|   16|         48|
+    |window_buffer_0_1_s_din                  |  15|          3|   16|         48|
+    |window_buffer_0_2_s_din                  |  15|          3|   16|         48|
+    |window_buffer_0_3_s_din                  |  15|          3|   16|         48|
+    |window_buffer_1_0_s_din                  |  15|          3|   16|         48|
+    |window_buffer_1_1_s_din                  |  15|          3|   16|         48|
+    |window_buffer_1_2_s_din                  |  15|          3|   16|         48|
+    |window_buffer_1_3_s_din                  |  15|          3|   16|         48|
+    |window_buffer_2_0_s_din                  |  15|          3|   16|         48|
+    |window_buffer_2_1_s_din                  |  15|          3|   16|         48|
+    |window_buffer_2_2_s_din                  |  15|          3|   16|         48|
+    |window_buffer_2_3_s_din                  |  15|          3|   16|         48|
+    |window_buffer_3_0_s_din                  |  15|          3|   16|         48|
+    |window_buffer_3_1_s_din                  |  15|          3|   16|         48|
+    |window_buffer_3_2_s_din                  |  15|          3|   16|         48|
+    |window_buffer_3_3_s_din                  |  15|          3|   16|         48|
+    |window_buffer_4_0_s_din                  |  15|          3|   16|         48|
+    |window_buffer_4_1_s_din                  |  15|          3|   16|         48|
+    |window_buffer_4_2_s_din                  |  15|          3|   16|         48|
+    +-----------------------------------------+----+-----------+-----+-----------+
+    |Total                                    | 693|        145|  438|       1265|
+    +-----------------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +----------------------------------------+----+----+-----+-----------+
+    |                  Name                  | FF | LUT| Bits| Const Bits|
+    +----------------------------------------+----+----+-----+-----------+
+    |and_ln136_reg_1673                      |   1|   0|    1|          0|
+    |and_ln170_reg_1681                      |   1|   0|    1|          0|
+    |ap_CS_fsm                               |   2|   0|    2|          0|
+    |ap_done_reg                             |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1                 |   1|   0|    1|          0|
+    |ap_phi_reg_pp0_iter1_tmp_V_123_reg_929  |  16|   0|   16|          0|
+    |i_03_reg_887                            |  10|   0|   10|          0|
+    |i_reg_1659                              |  10|   0|   10|          0|
+    |icmp_ln115_reg_1669                     |   1|   0|    1|          0|
+    |icmp_ln117_reg_1693                     |   1|   0|    1|          0|
+    |icmp_ln123_reg_1709                     |   1|   0|    1|          0|
+    |icmp_ln170_reg_1677                     |   1|   0|    1|          0|
+    |icmp_ln81_reg_1723                      |   1|   0|    1|          0|
+    |loops_0_0_1_02_reg_901                  |   5|   0|    5|          0|
+    |loops_0_1_01_reg_915                    |   5|   0|    5|          0|
+    |select_ln891_9_reg_1718                 |   5|   0|    5|          0|
+    |select_ln891_reg_1713                   |   5|   0|    5|          0|
+    |start_once_reg                          |   1|   0|    1|          0|
+    |trunc_ln177_1_reg_1689                  |   2|   0|    2|          0|
+    |trunc_ln177_2_reg_1705                  |   2|   0|    2|          0|
+    |trunc_ln177_reg_1651                    |   2|   0|    2|          0|
+    |trunc_ln203_reg_1697                    |   3|   0|    3|          0|
+    +----------------------------------------+----+----+-----+-----------+
+    |Total                                   |  77|   0|   77|          0|
+    +----------------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-----------------------------+-----+-----+------------+----------------------+--------------+
+|          RTL Ports          | Dir | Bits|  Protocol  |     Source Object    |    C Type    |
++-----------------------------+-----+-----+------------+----------------------+--------------+
+|ap_clk                       |  in |    1| ap_ctrl_hs | sliding_window_line_ | return value |
+|ap_rst                       |  in |    1| ap_ctrl_hs | sliding_window_line_ | return value |
+|ap_start                     |  in |    1| ap_ctrl_hs | sliding_window_line_ | return value |
+|start_full_n                 |  in |    1| ap_ctrl_hs | sliding_window_line_ | return value |
+|ap_done                      | out |    1| ap_ctrl_hs | sliding_window_line_ | return value |
+|ap_continue                  |  in |    1| ap_ctrl_hs | sliding_window_line_ | return value |
+|ap_idle                      | out |    1| ap_ctrl_hs | sliding_window_line_ | return value |
+|ap_ready                     | out |    1| ap_ctrl_hs | sliding_window_line_ | return value |
+|start_out                    | out |    1| ap_ctrl_hs | sliding_window_line_ | return value |
+|start_write                  | out |    1| ap_ctrl_hs | sliding_window_line_ | return value |
+|in_V_V_dout                  |  in |   16|   ap_fifo  |        in_V_V        |    pointer   |
+|in_V_V_empty_n               |  in |    1|   ap_fifo  |        in_V_V        |    pointer   |
+|in_V_V_read                  | out |    1|   ap_fifo  |        in_V_V        |    pointer   |
+|frame_buffer_0_0_V_V_din     | out |   16|   ap_fifo  | frame_buffer_0_0_V_V |    pointer   |
+|frame_buffer_0_0_V_V_full_n  |  in |    1|   ap_fifo  | frame_buffer_0_0_V_V |    pointer   |
+|frame_buffer_0_0_V_V_write   | out |    1|   ap_fifo  | frame_buffer_0_0_V_V |    pointer   |
+|frame_buffer_0_1_V_V_din     | out |   16|   ap_fifo  | frame_buffer_0_1_V_V |    pointer   |
+|frame_buffer_0_1_V_V_full_n  |  in |    1|   ap_fifo  | frame_buffer_0_1_V_V |    pointer   |
+|frame_buffer_0_1_V_V_write   | out |    1|   ap_fifo  | frame_buffer_0_1_V_V |    pointer   |
+|frame_buffer_0_2_V_V_din     | out |   16|   ap_fifo  | frame_buffer_0_2_V_V |    pointer   |
+|frame_buffer_0_2_V_V_full_n  |  in |    1|   ap_fifo  | frame_buffer_0_2_V_V |    pointer   |
+|frame_buffer_0_2_V_V_write   | out |    1|   ap_fifo  | frame_buffer_0_2_V_V |    pointer   |
+|frame_buffer_0_3_V_V_din     | out |   16|   ap_fifo  | frame_buffer_0_3_V_V |    pointer   |
+|frame_buffer_0_3_V_V_full_n  |  in |    1|   ap_fifo  | frame_buffer_0_3_V_V |    pointer   |
+|frame_buffer_0_3_V_V_write   | out |    1|   ap_fifo  | frame_buffer_0_3_V_V |    pointer   |
+|frame_buffer_0_4_V_V_din     | out |   16|   ap_fifo  | frame_buffer_0_4_V_V |    pointer   |
+|frame_buffer_0_4_V_V_full_n  |  in |    1|   ap_fifo  | frame_buffer_0_4_V_V |    pointer   |
+|frame_buffer_0_4_V_V_write   | out |    1|   ap_fifo  | frame_buffer_0_4_V_V |    pointer   |
+|frame_buffer_1_0_V_V_din     | out |   16|   ap_fifo  | frame_buffer_1_0_V_V |    pointer   |
+|frame_buffer_1_0_V_V_full_n  |  in |    1|   ap_fifo  | frame_buffer_1_0_V_V |    pointer   |
+|frame_buffer_1_0_V_V_write   | out |    1|   ap_fifo  | frame_buffer_1_0_V_V |    pointer   |
+|frame_buffer_1_1_V_V_din     | out |   16|   ap_fifo  | frame_buffer_1_1_V_V |    pointer   |
+|frame_buffer_1_1_V_V_full_n  |  in |    1|   ap_fifo  | frame_buffer_1_1_V_V |    pointer   |
+|frame_buffer_1_1_V_V_write   | out |    1|   ap_fifo  | frame_buffer_1_1_V_V |    pointer   |
+|frame_buffer_1_2_V_V_din     | out |   16|   ap_fifo  | frame_buffer_1_2_V_V |    pointer   |
+|frame_buffer_1_2_V_V_full_n  |  in |    1|   ap_fifo  | frame_buffer_1_2_V_V |    pointer   |
+|frame_buffer_1_2_V_V_write   | out |    1|   ap_fifo  | frame_buffer_1_2_V_V |    pointer   |
+|frame_buffer_1_3_V_V_din     | out |   16|   ap_fifo  | frame_buffer_1_3_V_V |    pointer   |
+|frame_buffer_1_3_V_V_full_n  |  in |    1|   ap_fifo  | frame_buffer_1_3_V_V |    pointer   |
+|frame_buffer_1_3_V_V_write   | out |    1|   ap_fifo  | frame_buffer_1_3_V_V |    pointer   |
+|frame_buffer_1_4_V_V_din     | out |   16|   ap_fifo  | frame_buffer_1_4_V_V |    pointer   |
+|frame_buffer_1_4_V_V_full_n  |  in |    1|   ap_fifo  | frame_buffer_1_4_V_V |    pointer   |
+|frame_buffer_1_4_V_V_write   | out |    1|   ap_fifo  | frame_buffer_1_4_V_V |    pointer   |
+|frame_buffer_2_0_V_V_din     | out |   16|   ap_fifo  | frame_buffer_2_0_V_V |    pointer   |
+|frame_buffer_2_0_V_V_full_n  |  in |    1|   ap_fifo  | frame_buffer_2_0_V_V |    pointer   |
+|frame_buffer_2_0_V_V_write   | out |    1|   ap_fifo  | frame_buffer_2_0_V_V |    pointer   |
+|frame_buffer_2_1_V_V_din     | out |   16|   ap_fifo  | frame_buffer_2_1_V_V |    pointer   |
+|frame_buffer_2_1_V_V_full_n  |  in |    1|   ap_fifo  | frame_buffer_2_1_V_V |    pointer   |
+|frame_buffer_2_1_V_V_write   | out |    1|   ap_fifo  | frame_buffer_2_1_V_V |    pointer   |
+|frame_buffer_2_2_V_V_din     | out |   16|   ap_fifo  | frame_buffer_2_2_V_V |    pointer   |
+|frame_buffer_2_2_V_V_full_n  |  in |    1|   ap_fifo  | frame_buffer_2_2_V_V |    pointer   |
+|frame_buffer_2_2_V_V_write   | out |    1|   ap_fifo  | frame_buffer_2_2_V_V |    pointer   |
+|frame_buffer_2_3_V_V_din     | out |   16|   ap_fifo  | frame_buffer_2_3_V_V |    pointer   |
+|frame_buffer_2_3_V_V_full_n  |  in |    1|   ap_fifo  | frame_buffer_2_3_V_V |    pointer   |
+|frame_buffer_2_3_V_V_write   | out |    1|   ap_fifo  | frame_buffer_2_3_V_V |    pointer   |
+|frame_buffer_2_4_V_V_din     | out |   16|   ap_fifo  | frame_buffer_2_4_V_V |    pointer   |
+|frame_buffer_2_4_V_V_full_n  |  in |    1|   ap_fifo  | frame_buffer_2_4_V_V |    pointer   |
+|frame_buffer_2_4_V_V_write   | out |    1|   ap_fifo  | frame_buffer_2_4_V_V |    pointer   |
+|frame_buffer_3_0_V_V_din     | out |   16|   ap_fifo  | frame_buffer_3_0_V_V |    pointer   |
+|frame_buffer_3_0_V_V_full_n  |  in |    1|   ap_fifo  | frame_buffer_3_0_V_V |    pointer   |
+|frame_buffer_3_0_V_V_write   | out |    1|   ap_fifo  | frame_buffer_3_0_V_V |    pointer   |
+|frame_buffer_3_1_V_V_din     | out |   16|   ap_fifo  | frame_buffer_3_1_V_V |    pointer   |
+|frame_buffer_3_1_V_V_full_n  |  in |    1|   ap_fifo  | frame_buffer_3_1_V_V |    pointer   |
+|frame_buffer_3_1_V_V_write   | out |    1|   ap_fifo  | frame_buffer_3_1_V_V |    pointer   |
+|frame_buffer_3_2_V_V_din     | out |   16|   ap_fifo  | frame_buffer_3_2_V_V |    pointer   |
+|frame_buffer_3_2_V_V_full_n  |  in |    1|   ap_fifo  | frame_buffer_3_2_V_V |    pointer   |
+|frame_buffer_3_2_V_V_write   | out |    1|   ap_fifo  | frame_buffer_3_2_V_V |    pointer   |
+|frame_buffer_3_3_V_V_din     | out |   16|   ap_fifo  | frame_buffer_3_3_V_V |    pointer   |
+|frame_buffer_3_3_V_V_full_n  |  in |    1|   ap_fifo  | frame_buffer_3_3_V_V |    pointer   |
+|frame_buffer_3_3_V_V_write   | out |    1|   ap_fifo  | frame_buffer_3_3_V_V |    pointer   |
+|frame_buffer_3_4_V_V_din     | out |   16|   ap_fifo  | frame_buffer_3_4_V_V |    pointer   |
+|frame_buffer_3_4_V_V_full_n  |  in |    1|   ap_fifo  | frame_buffer_3_4_V_V |    pointer   |
+|frame_buffer_3_4_V_V_write   | out |    1|   ap_fifo  | frame_buffer_3_4_V_V |    pointer   |
+|frame_buffer_4_0_V_V_din     | out |   16|   ap_fifo  | frame_buffer_4_0_V_V |    pointer   |
+|frame_buffer_4_0_V_V_full_n  |  in |    1|   ap_fifo  | frame_buffer_4_0_V_V |    pointer   |
+|frame_buffer_4_0_V_V_write   | out |    1|   ap_fifo  | frame_buffer_4_0_V_V |    pointer   |
+|frame_buffer_4_1_V_V_din     | out |   16|   ap_fifo  | frame_buffer_4_1_V_V |    pointer   |
+|frame_buffer_4_1_V_V_full_n  |  in |    1|   ap_fifo  | frame_buffer_4_1_V_V |    pointer   |
+|frame_buffer_4_1_V_V_write   | out |    1|   ap_fifo  | frame_buffer_4_1_V_V |    pointer   |
+|frame_buffer_4_2_V_V_din     | out |   16|   ap_fifo  | frame_buffer_4_2_V_V |    pointer   |
+|frame_buffer_4_2_V_V_full_n  |  in |    1|   ap_fifo  | frame_buffer_4_2_V_V |    pointer   |
+|frame_buffer_4_2_V_V_write   | out |    1|   ap_fifo  | frame_buffer_4_2_V_V |    pointer   |
+|frame_buffer_4_3_V_V_din     | out |   16|   ap_fifo  | frame_buffer_4_3_V_V |    pointer   |
+|frame_buffer_4_3_V_V_full_n  |  in |    1|   ap_fifo  | frame_buffer_4_3_V_V |    pointer   |
+|frame_buffer_4_3_V_V_write   | out |    1|   ap_fifo  | frame_buffer_4_3_V_V |    pointer   |
+|frame_buffer_4_4_V_V_din     | out |   16|   ap_fifo  | frame_buffer_4_4_V_V |    pointer   |
+|frame_buffer_4_4_V_V_full_n  |  in |    1|   ap_fifo  | frame_buffer_4_4_V_V |    pointer   |
+|frame_buffer_4_4_V_V_write   | out |    1|   ap_fifo  | frame_buffer_4_4_V_V |    pointer   |
++-----------------------------+-----+-----+------------+----------------------+--------------+
+

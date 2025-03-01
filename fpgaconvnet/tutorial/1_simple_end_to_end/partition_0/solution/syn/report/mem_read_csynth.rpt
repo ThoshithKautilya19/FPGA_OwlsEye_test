@@ -1,0 +1,204 @@
+
+
+================================================================
+== Vivado HLS Report for 'mem_read'
+================================================================
+* Date:           Sat Feb 15 07:46:47 2025
+
+* Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
+* Project:        partition_0
+* Solution:       solution
+* Product family: zynq
+* Target device:  xc7z020-clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 5.00 ns | 4.375 ns |   0.62 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |      409|      409| 2.045 us | 2.045 us |  409|  409|   none  |
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------+---------+---------+----------+-----------+-----------+------+----------+
+        |             |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |  Loop Name  |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +-------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- read_loop  |      401|      401|         3|          1|          1|   400|    yes   |
+        +-------------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+-----+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  | URAM|
++-----------------+---------+-------+--------+-------+-----+
+|DSP              |        -|      -|       -|      -|    -|
+|Expression       |        -|      -|       0|     40|    -|
+|FIFO             |        -|      -|       -|      -|    -|
+|Instance         |        -|      -|       -|      -|    -|
+|Memory           |        -|      -|       -|      -|    -|
+|Multiplexer      |        -|      -|       -|    119|    -|
+|Register         |        -|      -|      41|      -|    -|
++-----------------+---------+-------+--------+-------+-----+
+|Total            |        0|      0|      41|    159|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Available        |      280|    220|  106400|  53200|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Utilization (%)  |        0|      0|   ~0   |   ~0  |    0|
++-----------------+---------+-------+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP48E: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +-----------------------------------+----------+-------+---+----+------------+------------+
+    |           Variable Name           | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +-----------------------------------+----------+-------+---+----+------------+------------+
+    |size_index_fu_119_p2               |     +    |      0|  0|  15|           9|           1|
+    |ap_block_state10_pp0_stage0_iter2  |    and   |      0|  0|   2|           1|           1|
+    |ap_block_state9_pp0_stage0_iter1   |    and   |      0|  0|   2|           1|           1|
+    |icmp_ln59_fu_113_p2                |   icmp   |      0|  0|  13|           9|           8|
+    |ap_block_pp0_stage0_01001          |    or    |      0|  0|   2|           1|           1|
+    |ap_block_state1                    |    or    |      0|  0|   2|           1|           1|
+    |ap_enable_pp0                      |    xor   |      0|  0|   2|           1|           2|
+    |ap_enable_reg_pp0_iter1            |    xor   |      0|  0|   2|           2|           1|
+    +-----------------------------------+----------+-------+---+----+------------+------------+
+    |Total                              |          |      0|  0|  40|          25|          16|
+    +-----------------------------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-------------------------+----+-----------+-----+-----------+
+    |           Name          | LUT| Input Size| Bits| Total Bits|
+    +-------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                |  47|         10|    1|         10|
+    |ap_done                  |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter1  |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter2  |   9|          2|    1|          2|
+    |real_start               |   9|          2|    1|          2|
+    |size_index_0_i_reg_91    |   9|          2|    9|         18|
+    |wr_0_V_V_blk_n           |   9|          2|    1|          2|
+    |wr_hw_V_blk_n_AR         |   9|          2|    1|          2|
+    |wr_hw_V_blk_n_R          |   9|          2|    1|          2|
+    +-------------------------+----+-----------+-----+-----------+
+    |Total                    | 119|         26|   17|         42|
+    +-------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +---------------------------------+----+----+-----+-----------+
+    |               Name              | FF | LUT| Bits| Const Bits|
+    +---------------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                        |   9|   0|    9|          0|
+    |ap_done_reg                      |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter0          |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1          |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter2          |   1|   0|    1|          0|
+    |icmp_ln59_reg_135                |   1|   0|    1|          0|
+    |icmp_ln59_reg_135_pp0_iter1_reg  |   1|   0|    1|          0|
+    |p_Result_s_reg_144               |  16|   0|   16|          0|
+    |size_index_0_i_reg_91            |   9|   0|    9|          0|
+    |start_once_reg                   |   1|   0|    1|          0|
+    +---------------------------------+----+----+-----+-----------+
+    |Total                            |  41|   0|   41|          0|
+    +---------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++------------------------+-----+-----+------------+----------------+--------------+
+|        RTL Ports       | Dir | Bits|  Protocol  |  Source Object |    C Type    |
++------------------------+-----+-----+------------+----------------+--------------+
+|ap_clk                  |  in |    1| ap_ctrl_hs |    mem_read    | return value |
+|ap_rst                  |  in |    1| ap_ctrl_hs |    mem_read    | return value |
+|ap_start                |  in |    1| ap_ctrl_hs |    mem_read    | return value |
+|start_full_n            |  in |    1| ap_ctrl_hs |    mem_read    | return value |
+|ap_done                 | out |    1| ap_ctrl_hs |    mem_read    | return value |
+|ap_continue             |  in |    1| ap_ctrl_hs |    mem_read    | return value |
+|ap_idle                 | out |    1| ap_ctrl_hs |    mem_read    | return value |
+|ap_ready                | out |    1| ap_ctrl_hs |    mem_read    | return value |
+|start_out               | out |    1| ap_ctrl_hs |    mem_read    | return value |
+|start_write             | out |    1| ap_ctrl_hs |    mem_read    | return value |
+|m_axi_wr_hw_V_AWVALID   | out |    1|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_AWREADY   |  in |    1|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_AWADDR    | out |   32|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_AWID      | out |    1|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_AWLEN     | out |   32|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_AWSIZE    | out |    3|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_AWBURST   | out |    2|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_AWLOCK    | out |    2|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_AWCACHE   | out |    4|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_AWPROT    | out |    3|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_AWQOS     | out |    4|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_AWREGION  | out |    4|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_AWUSER    | out |    1|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_WVALID    | out |    1|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_WREADY    |  in |    1|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_WDATA     | out |   64|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_WSTRB     | out |    8|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_WLAST     | out |    1|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_WID       | out |    1|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_WUSER     | out |    1|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_ARVALID   | out |    1|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_ARREADY   |  in |    1|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_ARADDR    | out |   32|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_ARID      | out |    1|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_ARLEN     | out |   32|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_ARSIZE    | out |    3|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_ARBURST   | out |    2|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_ARLOCK    | out |    2|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_ARCACHE   | out |    4|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_ARPROT    | out |    3|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_ARQOS     | out |    4|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_ARREGION  | out |    4|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_ARUSER    | out |    1|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_RVALID    |  in |    1|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_RREADY    | out |    1|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_RDATA     |  in |   64|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_RLAST     |  in |    1|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_RID       |  in |    1|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_RUSER     |  in |    1|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_RRESP     |  in |    2|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_BVALID    |  in |    1|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_BREADY    | out |    1|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_BRESP     |  in |    2|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_BID       |  in |    1|    m_axi   |     wr_hw_V    |    pointer   |
+|m_axi_wr_hw_V_BUSER     |  in |    1|    m_axi   |     wr_hw_V    |    pointer   |
+|wr_hw_V_offset          |  in |   29|   ap_none  | wr_hw_V_offset |    scalar    |
+|wr_0_V_V_din            | out |   16|   ap_fifo  |    wr_0_V_V    |    pointer   |
+|wr_0_V_V_full_n         |  in |    1|   ap_fifo  |    wr_0_V_V    |    pointer   |
+|wr_0_V_V_write          | out |    1|   ap_fifo  |    wr_0_V_V    |    pointer   |
++------------------------+-----+-----+------------+----------------+--------------+
+

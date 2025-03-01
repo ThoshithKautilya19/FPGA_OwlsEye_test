@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xd:acceleratorMap xmlns:xd="http://www.xilinx.com/xidane" xd:functionName="fpgaconvnet_ip" xd:componentRef="fpgaconvnet_ip" xd:initiationInterval="x" xd:clockPeriod="5.000" xd:sequential="true" xd:hostMachine="64" xd:reset="control">
+  <xd:controlReg xd:name="control" xd:interfaceRef="s_axi_ctrl" xd:busTypeRef="axilite" xd:type="generic_axi_lite" xd:offset="0x0"/>
+  <xd:arg xd:name="fpgaconvnet_wr[0][]" xd:originalName="fpgaconvnet_wr0" xd:direction="inout" xd:interfaceRef="m_axi_fpgaconvnet_port_wr" xd:busTypeRef="aximm" xd:arraySize="400" xd:dataWidth="64" xd:bufferDirection="in"/>
+  <xd:arg xd:name="fpgaconvnet_in[0][]" xd:originalName="fpgaconvnet_in0" xd:direction="inout" xd:interfaceRef="m_axi_fpgaconvnet_port_in" xd:busTypeRef="aximm" xd:arraySize="784" xd:dataWidth="64" xd:bufferDirection="in"/>
+  <xd:arg xd:name="fpgaconvnet_out[0][]" xd:originalName="fpgaconvnet_out0" xd:direction="inout" xd:interfaceRef="m_axi_fpgaconvnet_port_out" xd:busTypeRef="aximm" xd:arraySize="2304" xd:dataWidth="64" xd:bufferDirection="out"/>
+  <xd:arg xd:name="mode" xd:originalName="mode" xd:direction="in" xd:interfaceRef="s_axi_ctrl" xd:busTypeRef="axilite" xd:offset="0x10" xd:handshakeRef="ap_none" xd:dataWidth="32"/>
+  <xd:arg xd:name="weights_reloading_index" xd:originalName="weights_reloading_index" xd:direction="in" xd:interfaceRef="s_axi_ctrl" xd:busTypeRef="axilite" xd:offset="0x18" xd:handshakeRef="ap_none" xd:dataWidth="32"/>
+  <xd:arg xd:name="fpgaconvnet_wr_0_V" xd:originalName="fpgaconvnet_wr_0_V" xd:direction="in" xd:interfaceRef="s_axi_ctrl" xd:busTypeRef="axilite" xd:aximmInterfaceRef="m_axi_fpgaconvnet_port_wr" xd:dataWidth="32" xd:offset="0x20" xd:handshakeRef="ap_none"/>
+  <xd:arg xd:name="fpgaconvnet_in_0_V" xd:originalName="fpgaconvnet_in_0_V" xd:direction="in" xd:interfaceRef="s_axi_ctrl" xd:busTypeRef="axilite" xd:aximmInterfaceRef="m_axi_fpgaconvnet_port_in" xd:dataWidth="32" xd:offset="0x28" xd:handshakeRef="ap_none"/>
+  <xd:arg xd:name="fpgaconvnet_out_0_V" xd:originalName="fpgaconvnet_out_0_V" xd:direction="in" xd:interfaceRef="s_axi_ctrl" xd:busTypeRef="axilite" xd:aximmInterfaceRef="m_axi_fpgaconvnet_port_out" xd:dataWidth="32" xd:offset="0x30" xd:handshakeRef="ap_none"/>
+  <xd:latencyEstimates xd:best-case="undef" xd:worst-case="undef" xd:average-case="undef"/>
+  <xd:resourceEstimates xd:LUT="11416175" xd:FF="29962826" xd:BRAM="42666" xd:DSP="60960"/>
+</xd:acceleratorMap>
