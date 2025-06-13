@@ -20,7 +20,7 @@ setup(
     name="qtorch",
     version="0.2.0",
     description="Low-Precision Arithmetic Simulation in Pytorch",
-    long_description=open("README.md").read(),
+    long_description=open("EQTorchREADME.md").read(),
     author="Tianyi Zhang, Zhiqiu Lin, Guandao Yang, Christopher De Sa",
     author_email="tz58@cornell.edu",
     project_urls={
