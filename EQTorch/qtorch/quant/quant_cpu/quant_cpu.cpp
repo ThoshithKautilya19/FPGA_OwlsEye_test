@@ -835,79 +835,79 @@ Tensor configurable_table_quantize_rounding_hint(Tensor a, Tensor lookup_table, 
 }
 
 // Making thr fixed-posit , all definitions required and everything
-#define _G_FPOSIT_SHIFT_AMOUNT   int32_fp_constants[0] //DONE
-#define _G_MAXREALP             int32_fp_constants[1] //DONE
-#define _G_MINREALP             int32_fp_constants[2] //DONE
-#define POSIT_EXTRA_BITS_SHIFT  int32_fp_constants[3] //DONE
-#define _G_USEED                int32_fp_constants[4] //DONE
-#define _G_USEED_ZEROS          int32_fp_constants[5] //DONE
-#define _G_MAXREAL_INT          int32_fp_constants[6] //DONE
-#define _G_MINREAL_INT          int32_fp_constants[7]	//DONE
-#define _G_NBITS                int32_fp_constants[8] //DONE
-#define _G_REGSIZE		int32_fp_constants[9] //DONE
-#define _G_ESIZE                int32_fp_constants[10] //DONE
-#define _G_EXPONENT_MASK        int32_fp_constants[11] //DONE
-#define _G_FRAC_MASK        int32_fp_constants[12] //DONE
-#define _G_SIGN_MASK        int32_fp_constants[13] //DONE
-#define _G_REGIME_MASK        int32_fp_constants[14] //DONE
-#define _G_EXP_MASK        int32_fp_constants[15] //DONE
+#define _FG_FPOSIT_SHIFT_AMOUNT   int32_fp_constants[0] //DONE
+#define _FG_MAXREALP             int32_fp_constants[1] //DONE
+#define _FG_MINREALP             int32_fp_constants[2] //DONE
+#define FPOSIT_EXTRA_BITS_SHIFT  int32_fp_constants[3] //DONE
+#define _FG_USEED                int32_fp_constants[4] //DONE
+#define _FG_USEED_ZEROS          int32_fp_constants[5] //DONE
+#define _FG_MAXREAL_INT          int32_fp_constants[6] //DONE
+#define _FG_MINREAL_INT          int32_fp_constants[7]	//DONE
+#define _FG_NBITS                int32_fp_constants[8] //DONE
+#define _FG_REGSIZE		int32_fp_constants[9] //DONE
+#define _FG_ESIZE                int32_fp_constants[10] //DONE
+#define _FG_EXPONENT_MASK        int32_fp_constants[11] //DONE
+#define _FG_FRAC_MASK        int32_fp_constants[12] //DONE
+#define _FG_SIGN_MASK        int32_fp_constants[13] //DONE
+#define _FG_REGIME_MASK        int32_fp_constants[14] //DONE
+#define _FG_EXP_MASK        int32_fp_constants[15] //DONE
 
 
 
 
 
-#define POSIT_EXTRA_BITS_MASK   int64_fp_constants[0]
-#define POSIT_HALFWAY_BIT_MASK  int64_fp_constants[1]
+#define FPOSIT_EXTRA_BITS_MASK   int64_fp_constants[0]
+#define FPOSIT_HALFWAY_BIT_MASK  int64_fp_constants[1]
 
 
 void generate_fixed_posit_constants(int nsize, int reg, int es, uint32_t* int32_fp_constants, uint64_t* int64_fp_constants) {
-    _G_NBITS = nsize;
-    _G_REGSIZE = reg;
-    _G_ESIZE = es;
+    _FG_NBITS = nsize;
+    _FG_REGSIZE = reg;
+    _FG_ESIZE = es;
 
     if (nsize > 16) { fprintf(stderr, "Unsupported nsize\n"); exit(1); }
 
     int frac_bits = nsize - 1 - reg - es;
     if (frac_bits < 0) { fprintf(stderr, "Invalid reg/es combination\n"); exit(1); }
 
-    _G_FPOSIT_SHIFT_AMOUNT = 16 - nsize;
-    _G_USEED = 1 << (1 << es);
-    _G_EXPONENT_MASK = (1 << es) - 1;
+    _FG_FPOSIT_SHIFT_AMOUNT = 16 - nsize;
+    _FG_USEED = 1 << (1 << es);
+    _FG_EXPONENT_MASK = (1 << es) - 1;
 
     int exp_factor = (1 << es);
-    _G_USEED_ZEROS = exp_factor;
-    _G_MAXREAL_INT = (exp_factor * (nsize - 2) + SINGLE_PRECISION_BIAS) << FLOAT_EXPONENT_SHIFT;
-    _G_MINREAL_INT = (exp_factor * (2 - nsize) + SINGLE_PRECISION_BIAS) << FLOAT_EXPONENT_SHIFT;
+    _FG_USEED_ZEROS = exp_factor;
+    _FG_MAXREAL_INT = (exp_factor * (nsize - 2) + SINGLE_PRECISION_BIAS) << FLOAT_EXPONENT_SHIFT;
+    _FG_MINREAL_INT = (exp_factor * (2 - nsize) + SINGLE_PRECISION_BIAS) << FLOAT_EXPONENT_SHIFT;
 
-    _G_SIGN_MASK = 1 << (nsize - 1);
-    _G_REGIME_MASK = ((1 << reg) - 1) << (nsize - 1 - reg);
-    _G_EXP_MASK = ((1 << es) - 1) << frac_bits;
-    _G_FRAC_MASK = (1 << frac_bits) - 1;
+    _FG_SIGN_MASK = 1 << (nsize - 1);
+    _FG_REGIME_MASK = ((1 << reg) - 1) << (nsize - 1 - reg);
+    _FG_EXP_MASK = ((1 << es) - 1) << frac_bits;
+    _FG_FRAC_MASK = (1 << frac_bits) - 1;
 
-    POSIT_EXTRA_BITS_SHIFT = 64 - nsize + 1;
-    POSIT_EXTRA_BITS_MASK = (1ULL << (64 - nsize)) - 1;
-    POSIT_HALFWAY_BIT_MASK = 1ULL << (64 - nsize);
+    FPOSIT_EXTRA_BITS_SHIFT = 64 - nsize + 1;
+    FPOSIT_EXTRA_BITS_MASK = (1ULL << (64 - nsize)) - 1;
+    FPOSIT_HALFWAY_BIT_MASK = 1ULL << (64 - nsize);
 
-    _G_MAXREALP = _G_SIGN_MASK ? ((_G_SIGN_MASK - 1)) << _G_FPOSIT_SHIFT_AMOUNT : 0;
-    _G_MINREALP = 1 << _G_FPOSIT_SHIFT_AMOUNT;
+    _FG_MAXREALP = _FG_SIGN_MASK ? ((_FG_SIGN_MASK - 1)) << _FG_FPOSIT_SHIFT_AMOUNT : 0;
+    _FG_MINREALP = 1 << _FG_FPOSIT_SHIFT_AMOUNT;
 }
 
 
 float fixed_posit_to_fp32(uint16_t p16, uint32_t* int32_fp_constants, uint64_t* int64_fp_constants) {
-    bool sign = p16 & _G_SIGN_MASK;
+    bool sign = p16 & _FG_SIGN_MASK;
     uint16_t abs_p = sign ? ((~p16) + 1) : p16;
 
-    uint32_t regime_bits = (abs_p & _G_REGIME_MASK) >> ( _G_NBITS - _G_REGSIZE - 1 );
-    int regime_k = (regime_bits == ((1 << _G_REGSIZE) - 1)) 
+    uint32_t regime_bits = (abs_p & _FG_REGIME_MASK) >> ( _FG_NBITS - _FG_REGSIZE - 1 );
+    int regime_k = (regime_bits == ((1 << _FG_REGSIZE) - 1)) 
                    ? regime_bits : -regime_bits;
 
-    uint32_t exp_bits = (abs_p & _G_EXP_MASK) >> __builtin_ctz(_G_FRAC_MASK);
-    uint32_t frac_bits = abs_p & _G_FRAC_MASK;
+    uint32_t exp_bits = (abs_p & _FG_EXP_MASK) >> __builtin_ctz(_FG_FRAC_MASK);
+    uint32_t frac_bits = abs_p & _FG_FRAC_MASK;
 
-    int32_t exp_total = regime_k * _G_USEED_ZEROS + exp_bits;
+    int32_t exp_total = regime_k * _FG_USEED_ZEROS + exp_bits;
     uint32_t float_exp = (exp_total + SINGLE_PRECISION_BIAS) << FLOAT_EXPONENT_SHIFT;
 
-    uint32_t float_frac = frac_bits << (FLOAT_EXPONENT_SHIFT - __builtin_ctz(_G_FRAC_MASK));
+    uint32_t float_frac = frac_bits << (FLOAT_EXPONENT_SHIFT - __builtin_ctz(_FG_FRAC_MASK));
     uint32_t result_bits = float_exp | float_frac;
     if (sign) result_bits |= FLOAT_SIGN_MASK;
 
@@ -923,29 +923,29 @@ uint16_t fp32_to_fixed_posit(float f,  uint32_t* int32_fp_constants, uint64_t* i
     v.ui &= ~FLOAT_SIGN_MASK;  // abs(f)
 
     // Saturate
-    if (v.si >= _G_MAXREAL_INT) return sign ? (1 << (_G_NBITS - 1)) : (_G_MAXREALP);
-    if (v.si <= _G_MINREAL_INT) return 0;
+    if (v.si >= _FG_MAXREAL_INT) return sign ? (1 << (_FG_NBITS - 1)) : (_FG_MAXREALP);
+    if (v.si <= _FG_MINREAL_INT) return 0;
 
     int32_t exp_abs = abs((v.si >> FLOAT_EXPONENT_SHIFT) - SINGLE_PRECISION_BIAS);
-    int regime_k = exp_abs / _G_USEED_ZEROS; // fixed regime
+    int regime_k = exp_abs / _FG_USEED_ZEROS; // fixed regime
 
-    if (regime_k >= (1 << (_G_REGSIZE - 1))) regime_k = (1 << (_G_REGSIZE - 1)) - 1;
+    if (regime_k >= (1 << (_FG_REGSIZE - 1))) regime_k = (1 << (_FG_REGSIZE - 1)) - 1;
     if (exp_abs < 0) regime_k = -regime_k;
 
-    int exp_rem = exp_abs % _G_USEED_ZEROS;
+    int exp_rem = exp_abs % _FG_USEED_ZEROS;
 
     uint32_t regime_bits = (regime_k >= 0)
-        ? ((1 << (_G_REGSIZE)) - 1)
+        ? ((1 << (_FG_REGSIZE)) - 1)
         : 0;
-    if (regime_k < 0) regime_bits <<= ( _G_REGSIZE + exp_rem);
+    if (regime_k < 0) regime_bits <<= ( _FG_REGSIZE + exp_rem);
 
-    uint32_t exp_bits = (exp_rem & _G_EXPONENT_MASK) << (_G_FRAC_MASK ? __builtin_ctz(_G_FRAC_MASK) : 0);
-    uint32_t frac_bits = (v.ui >> (FLOAT_EXPONENT_SHIFT - __builtin_ctz(_G_FRAC_MASK))) & _G_FRAC_MASK;
+    uint32_t exp_bits = (exp_rem & _FG_EXPONENT_MASK) << (_FG_FRAC_MASK ? __builtin_ctz(_FG_FRAC_MASK) : 0);
+    uint32_t frac_bits = (v.ui >> (FLOAT_EXPONENT_SHIFT - __builtin_ctz(_FG_FRAC_MASK))) & _FG_FRAC_MASK;
 
     uint32_t posit = regime_bits | exp_bits | frac_bits;
-    if (sign) posit = ((~posit) + 1) & ((_G_SIGN_MASK << _G_FPOSIT_SHIFT_AMOUNT) | ((1 << nsize) - 1));
+    if (sign) posit = ((~posit) + 1) & ((_FG_SIGN_MASK << _FG_FPOSIT_SHIFT_AMOUNT) | ((1 << _FG_NBITS) - 1));
 
-    return uint16_t(posit << _G_FPOSIT_SHIFT_AMOUNT);
+    return uint16_t(posit << _FG_FPOSIT_SHIFT_AMOUNT);
 }
 
 Tensor fixed_posit_quantize_nearest(Tensor a, int nsize, int reg, int es, float scale)
@@ -968,10 +968,10 @@ Tensor fixed_posit_quantize_nearest(Tensor a, int nsize, int reg, int es, float 
     float temp_input = a_array[i] * scale;
 
     // Convert float → fixposit
-    fp16 temp = fp32_to_fixed_posit(temp_input);
+    fp16 temp = fp32_to_fixed_posit(temp_input, int32_fp_constants,int64_fp_constants);
 
     // Convert back from fixposit → float
-    temp_input = fixed_posit_to_fp32(temp);
+    temp_input = fixed_posit_to_fp32(temp, int32_fp_constants,int64_fp_constants);
 
     // Store scaled-back value
     o_array[i] = temp_input / scale;
