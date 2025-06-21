@@ -923,7 +923,7 @@ uint32_t fp32_to_fixed_posit(float f,  uint32_t* int32_fp_constants, uint64_t* i
     v.ui &= ~FLOAT_SIGN_MASK;  // abs(f)
 
     // Saturate
-    if (v.si >= _FG_MAXREAL_INT) return sign ? (1 << (_FG_NBITS - 1)) : (_FG_MAXREALP);
+    if (v.si >= _FG_MAXREAL_INT) return sign ? (_FG_SIGN_MASK) : (_FG_MAXREALP);
     if (v.si <= _FG_MINREAL_INT) return 0;
 
     int32_t exp_abs = abs((v.si >> FLOAT_EXPONENT_SHIFT) - SINGLE_PRECISION_BIAS);
@@ -945,7 +945,7 @@ uint32_t fp32_to_fixed_posit(float f,  uint32_t* int32_fp_constants, uint64_t* i
     uint32_t posit = regime_bits | exp_bits | frac_bits;
     if (sign) posit = ((~posit) + 1) & ((_FG_SIGN_MASK << _FG_FPOSIT_SHIFT_AMOUNT) | ((1 << _FG_NBITS) - 1));
 
-    return uint16_t(posit << _FG_FPOSIT_SHIFT_AMOUNT);
+    return posit << _FG_FPOSIT_SHIFT_AMOUNT;
 }
 
 Tensor fixed_posit_quantize_nearest(Tensor a, int nsize, int reg, int es, float scale)
@@ -968,7 +968,7 @@ Tensor fixed_posit_quantize_nearest(Tensor a, int nsize, int reg, int es, float 
     float temp_input = a_array[i] * scale;
 
     // Convert float → fixposit
-    fp16 temp = fp32_to_fixed_posit(temp_input, int32_fp_constants,int64_fp_constants);
+    uint32_t temp = fp32_to_fixed_posit(temp_input, int32_fp_constants,int64_fp_constants);
 
     // Convert back from fixposit → float
     temp_input = fixed_posit_to_fp32(temp, int32_fp_constants,int64_fp_constants);
