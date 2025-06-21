@@ -865,12 +865,12 @@ void generate_fixed_posit_constants(int nsize, int reg, int es, uint32_t* int32_
     _FG_REGSIZE = reg;
     _FG_ESIZE = es;
 
-    if (nsize > 16) { fprintf(stderr, "Unsupported nsize\n"); exit(1); }
+    if (nsize > 32) { fprintf(stderr, "Unsupported nsize\n"); exit(1); }
 
     int frac_bits = nsize - 1 - reg - es;
     if (frac_bits < 0) { fprintf(stderr, "Invalid reg/es combination\n"); exit(1); }
 
-    _FG_FPOSIT_SHIFT_AMOUNT = 16 - nsize;
+    _FG_FPOSIT_SHIFT_AMOUNT = 32 - nsize;
     _FG_USEED = 1 << (1 << es);
     _FG_EXPONENT_MASK = (1 << es) - 1;
 
@@ -893,9 +893,9 @@ void generate_fixed_posit_constants(int nsize, int reg, int es, uint32_t* int32_
 }
 
 
-float fixed_posit_to_fp32(uint16_t p16, uint32_t* int32_fp_constants, uint64_t* int64_fp_constants) {
-    bool sign = p16 & _FG_SIGN_MASK;
-    uint16_t abs_p = sign ? ((~p16) + 1) : p16;
+float fixed_posit_to_fp32(uint32_t p32, uint32_t* int32_fp_constants, uint64_t* int64_fp_constants) {
+    bool sign = p32 & _FG_SIGN_MASK;
+    uint32_t abs_p = sign ? ((~p32) + 1) : p32;
 
     uint32_t regime_bits = (abs_p & _FG_REGIME_MASK) >> ( _FG_NBITS - _FG_REGSIZE - 1 );
     int regime_k = (regime_bits == ((1 << _FG_REGSIZE) - 1)) 
@@ -916,7 +916,7 @@ float fixed_posit_to_fp32(uint16_t p16, uint32_t* int32_fp_constants, uint64_t* 
     return result.f;
 }
 
-uint16_t fp32_to_fixed_posit(float f,  uint32_t* int32_fp_constants, uint64_t* int64_fp_constants) {
+uint32_t fp32_to_fixed_posit(float f,  uint32_t* int32_fp_constants, uint64_t* int64_fp_constants) {
     union { uint32_t ui; int32_t si; float f; } v;
     v.f = f;
     bool sign = v.ui & FLOAT_SIGN_MASK;
