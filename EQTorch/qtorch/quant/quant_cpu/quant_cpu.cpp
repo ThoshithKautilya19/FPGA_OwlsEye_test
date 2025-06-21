@@ -836,7 +836,7 @@ Tensor configurable_table_quantize_rounding_hint(Tensor a, Tensor lookup_table, 
 
 // Making thr fixed-posit 
 
-void generate_fix_posit_constants(int nsize, int reg, int es) {
+void generate_fixed_posit_constants(int nsize, int reg, int es) {
     _G_NBITS = nsize;
     _G_REGSIZE = reg;
     _G_ESIZE = es;
@@ -869,7 +869,7 @@ void generate_fix_posit_constants(int nsize, int reg, int es) {
 }
 
 
-float fixposit_to_fp32(uint16_t p16) {
+float fixed_posit_to_fp32(uint16_t p16) {
     bool sign = p16 & _G_SIGN_MASK;
     uint16_t abs_p = sign ? ((~p16) + 1) : p16;
 
@@ -892,7 +892,7 @@ float fixposit_to_fp32(uint16_t p16) {
     return result.f;
 }
 
-uint16_t fp32_to_fixposit(float f) {
+uint16_t fp32_to_fixed_posit(float f) {
     union { uint32_t ui; int32_t si; float f; } v;
     v.f = f;
     bool sign = v.ui & FLOAT_SIGN_MASK;
@@ -924,7 +924,7 @@ uint16_t fp32_to_fixposit(float f) {
     return uint16_t(posit << _G_FPOSIT_SHIFT_AMOUNT);
 }
 
-Tensor fixposit_quantize_nearest(Tensor a, int nsize, int reg, int es, float scale)
+Tensor fixed_posit_quantize_nearest(Tensor a, int nsize, int reg, int es, float scale)
 {
   auto a_array = a.data_ptr<float>();
   auto o = zeros_like(a);
@@ -936,7 +936,7 @@ Tensor fixposit_quantize_nearest(Tensor a, int nsize, int reg, int es, float sca
   uint64_t int64_constants[2];
 
   // Initialize fixposit parameters
-  generate_fixposit_constants(nsize, reg, es, int32_constants, int64_constants);
+  generate_fixed_posit_constants(nsize, reg, es);
 
   for (int64_t i = 0; i < size; i++)
   {
@@ -944,10 +944,10 @@ Tensor fixposit_quantize_nearest(Tensor a, int nsize, int reg, int es, float sca
     float temp_input = a_array[i] * scale;
 
     // Convert float → fixposit
-    fp16 temp = fp32tofixposit(temp_input, int32_constants, int64_constants);
+    fp16 temp = fp32_to_fixed_posit(temp_input);
 
     // Convert back from fixposit → float
-    temp_input = fixposittofp32(temp, int32_constants, int64_constants);
+    temp_input = fixed_posit_to_fp32(temp);
 
     // Store scaled-back value
     o_array[i] = temp_input / scale;
