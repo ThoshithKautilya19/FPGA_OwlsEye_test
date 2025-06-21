@@ -834,7 +834,7 @@ Tensor configurable_table_quantize_rounding_hint(Tensor a, Tensor lookup_table, 
   return o;
 }
 
-// Making thr fixed-posit 
+// Making thr fixed-posit , all definitions required and everything
 
 void generate_fixed_posit_constants(int nsize, int reg, int es) {
     _G_NBITS = nsize;
@@ -870,7 +870,7 @@ void generate_fixed_posit_constants(int nsize, int reg, int es) {
 
 
 float fixed_posit_to_fp32(uint16_t p16) {
-    bool sign = p16 & _G_SIGN_MASK;
+    bool sign = p16 & SIGN_MASK;
     uint16_t abs_p = sign ? ((~p16) + 1) : p16;
 
     uint32_t regime_bits = (abs_p & _G_REGIME_MASK) >> ( _G_NBITS - _G_REGSIZE - 1 );
