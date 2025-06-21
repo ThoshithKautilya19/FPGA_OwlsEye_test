@@ -960,7 +960,7 @@ Tensor fixed_posit_quantize_nearest(Tensor a, int nsize, int reg, int es, float 
   uint64_t int64_fp_constants[2];
 
   // Initialize fixposit parameters
-  generate_fixed_posit_constants(nsize, reg, es);
+  generate_fixed_posit_constants(nsize, reg, es, int32_fp_constants,int64_fp_constants);
 
   for (int64_t i = 0; i < size; i++)
   {
