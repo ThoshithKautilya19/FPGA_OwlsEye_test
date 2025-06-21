@@ -834,6 +834,128 @@ Tensor configurable_table_quantize_rounding_hint(Tensor a, Tensor lookup_table, 
   return o;
 }
 
+// Making thr fixed-posit 
+
+void generate_fix_posit_constants(int nsize, int reg, int es) {
+    _G_NBITS = nsize;
+    _G_REGSIZE = reg;
+    _G_ESIZE = es;
+
+    if (nsize > 16) { fprintf(stderr, "Unsupported nsize\n"); exit(1); }
+
+    int frac_bits = nsize - 1 - reg - es;
+    if (frac_bits < 0) { fprintf(stderr, "Invalid reg/es combination\n"); exit(1); }
+
+    _G_FPOSIT_SHIFT_AMOUNT = 16 - nsize;
+    _G_USEED = 1 << (1 << es);
+    _G_EXPONENT_MASK = (1 << es) - 1;
+
+    int exp_factor = (1 << es);
+    _G_USEED_ZEROS = exp_factor;
+    _G_MAXREAL_INT = (exp_factor * (nsize - 2) + SINGLE_PRECISION_BIAS) << FLOAT_EXPONENT_SHIFT;
+    _G_MINREAL_INT = (exp_factor * (2 - nsize) + SINGLE_PRECISION_BIAS) << FLOAT_EXPONENT_SHIFT;
+
+    _G_SIGN_MASK = 1 << (nsize - 1);
+    _G_REGIME_MASK = ((1 << reg) - 1) << (nsize - 1 - reg);
+    _G_EXP_MASK = ((1 << es) - 1) << frac_bits;
+    _G_FRAC_MASK = (1 << frac_bits) - 1;
+
+    POSIT_EXTRA_BITS_SHIFT = 64 - nsize + 1;
+    POSIT_EXTRA_BITS_MASK = (1ULL << (64 - nsize)) - 1;
+    POSIT_HALFWAY_BIT_MASK = 1ULL << (64 - nsize);
+
+    _G_MAXREALP = _G_SIGN_MASK ? ((_G_SIGN_MASK - 1)) << _G_FPOSIT_SHIFT_AMOUNT : 0;
+    _G_MINREALP = 1 << _G_FPOSIT_SHIFT_AMOUNT;
+}
+
+
+float fixposit_to_fp32(uint16_t p16) {
+    bool sign = p16 & _G_SIGN_MASK;
+    uint16_t abs_p = sign ? ((~p16) + 1) : p16;
+
+    uint32_t regime_bits = (abs_p & _G_REGIME_MASK) >> ( _G_NBITS - _G_REGSIZE - 1 );
+    int regime_k = (regime_bits == ((1 << _G_REGSIZE) - 1)) 
+                   ? regime_bits : -regime_bits;
+
+    uint32_t exp_bits = (abs_p & _G_EXP_MASK) >> __builtin_ctz(_G_FRAC_MASK);
+    uint32_t frac_bits = abs_p & _G_FRAC_MASK;
+
+    int32_t exp_total = regime_k * _G_USEED_ZEROS + exp_bits;
+    uint32_t float_exp = (exp_total + SINGLE_PRECISION_BIAS) << FLOAT_EXPONENT_SHIFT;
+
+    uint32_t float_frac = frac_bits << (FLOAT_EXPONENT_SHIFT - __builtin_ctz(_G_FRAC_MASK));
+    uint32_t result_bits = float_exp | float_frac;
+    if (sign) result_bits |= FLOAT_SIGN_MASK;
+
+    union { uint32_t ui; float f; } result;
+    result.ui = result_bits;
+    return result.f;
+}
+
+uint16_t fp32_to_fixposit(float f) {
+    union { uint32_t ui; int32_t si; float f; } v;
+    v.f = f;
+    bool sign = v.ui & FLOAT_SIGN_MASK;
+    v.ui &= ~FLOAT_SIGN_MASK;  // abs(f)
+
+    // Saturate
+    if (v.si >= _G_MAXREAL_INT) return sign ? (1 << (_G_NBITS - 1)) : (_G_MAXREALP);
+    if (v.si <= _G_MINREAL_INT) return 0;
+
+    int32_t exp_abs = abs((v.si >> FLOAT_EXPONENT_SHIFT) - SINGLE_PRECISION_BIAS);
+    int regime_k = exp_abs / _G_USEED_ZEROS; // fixed regime
+
+    if (regime_k >= (1 << (_G_REGSIZE - 1))) regime_k = (1 << (_G_REGSIZE - 1)) - 1;
+    if (exp_abs < 0) regime_k = -regime_k;
+
+    int exp_rem = exp_abs % _G_USEED_ZEROS;
+
+    uint32_t regime_bits = (regime_k >= 0)
+        ? ((1 << (_G_REGSIZE)) - 1)
+        : 0;
+    if (regime_k < 0) regime_bits <<= ( _G_REGSIZE + exp_rem);
+
+    uint32_t exp_bits = (exp_rem & _G_EXPONENT_MASK) << (_G_FRAC_MASK ? __builtin_ctz(_G_FRAC_MASK) : 0);
+    uint32_t frac_bits = (v.ui >> (FLOAT_EXPONENT_SHIFT - __builtin_ctz(_G_FRAC_MASK))) & _G_FRAC_MASK;
+
+    uint32_t posit = regime_bits | exp_bits | frac_bits;
+    if (sign) posit = ((~posit) + 1) & ((_G_SIGN_MASK << _G_FPOSIT_SHIFT_AMOUNT) | ((1 << nsize) - 1));
+
+    return uint16_t(posit << _G_FPOSIT_SHIFT_AMOUNT);
+}
+
+Tensor fixposit_quantize_nearest(Tensor a, int nsize, int reg, int es, float scale)
+{
+  auto a_array = a.data_ptr<float>();
+  auto o = zeros_like(a);
+  auto o_array = o.data_ptr<float>();
+  int size = a.numel();
+
+  // Store fixposit constants
+  uint32_t int32_constants[11];
+  uint64_t int64_constants[2];
+
+  // Initialize fixposit parameters
+  generate_fixposit_constants(nsize, reg, es, int32_constants, int64_constants);
+
+  for (int64_t i = 0; i < size; i++)
+  {
+    // Scale the input for better dynamic coverage
+    float temp_input = a_array[i] * scale;
+
+    // Convert float → fixposit
+    fp16 temp = fp32tofixposit(temp_input, int32_constants, int64_constants);
+
+    // Convert back from fixposit → float
+    temp_input = fixposittofp32(temp, int32_constants, int64_constants);
+
+    // Store scaled-back value
+    o_array[i] = temp_input / scale;
+  }
+
+  return o;
+}
+
 PYBIND11_MODULE(TORCH_EXTENSION_NAME, m)
 {
   m.def("fixed_point_quantize_stochastic_mask", &fixed_point_quantize_stochastic_mask, "Fixed Point Number Stochastic Quantization with Mask (CPU)");
@@ -845,6 +967,7 @@ PYBIND11_MODULE(TORCH_EXTENSION_NAME, m)
   m.def("block_quantize_nearest", &block_quantize_nearest, "Block Floating Point Number Nearest Neighbor Quantization (CPU)");
   m.def("float_quantize_nearest", &float_quantize_nearest, "Low-Bitwidth Floating Point Number Nearest Neighbor Quantization (CPU)");
   m.def("posit_quantize_nearest", &posit_quantize_nearest, "Low-Bitwidth Posit Quantization (CPU)");
+  m.def("fixposit_quantize_nearest", &posit_quantize_nearest, "Low-Bitwidth FixPosit Quantization (CPU)");
   m.def("posit_sigmoid", &posit_sigmoid, "Low-Bitwidth Posit Sigmoid (CPU)");
   m.def("posit_tanh", &posit_tanh, "Low-Bitwidth Posit Tanh (CPU)");
   m.def("posit_tanh_enhanced", &posit_tanh_enhanced, "Low-Bitwidth Posit Tanh (CPU)");
