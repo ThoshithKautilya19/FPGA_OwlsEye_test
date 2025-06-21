@@ -916,37 +916,42 @@ float fixed_posit_to_fp32(uint32_t p32, uint32_t* int32_fp_constants, uint64_t* 
     return result.f;
 }
 
-uint32_t fp32_to_fixed_posit(float f,  uint32_t* int32_fp_constants, uint64_t* int64_fp_constants) {
+uint32_t fp32_to_fixed_posit(float f, uint32_t* int32_fp_constants, uint64_t* int64_fp_constants) {
     union { uint32_t ui; int32_t si; float f; } v;
     v.f = f;
     bool sign = v.ui & FLOAT_SIGN_MASK;
-    v.ui &= ~FLOAT_SIGN_MASK;  // abs(f)
+    v.ui &= ~FLOAT_SIGN_MASK;
 
-    // Saturate
     if (v.si >= _FG_MAXREAL_INT) return sign ? (_FG_SIGN_MASK) : (_FG_MAXREALP);
     if (v.si <= _FG_MINREAL_INT) return 0;
 
-    int32_t exp_abs = abs((v.si >> FLOAT_EXPONENT_SHIFT) - SINGLE_PRECISION_BIAS);
-    int regime_k = exp_abs / _FG_USEED_ZEROS; // fixed regime
+    int32_t exp_val = ((v.ui >> FLOAT_EXPONENT_SHIFT) & 0xFF) - SINGLE_PRECISION_BIAS;
+    int regime_k = exp_val / _FG_USEED_ZEROS;
+    int exp_rem = exp_val % _FG_USEED_ZEROS;
 
-    if (regime_k >= (1 << (_FG_REGSIZE - 1))) regime_k = (1 << (_FG_REGSIZE - 1)) - 1;
-    if (exp_abs < 0) regime_k = -regime_k;
+    // Compose regime bits
+    int regime_len = regime_k >= 0 ? regime_k + 1 : -regime_k + 1;
+    uint32_t regime_bits = 0;
+    if (regime_k >= 0)
+        regime_bits = ((1U << regime_len) - 1) << (32 - regime_len);
+    else
+        regime_bits = 1U << (32 - regime_len);
 
-    int exp_rem = exp_abs % _FG_USEED_ZEROS;
+    // Shift regime into place
+    regime_bits >>= (_FG_FPOSIT_SHIFT_AMOUNT + 1); // align
 
-    uint32_t regime_bits = (regime_k >= 0)
-        ? ((1 << (_FG_REGSIZE)) - 1)
-        : 0;
-    if (regime_k < 0) regime_bits <<= ( _FG_REGSIZE + exp_rem);
-
-    uint32_t exp_bits = (exp_rem & _FG_EXPONENT_MASK) << (_FG_FRAC_MASK ? __builtin_ctz(_FG_FRAC_MASK) : 0);
+    // Compose exponent and fraction
+    uint32_t exp_bits = (exp_rem & _FG_EXPONENT_MASK) << __builtin_ctz(_FG_FRAC_MASK);
     uint32_t frac_bits = (v.ui >> (FLOAT_EXPONENT_SHIFT - __builtin_ctz(_FG_FRAC_MASK))) & _FG_FRAC_MASK;
 
-    uint32_t posit = regime_bits | exp_bits | frac_bits;
-    if (sign) posit = ((~posit) + 1) & ((_FG_SIGN_MASK << _FG_FPOSIT_SHIFT_AMOUNT) | ((1 << _FG_NBITS) - 1));
+    // Assemble posit
+    uint32_t posit = (regime_bits | exp_bits | frac_bits) >> _FG_FPOSIT_SHIFT_AMOUNT;
+    posit &= ((1U << _FG_NBITS) - 1);
 
+    if (sign) posit = (~posit + 1) & ((1U << _FG_NBITS) - 1);
     return posit << _FG_FPOSIT_SHIFT_AMOUNT;
 }
+
 
 Tensor fixed_posit_quantize_nearest(Tensor a, int nsize, int reg, int es, float scale)
 {
