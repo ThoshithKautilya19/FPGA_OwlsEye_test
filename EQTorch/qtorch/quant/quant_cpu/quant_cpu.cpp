@@ -967,7 +967,7 @@ PYBIND11_MODULE(TORCH_EXTENSION_NAME, m)
   m.def("block_quantize_nearest", &block_quantize_nearest, "Block Floating Point Number Nearest Neighbor Quantization (CPU)");
   m.def("float_quantize_nearest", &float_quantize_nearest, "Low-Bitwidth Floating Point Number Nearest Neighbor Quantization (CPU)");
   m.def("posit_quantize_nearest", &posit_quantize_nearest, "Low-Bitwidth Posit Quantization (CPU)");
-  m.def("fixposit_quantize_nearest", &posit_quantize_nearest, "Low-Bitwidth FixPosit Quantization (CPU)");
+  m.def("fixed_posit_quantize_nearest", &posit_quantize_nearest, "Low-Bitwidth FixedPosit Quantization (CPU)");
   m.def("posit_sigmoid", &posit_sigmoid, "Low-Bitwidth Posit Sigmoid (CPU)");
   m.def("posit_tanh", &posit_tanh, "Low-Bitwidth Posit Tanh (CPU)");
   m.def("posit_tanh_enhanced", &posit_tanh_enhanced, "Low-Bitwidth Posit Tanh (CPU)");
