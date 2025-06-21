@@ -835,8 +835,32 @@ Tensor configurable_table_quantize_rounding_hint(Tensor a, Tensor lookup_table, 
 }
 
 // Making thr fixed-posit , all definitions required and everything
+#define _G_FPOSIT_SHIFT_AMOUNT   int32_fp_constants[0] //DONE
+#define _G_MAXREALP             int32_fp_constants[1] //DONE
+#define _G_MINREALP             int32_fp_constants[2] //DONE
+#define POSIT_EXTRA_BITS_SHIFT  int32_fp_constants[3] //DONE
+#define _G_USEED                int32_fp_constants[4] //DONE
+#define _G_USEED_ZEROS          int32_fp_constants[5] //DONE
+#define _G_MAXREAL_INT          int32_fp_constants[6] //DONE
+#define _G_MINREAL_INT          int32_fp_constants[7]	//DONE
+#define _G_NBITS                int32_fp_constants[8] //DONE
+#define _G_REGSIZE		int32_fp_constants[9] //DONE
+#define _G_ESIZE                int32_fp_constants[10] //DONE
+#define _G_EXPONENT_MASK        int32_fp_constants[11] //DONE
+#define _G_FRAC_MASK        int32_fp_constants[12] //DONE
+#define _G_SIGN_MASK        int32_fp_constants[13] //DONE
+#define _G_REGIME_MASK        int32_fp_constants[14] //DONE
+#define _G_EXP_MASK        int32_fp_constants[15] //DONE
 
-void generate_fixed_posit_constants(int nsize, int reg, int es, uint32_t* int32_constants, uint64_t* int64_constants) {
+
+
+
+
+#define POSIT_EXTRA_BITS_MASK   int64_fp_constants[0]
+#define POSIT_HALFWAY_BIT_MASK  int64_fp_constants[1]
+
+
+void generate_fixed_posit_constants(int nsize, int reg, int es, uint32_t* int32_fp_constants, uint64_t* int64_fp_constants) {
     _G_NBITS = nsize;
     _G_REGSIZE = reg;
     _G_ESIZE = es;
@@ -869,8 +893,8 @@ void generate_fixed_posit_constants(int nsize, int reg, int es, uint32_t* int32_
 }
 
 
-float fixed_posit_to_fp32(uint16_t p16, uint32_t* int32_constants, uint64_t* int64_constants) {
-    bool sign = p16 & SIGN_MASK;
+float fixed_posit_to_fp32(uint16_t p16, uint32_t* int32_fp_constants, uint64_t* int64_fp_constants) {
+    bool sign = p16 & _G_SIGN_MASK;
     uint16_t abs_p = sign ? ((~p16) + 1) : p16;
 
     uint32_t regime_bits = (abs_p & _G_REGIME_MASK) >> ( _G_NBITS - _G_REGSIZE - 1 );
@@ -892,7 +916,7 @@ float fixed_posit_to_fp32(uint16_t p16, uint32_t* int32_constants, uint64_t* int
     return result.f;
 }
 
-uint16_t fp32_to_fixed_posit(float f,  uint32_t* int32_constants, uint64_t* int64_constants) {
+uint16_t fp32_to_fixed_posit(float f,  uint32_t* int32_fp_constants, uint64_t* int64_fp_constants) {
     union { uint32_t ui; int32_t si; float f; } v;
     v.f = f;
     bool sign = v.ui & FLOAT_SIGN_MASK;
@@ -932,8 +956,8 @@ Tensor fixed_posit_quantize_nearest(Tensor a, int nsize, int reg, int es, float 
   int size = a.numel();
 
   // Store fixposit constants
-  uint32_t int32_constants[11];
-  uint64_t int64_constants[2];
+  uint32_t int32_fp_constants[15];
+  uint64_t int64_fp_constants[2];
 
   // Initialize fixposit parameters
   generate_fixed_posit_constants(nsize, reg, es);
