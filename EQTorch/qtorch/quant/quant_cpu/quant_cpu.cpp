@@ -880,155 +880,328 @@ Tensor configurable_table_quantize_rounding_hint(Tensor a, Tensor lookup_table, 
 // 	uint32_t ui;
 // };
 
-#define _FG_FPOSIT_SHIFT_AMOUNT   int32_fp_constants[0] //DONE
-#define _FG_MAXREALP             int32_fp_constants[1] //DONE
-#define _FG_MINREALP             int32_fp_constants[2] //DONE
-#define FPOSIT_EXTRA_BITS_SHIFT  int32_fp_constants[3] //DONE
-#define _FG_USEED                int32_fp_constants[4] //DONE
-#define _FG_USEED_ZEROS          int32_fp_constants[5] //DONE
-#define _FG_MAXREAL_INT          int32_fp_constants[6] //DONE
-#define _FG_MINREAL_INT          int32_fp_constants[7]	//DONE
-#define _FG_NBITS                int32_fp_constants[8] //DONE
-#define _FG_REGSIZE		int32_fp_constants[9] //DONE
-#define _FG_ESIZE                int32_fp_constants[10] //DONE
-#define _FG_EXPONENT_MASK        int32_fp_constants[11] //DONE
-#define _FG_FRAC_MASK        int32_fp_constants[12] //DONE
-#define _FG_SIGN_MASK        int32_fp_constants[13] //DONE
-#define _FG_REGIME_MASK        int32_fp_constants[14] //DONE
-#define _FG_EXP_MASK        int32_fp_constants[15] //DONE
+// #define _FG_FPOSIT_SHIFT_AMOUNT   int32_fp_constants[0] //DONE
+// #define _FG_MAXREALP             int32_fp_constants[1] //DONE
+// #define _FG_MINREALP             int32_fp_constants[2] //DONE
+// #define FPOSIT_EXTRA_BITS_SHIFT  int32_fp_constants[3] //DONE
+// #define _FG_USEED                int32_fp_constants[4] //DONE
+// #define _FG_USEED_ZEROS          int32_fp_constants[5] //DONE
+// #define _FG_MAXREAL_INT          int32_fp_constants[6] //DONE
+// #define _FG_MINREAL_INT          int32_fp_constants[7]	//DONE
+// #define _FG_NBITS                int32_fp_constants[8] //DONE
+// #define _FG_REGSIZE		int32_fp_constants[9] //DONE
+// #define _FG_ESIZE                int32_fp_constants[10] //DONE
+// #define _FG_EXPONENT_MASK        int32_fp_constants[11] //DONE
+// #define _FG_FRAC_MASK        int32_fp_constants[12] //DONE
+// #define _FG_SIGN_MASK        int32_fp_constants[13] //DONE
+// #define _FG_REGIME_MASK        int32_fp_constants[14] //DONE
+// #define _FG_EXP_MASK        int32_fp_constants[15] //DONE
 
 
 
 
 
-#define FPOSIT_EXTRA_BITS_MASK   int64_fp_constants[0]
-#define FPOSIT_HALFWAY_BIT_MASK  int64_fp_constants[1]
+// #define FPOSIT_EXTRA_BITS_MASK   int64_fp_constants[0]
+// #define FPOSIT_HALFWAY_BIT_MASK  int64_fp_constants[1]
 
 
-void generate_fixed_posit_constants(int nsize, int reg, int es, uint32_t* int32_fp_constants, uint64_t* int64_fp_constants) {
-    _FG_NBITS = nsize;
-    _FG_REGSIZE = reg;
-    _FG_ESIZE = es;
+// void generate_fixed_posit_constants(int nsize, int reg, int es, uint32_t* int32_fp_constants, uint64_t* int64_fp_constants) {
+//     _FG_NBITS = nsize;
+//     _FG_REGSIZE = reg;
+//     _FG_ESIZE = es;
 
-    if (nsize > 32) { fprintf(stderr, "Unsupported nsize\n"); exit(1); }
+//     if (nsize > 32) { fprintf(stderr, "Unsupported nsize\n"); exit(1); }
 
-    int frac_bits = nsize - 1 - reg - es;
-    if (frac_bits < 0) { fprintf(stderr, "Invalid reg/es combination\n"); exit(1); }
+//     int frac_bits = nsize - 1 - reg - es;
+//     if (frac_bits < 0) { fprintf(stderr, "Invalid reg/es combination\n"); exit(1); }
 
-    _FG_FPOSIT_SHIFT_AMOUNT = 32 - nsize;
-    _FG_USEED = 1 << (1 << es);
-    _FG_EXPONENT_MASK = (1 << es) - 1;
+//     _FG_FPOSIT_SHIFT_AMOUNT = 32 - nsize;
+//     _FG_USEED = 1 << (1 << es);
+//     _FG_EXPONENT_MASK = (1 << es) - 1;
 
-    int exp_factor = (1 << es);
-    _FG_USEED_ZEROS = exp_factor;
-    _FG_MAXREAL_INT = (exp_factor * (nsize - 2) + SINGLE_PRECISION_BIAS) << FLOAT_EXPONENT_SHIFT;
-    _FG_MINREAL_INT = (exp_factor * (2 - nsize) + SINGLE_PRECISION_BIAS) << FLOAT_EXPONENT_SHIFT;
+//     int exp_factor = (1 << es);
+//     _FG_USEED_ZEROS = exp_factor;
+//     _FG_MAXREAL_INT = (exp_factor * (nsize - 2) + SINGLE_PRECISION_BIAS) << FLOAT_EXPONENT_SHIFT;
+//     _FG_MINREAL_INT = (exp_factor * (2 - nsize) + SINGLE_PRECISION_BIAS) << FLOAT_EXPONENT_SHIFT;
 
-    _FG_SIGN_MASK = 1 << (nsize - 1);
-    _FG_REGIME_MASK = ((1 << reg) - 1) << (nsize - 1 - reg);
-    _FG_EXP_MASK = ((1 << es) - 1) << frac_bits;
-    _FG_FRAC_MASK = (1 << frac_bits) - 1;
+//     _FG_SIGN_MASK = 1 << (nsize - 1);
+//     _FG_REGIME_MASK = ((1 << reg) - 1) << (nsize - 1 - reg);
+//     _FG_EXP_MASK = ((1 << es) - 1) << frac_bits;
+//     _FG_FRAC_MASK = (1 << frac_bits) - 1;
 
-    FPOSIT_EXTRA_BITS_SHIFT = 64 - nsize + 1;
-    FPOSIT_EXTRA_BITS_MASK = (1ULL << (64 - nsize)) - 1;
-    FPOSIT_HALFWAY_BIT_MASK = 1ULL << (64 - nsize);
+//     FPOSIT_EXTRA_BITS_SHIFT = 64 - nsize + 1;
+//     FPOSIT_EXTRA_BITS_MASK = (1ULL << (64 - nsize)) - 1;
+//     FPOSIT_HALFWAY_BIT_MASK = 1ULL << (64 - nsize);
 
-    _FG_MAXREALP = _FG_SIGN_MASK ? ((_FG_SIGN_MASK - 1)) << _FG_FPOSIT_SHIFT_AMOUNT : 0;
-    _FG_MINREALP = 1 << _FG_FPOSIT_SHIFT_AMOUNT;
+//     _FG_MAXREALP = _FG_SIGN_MASK ? ((_FG_SIGN_MASK - 1)) << _FG_FPOSIT_SHIFT_AMOUNT : 0;
+//     _FG_MINREALP = 1 << _FG_FPOSIT_SHIFT_AMOUNT;
+// }
+
+
+// float fixed_posit_to_fp32(uint32_t p32, uint32_t* int32_fp_constants, uint64_t* int64_fp_constants) {
+//     bool sign = p32 & _FG_SIGN_MASK;
+//     uint32_t abs_p = sign ? (~p32 & ((1U << _FG_NBITS) - 1)) : p32;
+
+//     uint32_t regime_bits = (abs_p & _FG_REGIME_MASK) >> (_FG_NBITS - 1 - _FG_REGSIZE);
+//     int regime_k = (int)(regime_bits << (32 - _FG_REGSIZE)) >> (32 - _FG_REGSIZE);
+
+
+//     uint32_t exp_bits = (abs_p & _FG_EXP_MASK) >> __builtin_ctz(_FG_FRAC_MASK);
+//     uint32_t frac_bits = abs_p & _FG_FRAC_MASK;
+
+//     int32_t exp_total = regime_k * _FG_USEED_ZEROS + exp_bits;
+//     uint32_t float_exp = (exp_total + SINGLE_PRECISION_BIAS) << FLOAT_EXPONENT_SHIFT;
+
+//     uint32_t float_frac = frac_bits << (FLOAT_EXPONENT_SHIFT - __builtin_ctz(_FG_FRAC_MASK));
+//     uint32_t result_bits = float_exp | float_frac;
+//     if (sign) result_bits |= FLOAT_SIGN_MASK;
+
+//     union { uint32_t ui; float f; } result;
+//     result.ui = result_bits;
+//     return result.f;
+// }
+
+// uint32_t fp32_to_fixed_posit(float f, uint32_t* int32_fp_constants, uint64_t* int64_fp_constants) {
+//     union { uint32_t ui; int32_t si; float f; } v;
+//     v.f = f;
+//     bool sign = v.ui & FLOAT_SIGN_MASK;
+//     v.ui &= ~FLOAT_SIGN_MASK;
+
+//     if (v.si >= _FG_MAXREAL_INT) return sign ? (_FG_SIGN_MASK) : (_FG_MAXREALP);
+//     if (v.si <= _FG_MINREAL_INT) return 0;
+
+//     int32_t exp_val = ((v.ui >> FLOAT_EXPONENT_SHIFT) & 0xFF) - SINGLE_PRECISION_BIAS;
+//     int regime_k = exp_val / _FG_USEED_ZEROS;
+//     int exp_rem = exp_val % _FG_USEED_ZEROS;
+
+//     // Compose regime bits
+//     uint32_t regime_bits = (uint32_t)(regime_k & ((1 << _FG_REGSIZE) - 1)) << (_FG_NBITS - 1 - _FG_REGSIZE);
+
+
+//     // Shift regime into place
+//     regime_bits >>= (_FG_FPOSIT_SHIFT_AMOUNT + 1); // align
+
+//     // Compose exponent and fraction
+//     uint32_t exp_bits = (exp_rem & _FG_EXPONENT_MASK) << __builtin_ctz(_FG_FRAC_MASK);
+//     uint32_t frac_bits = (v.ui >> (FLOAT_EXPONENT_SHIFT - __builtin_ctz(_FG_FRAC_MASK))) & _FG_FRAC_MASK;
+
+//     // Assemble po
+//     uint32_t posit = (regime_bits | exp_bits | frac_bits) >> _FG_FPOSIT_SHIFT_AMOUNT;
+//     posit &= ((1U << _FG_NBITS) - 1);
+	
+// 	// apply sign bit inversion for fixed-posit
+//     if (sign)
+// 	    posit = ~posit & ((1U << _FG_NBITS) - 1);
+	
+// 	// finally, shift back to MSB-aligned field
+//     return posit << _FG_FPOSIT_SHIFT_AMOUNT;
+// }
+
+
+// Tensor fixed_posit_quantize_nearest(Tensor a, int nsize, int reg, int es, float scale)
+// {
+//   auto a_array = a.data_ptr<float>();
+//   auto o = zeros_like(a);
+//   auto o_array = o.data_ptr<float>();
+//   int size = a.numel();
+
+//   // Store fixposit constants
+//   uint32_t int32_fp_constants[16];
+//   uint64_t int64_fp_constants[2];
+
+//   // Initialize fixposit parameters
+//   generate_fixed_posit_constants(nsize, reg, es, int32_fp_constants,int64_fp_constants);
+
+//   for (int64_t i = 0; i < size; i++)
+//   {
+//     // Scale the input for better dynamic coverage
+//     float temp_input = a_array[i] * scale;
+
+//     // Convert float → fixposit
+//     uint32_t temp = fp32_to_fixed_posit(temp_input, int32_fp_constants,int64_fp_constants);
+
+//     // Convert back from fixposit → float
+//     temp_input = fixed_posit_to_fp32(temp, int32_fp_constants,int64_fp_constants);
+
+//     // Store scaled-back value
+//     o_array[i] = temp_input / scale;
+//   }
+
+//   return o;
+// }
+
+
+#define FP32_LIMB_SIZE 32
+#define FP32_TYPE uint32_t
+
+#define FP_SIGN_MASK 0x80000000
+#define FP_FLOAT_SIGN_MASK 0x80000000
+#define FP_FLOAT_SIGN_RESET_MASK 0x7FFFFFFF
+#define FP_SECOND_BIT_MASK 0x40000000
+#define FP_FIXED_POSIT_INF 0x00000000
+#define FP_FIXED_POSIT_LIMB_ALL_BITS_SET 0xffffffff
+#define FP_SINGLE_PRECISION_BIAS 127
+#define FP_FLOAT_SIZE 32
+#define FP_FLOAT_EXPONENT_MASK 0x7f800000
+#define FP_FLOAT_FRACTION_MASK 0x007fffff
+#define FP_FLOAT_SIGN_SHIFT 31
+#define FP_FLOAT_EXPONENT_SHIFT 23
+#define FP_FLOAT_DENORMAL_EXPONENT -126
+#define FP_FLOAT_HIDDEN_BIT_SET_MASK 0x00800000
+#define FP_FLOAT_SIGN_PLUS_EXP_LENGTH_MINUS_ONE 8
+#define FP_TEMP_TYPE uint64_t
+#define FP_UNSIGNED_LONG_LONG_SIZE 64
+#define FP_EDP_ACC_SIZE 63
+#define FP_FIXED_POSIT_EXP_SHIFT 41
+#define FP_FLOAT_EXP_SIGN_SHIFT 30
+#define FP_FLOAT_INF 0x7F800000
+#define FP_FLOAT_SIGN_PLUS_EXP_LENGTH 9
+#define GET_MAX(a, b) ((a) > (b) ? (a) : (b))
+#define FP__G_INFP 2147483648
+
+
+typedef FP32_TYPE fp32;
+
+uint32_t int32_constants[16];
+uint64_t int64_constants[2];
+
+#define FP_G_FPOSIT_SHIFT_AMOUNT int32_constants[0]
+#define FP_G_MAXREALFP int32_constants[1]
+#define FP_G_MINREALFP int32_constants[2]
+#define FP_FPOSIT_EXTRA_BITS_SHIFT int32_constants[3]
+#define FP_G_USEED int32_constants[4]
+#define FP_G_USEED_ZEROS int32_constants[5]
+#define FP_FPOSIT_EXPONENT_MASK int32_constants[6]
+#define FP_G_MAXREAL_INT int32_constants[7]
+#define FP_G_MINREAL_INT int32_constants[8]
+#define FP_G_NBITS int32_constants[9]
+#define FP_G_ESIZE int32_constants[10]
+#define FP_G_RSIZE int32_constants[11]
+#define FP_FPOSIT_REGIME_MASK int32_constants[12]
+#define FP_FPOSIT_FRACTION_MASK int32_constants[13]
+#define FP_G_FSIZE int32_constants[14]
+#define FP_FP_REGIME_BIAS int32_constants[15]
+#define FP_FPOSIT_EXTRA_BITS_MASK int64_constants[0]
+#define FP_FPOSIT_HALFWAY_BIT_MASK int64_constants[1]
+
+int clz(uint32_t x) {
+    if (x == 0) return 32;
+    int n = 0;
+    while ((x & 0x80000000) == 0) {
+        x <<= 1;
+        n++;
+    }
+    return n;
 }
 
+void generate_fixedposit_constants(int nsize, int es, int rf) {
+    FP_G_NBITS = nsize;
+    FP_G_ESIZE = es;
+    FP_G_RSIZE = rf;
+    FP_G_FSIZE = nsize - es - rf - 1;
 
-float fixed_posit_to_fp32(uint32_t p32, uint32_t* int32_fp_constants, uint64_t* int64_fp_constants) {
-    bool sign = p32 & _FG_SIGN_MASK;
-    uint32_t abs_p = sign ? (~p32 & ((1U << _FG_NBITS) - 1)) : p32;
-
-    uint32_t regime_bits = (abs_p & _FG_REGIME_MASK) >> (_FG_NBITS - 1 - _FG_REGSIZE);
-    int regime_k = (int)(regime_bits << (32 - _FG_REGSIZE)) >> (32 - _FG_REGSIZE);
-
-
-    uint32_t exp_bits = (abs_p & _FG_EXP_MASK) >> __builtin_ctz(_FG_FRAC_MASK);
-    uint32_t frac_bits = abs_p & _FG_FRAC_MASK;
-
-    int32_t exp_total = regime_k * _FG_USEED_ZEROS + exp_bits;
-    uint32_t float_exp = (exp_total + SINGLE_PRECISION_BIAS) << FLOAT_EXPONENT_SHIFT;
-
-    uint32_t float_frac = frac_bits << (FLOAT_EXPONENT_SHIFT - __builtin_ctz(_FG_FRAC_MASK));
-    uint32_t result_bits = float_exp | float_frac;
-    if (sign) result_bits |= FLOAT_SIGN_MASK;
-
-    union { uint32_t ui; float f; } result;
-    result.ui = result_bits;
-    return result.f;
+    if (nsize <= 32 && rf <= 10) {
+        FP_G_FPOSIT_SHIFT_AMOUNT = FP32_LIMB_SIZE - nsize;
+        FP_G_MAXREALFP = ((((1 << FP_G_RSIZE) - 2) << FP_G_ESIZE) | ((1 << FP_G_ESIZE) - 1)) << (FP_G_FSIZE + FP_G_FPOSIT_SHIFT_AMOUNT);
+        FP_G_MINREALFP = 1 << (FP_G_ESIZE + FP_G_FSIZE + FP_G_FPOSIT_SHIFT_AMOUNT);
+        FP_FPOSIT_EXTRA_BITS_SHIFT = FP_UNSIGNED_LONG_LONG_SIZE - nsize + 1;
+        FP_G_USEED = 1 << (1 << es);
+        FP_G_USEED_ZEROS = (1 << es);
+        FP_FPOSIT_EXPONENT_MASK = FP_G_USEED_ZEROS - 1;
+        FP_FP_REGIME_BIAS = 0;
+        FP_G_MAXREAL_INT = ((((rf - 2) << es) + ((1 << es) - 1)) + FP_SINGLE_PRECISION_BIAS) << FP_FLOAT_EXPONENT_SHIFT;
+        FP_G_MINREAL_INT = (((-1 * (FP_G_RSIZE - 1)) * (FP_G_USEED_ZEROS)) + FP_SINGLE_PRECISION_BIAS) << FP_FLOAT_EXPONENT_SHIFT;
+        FP_FPOSIT_REGIME_MASK = ((1 << rf) - 1) << (FP_G_FSIZE + FP_G_ESIZE);
+        FP_FPOSIT_FRACTION_MASK = ((1 << FP_G_FSIZE) - 1);
+        FP_FPOSIT_EXTRA_BITS_MASK = (1UL << (FP_UNSIGNED_LONG_LONG_SIZE - nsize)) - 1;
+        FP_FPOSIT_HALFWAY_BIT_MASK = 1UL << (FP_UNSIGNED_LONG_LONG_SIZE - nsize);
+    } else {
+        printf("Unsupported fixed-posit config\n");
+        exit(1);
+    }
 }
 
-uint32_t fp32_to_fixed_posit(float f, uint32_t* int32_fp_constants, uint64_t* int64_fp_constants) {
-    union { uint32_t ui; int32_t si; float f; } v;
+float fixedp16tofp32_cpu(fp32 Fp) {
+    union Bits v;
+    v.si = 0;
+    bool sign = Fp & FP_SIGN_MASK;
+    Fp = (Fp ^ -sign) + sign;
+    bool regime_sign = Fp & FP_SECOND_BIT_MASK;
+    v.ui = Fp << 1;
+    int m = regime_sign ? clz(~v.ui) : clz(v.ui);
+    int k2es = (m - regime_sign) << FP_G_ESIZE;
+    k2es = (k2es ^ -regime_sign) + regime_sign;
+    v.ui <<= FP_G_RSIZE;
+    v.ui >>= (FP_FLOAT_SIGN_PLUS_EXP_LENGTH - FP_G_ESIZE);
+    v.ui += ((FP_SINGLE_PRECISION_BIAS - k2es) << FP_FLOAT_EXPONENT_SHIFT);
+    v.si ^= (FP_FLOAT_INF ^ v.si) & -(Fp == FP__G_INFP);
+    v.si ^= (0 ^ v.si) & -(Fp == 0);
+    v.ui |= (sign << FP_FLOAT_SIGN_SHIFT);
+    return v.f;
+}
+
+fp32 fp32tofixedp16_cpu(float f) {
+    fp32 Fp = 0;
+    union Bits v;
     v.f = f;
-    bool sign = v.ui & FLOAT_SIGN_MASK;
-    v.ui &= ~FLOAT_SIGN_MASK;
+    bool sign = v.ui & FP_FLOAT_SIGN_MASK;
+    v.ui &= FP_FLOAT_SIGN_RESET_MASK;
 
-    if (v.si >= _FG_MAXREAL_INT) return sign ? (_FG_SIGN_MASK) : (_FG_MAXREALP);
-    if (v.si <= _FG_MINREAL_INT) return 0;
+    if (v.si >= FP_G_MAXREAL_INT) return sign ? -FP__G_INFP : FP__G_INFP;
+    if (v.si >= FP_FLOAT_INF) return sign ? -FP__G_INFP : FP__G_INFP;
+    if (v.si != 0 && v.si <= FP_G_MINREAL_INT) return sign ? -FP_G_MINREALFP : FP_G_MINREALFP;
 
-    int32_t exp_val = ((v.ui >> FLOAT_EXPONENT_SHIFT) & 0xFF) - SINGLE_PRECISION_BIAS;
-    int regime_k = exp_val / _FG_USEED_ZEROS;
-    int exp_rem = exp_val % _FG_USEED_ZEROS;
+    bool exp_sign = !(v.ui >> FP_FLOAT_EXP_SIGN_SHIFT);
+    uint32_t exp = std::abs((v.si >> FP_FLOAT_EXPONENT_SHIFT) - FP_SINGLE_PRECISION_BIAS);
 
-    // Compose regime bits
-    uint32_t regime_bits = (uint32_t)(regime_k & ((1 << _FG_REGSIZE) - 1)) << (_FG_NBITS - 1 - _FG_REGSIZE);
+    FP_TEMP_TYPE regime_and_exp = (((1 << ((exp >> FP_G_ESIZE) + 1)) - 1) << (FP_G_RSIZE - ((exp >> FP_G_ESIZE) + 1) + FP_G_ESIZE)) | (exp & FP_FPOSIT_EXPONENT_MASK);
+    regime_and_exp = ((regime_and_exp ^ -exp_sign) + exp_sign);
 
+    int regime_and_exp_length = FP_G_ESIZE + FP_G_RSIZE;
+    regime_and_exp <<= (FP_UNSIGNED_LONG_LONG_SIZE - regime_and_exp_length);
+    regime_and_exp |= ((FP_TEMP_TYPE)(v.ui & FP_FLOAT_FRACTION_MASK) << (FP_FIXED_POSIT_EXP_SHIFT - regime_and_exp_length));
 
-    // Shift regime into place
-    regime_bits >>= (_FG_FPOSIT_SHIFT_AMOUNT + 1); // align
+    fp32 temp_p = (regime_and_exp >> FP_FPOSIT_EXTRA_BITS_SHIFT);
+    temp_p += ((bool)(regime_and_exp & FP_FPOSIT_HALFWAY_BIT_MASK)) && ((temp_p & 1) | (regime_and_exp & FP_FPOSIT_EXTRA_BITS_MASK));
+    if (FP_G_NBITS != 32) temp_p <<= FP_G_FPOSIT_SHIFT_AMOUNT;
 
-    // Compose exponent and fraction
-    uint32_t exp_bits = (exp_rem & _FG_EXPONENT_MASK) << __builtin_ctz(_FG_FRAC_MASK);
-    uint32_t frac_bits = (v.ui >> (FLOAT_EXPONENT_SHIFT - __builtin_ctz(_FG_FRAC_MASK))) & _FG_FRAC_MASK;
-
-    // Assemble po
-    uint32_t posit = (regime_bits | exp_bits | frac_bits) >> _FG_FPOSIT_SHIFT_AMOUNT;
-    posit &= ((1U << _FG_NBITS) - 1);
-	
-	// apply sign bit inversion for fixed-posit
-    if (sign)
-	    posit = ~posit & ((1U << _FG_NBITS) - 1);
-	
-	// finally, shift back to MSB-aligned field
-    return posit << _FG_FPOSIT_SHIFT_AMOUNT;
+    Fp = (v.si < FP_G_MAXREAL_INT && v.si > FP_G_MINREAL_INT) ? temp_p : Fp;
+    Fp = (Fp ^ -sign) + sign;
+    return Fp;
 }
 
 
-Tensor fixed_posit_quantize_nearest(Tensor a, int nsize, int reg, int es, float scale)
-{
-  auto a_array = a.data_ptr<float>();
-  auto o = zeros_like(a);
-  auto o_array = o.data_ptr<float>();
-  int size = a.numel();
+Tensor fixed_posit_quantize_nearest(Tensor a, int nsize, int reg, int es, float scale) {
+    // Ensure input is float32
+    TORCH_CHECK(a.scalar_type() == kFloat, "Input tensor must be float32");
 
-  // Store fixposit constants
-  uint32_t int32_fp_constants[16];
-  uint64_t int64_fp_constants[2];
+    auto a_contig = a.contiguous();
+    auto a_data = a_contig.data_ptr<float>();
 
-  // Initialize fixposit parameters
-  generate_fixed_posit_constants(nsize, reg, es, int32_fp_constants,int64_fp_constants);
+    auto o = zeros_like(a);
+    auto o_data = o.data_ptr<float>();
 
-  for (int64_t i = 0; i < size; i++)
-  {
-    // Scale the input for better dynamic coverage
-    float temp_input = a_array[i] * scale;
+    int64_t size = a.numel();
 
-    // Convert float → fixposit
-    uint32_t temp = fp32_to_fixed_posit(temp_input, int32_fp_constants,int64_fp_constants);
+    // Initialize global fixed-posit constants
+    generate_fixedposit_constants(nsize, es, reg);
 
-    // Convert back from fixposit → float
-    temp_input = fixed_posit_to_fp32(temp, int32_fp_constants,int64_fp_constants);
+    for (int64_t i = 0; i < size; ++i) {
+        float temp_input = a_data[i] * scale;
 
-    // Store scaled-back value
-    o_array[i] = temp_input / scale;
-  }
+        // Convert float -> fixed posit
+        fp32 temp = fp32tofixedp16_cpu(temp_input);
 
-  return o;
+        // Convert fixed posit -> float
+        float quantized = fixedp16tofp32_cpu(temp);
+
+        // Scale back and store
+        o_data[i] = quantized / scale;
+    }
+
+    return o;
 }
+
 
 PYBIND11_MODULE(TORCH_EXTENSION_NAME, m)
 {
