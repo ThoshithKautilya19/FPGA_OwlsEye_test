@@ -942,9 +942,9 @@ float fixed_posit_to_fp32(uint32_t p32, uint32_t* int32_fp_constants, uint64_t* 
     bool sign = p32 & _FG_SIGN_MASK;
     uint32_t abs_p = sign ? (~p32 & ((1U << _FG_NBITS) - 1)) : p32;
 
-    uint32_t regime_bits = (abs_p & _FG_REGIME_MASK) >> ( _FG_NBITS - _FG_REGSIZE - 1 );
-    int regime_k = (regime_bits == ((1 << _FG_REGSIZE) - 1)) 
-                   ? regime_bits : -regime_bits;
+    uint32_t regime_bits = (abs_p & _FG_REGIME_MASK) >> (_FG_NBITS - 1 - _FG_REGSIZE);
+    int regime_k = (int)(regime_bits << (32 - _FG_REGSIZE)) >> (32 - _FG_REGSIZE);
+
 
     uint32_t exp_bits = (abs_p & _FG_EXP_MASK) >> __builtin_ctz(_FG_FRAC_MASK);
     uint32_t frac_bits = abs_p & _FG_FRAC_MASK;
@@ -975,12 +975,8 @@ uint32_t fp32_to_fixed_posit(float f, uint32_t* int32_fp_constants, uint64_t* in
     int exp_rem = exp_val % _FG_USEED_ZEROS;
 
     // Compose regime bits
-    int regime_len = regime_k >= 0 ? regime_k + 1 : -regime_k + 1;
-    uint32_t regime_bits = 0;
-    if (regime_k >= 0)
-        regime_bits = ((1U << regime_len) - 1) << (32 - regime_len);
-    else
-        regime_bits = 1U << (32 - regime_len);
+    uint32_t regime_bits = (uint32_t)(regime_k & ((1 << _FG_REGSIZE) - 1)) << (_FG_NBITS - 1 - _FG_REGSIZE);
+
 
     // Shift regime into place
     regime_bits >>= (_FG_FPOSIT_SHIFT_AMOUNT + 1); // align
