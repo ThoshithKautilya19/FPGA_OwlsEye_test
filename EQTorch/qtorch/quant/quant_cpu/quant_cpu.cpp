@@ -1010,7 +1010,7 @@ Tensor fixed_posit_quantize_nearest(Tensor a, int nsize, int reg, int es, float 
   int size = a.numel();
 
   // Store fixposit constants
-  uint32_t int32_fp_constants[15];
+  uint32_t int32_fp_constants[16];
   uint64_t int64_fp_constants[2];
 
   // Initialize fixposit parameters
