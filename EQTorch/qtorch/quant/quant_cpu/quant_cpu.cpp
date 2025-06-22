@@ -940,7 +940,7 @@ void generate_fixed_posit_constants(int nsize, int reg, int es, uint32_t* int32_
 
 float fixed_posit_to_fp32(uint32_t p32, uint32_t* int32_fp_constants, uint64_t* int64_fp_constants) {
     bool sign = p32 & _FG_SIGN_MASK;
-    uint32_t abs_p = sign ? ((~p32) + 1) : p32;
+    uint32_t abs_p = sign ? (~p32 & ((1U << _FG_NBITS) - 1)) : p32;
 
     uint32_t regime_bits = (abs_p & _FG_REGIME_MASK) >> ( _FG_NBITS - _FG_REGSIZE - 1 );
     int regime_k = (regime_bits == ((1 << _FG_REGSIZE) - 1)) 
@@ -989,11 +989,15 @@ uint32_t fp32_to_fixed_posit(float f, uint32_t* int32_fp_constants, uint64_t* in
     uint32_t exp_bits = (exp_rem & _FG_EXPONENT_MASK) << __builtin_ctz(_FG_FRAC_MASK);
     uint32_t frac_bits = (v.ui >> (FLOAT_EXPONENT_SHIFT - __builtin_ctz(_FG_FRAC_MASK))) & _FG_FRAC_MASK;
 
-    // Assemble posit
+    // Assemble po
     uint32_t posit = (regime_bits | exp_bits | frac_bits) >> _FG_FPOSIT_SHIFT_AMOUNT;
     posit &= ((1U << _FG_NBITS) - 1);
-
-    if (sign) posit = (~posit + 1) & ((1U << _FG_NBITS) - 1);
+	
+	// apply sign bit inversion for fixed-posit
+    if (sign)
+	    posit = ~posit & ((1U << _FG_NBITS) - 1);
+	
+	// finally, shift back to MSB-aligned field
     return posit << _FG_FPOSIT_SHIFT_AMOUNT;
 }
 
